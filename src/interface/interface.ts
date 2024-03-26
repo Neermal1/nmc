@@ -9,30 +9,10 @@ export interface IMetatags {
   description?: string;
 }
 
-export interface Department {
+export interface Slider {
   id: number;
-  name: string;
-  slug: string;
-  department_category_id: string;
+  title: string;
   image: string;
-  description: string | null;
-  show_in_home: string;
   status: string;
-  created_at: string;
-  updated_at: string;
   image_link: string;
-}
-
-export interface DepartmentCategory {
-  id: number;
-  name: string;
-  slug: string;
-  image: string;
-  description: string | null;
-  show_in_home: string;
-  status: string;
-  created_at: string;
-  updated_at: string;
-  image_link: string;
-  departments: Department[];
 }

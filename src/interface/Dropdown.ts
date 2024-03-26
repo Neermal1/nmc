@@ -1,4 +1,4 @@
-interface SubCategory {
+export interface SubCategory {
   id: number;
   name: string;
   slug: string;
@@ -11,7 +11,7 @@ interface SubCategory {
   image_link: string;
 }
 
-interface DropdownCategory {
+export interface DropdownCategory {
   id: number;
   name: string;
   slug: string;
@@ -22,5 +22,8 @@ interface DropdownCategory {
   created_at: string;
   updated_at: string;
   image_link: string;
-  departments: SubCategory[];
+  subcategories: SubCategory[];
 }
+
+
+

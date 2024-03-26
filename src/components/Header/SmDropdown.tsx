@@ -1,9 +1,11 @@
+import { DropdownCategory, SubCategory } from "@/interface/Dropdown";
+
 import { Dropdown, Menu } from "antd";
 import Link from "next/link";
 import { useState } from "react";
 import { PiCaretDownBold } from "react-icons/pi";
 
-const SmDropdown = ({ dropdownName }: any) => {
+const SmDropdown = ({ dropdownName, menuItems, slugroot }: any) => {
   const [visibleMenu, setVisibleMenu] = useState<string | null>(null);
 
   const handleMenuClick = (menuItem: string) => {
@@ -14,52 +16,26 @@ const SmDropdown = ({ dropdownName }: any) => {
     }
   };
 
-  const menuItems = [
-    {
-      label: "test1",
-      key: "1",
-      dropdownItems: [
-        { label: "Subitem 1.1", key: "1.1", slug: "#" },
-        { label: "Subitem 1.2", key: "1.2", slug: "#" },
-      ],
-    },
-    {
-      label: "test2",
-      key: "2",
-      dropdownItems: [
-        { label: "Subitem 2.1", key: "2.1", slug: "#" },
-        { label: "Subitem 2.2", key: "2.2", slug: "#" },
-      ],
-    },
-    {
-      label: "test3",
-      key: "3",
-      dropdownItems: [
-        { label: "testtt", key: "2.1", slug: "#" },
-        { label: "testtt", key: "2.2", slug: "#" },
-      ],
-    },
-  ];
-
   return (
     <Dropdown
       overlay={
-        <Menu>
-          {menuItems.map((menuItem) => (
-            <div key={menuItem.key} className="p-2">
+        <Menu style={{ maxHeight: "300px", overflowY: "auto" }}>
+          {menuItems?.map((menuItem: any) => (
+            <div key={menuItem?.id} className="p-2">
               <div
-                onClick={() => handleMenuClick(menuItem.key)}
-                className="flex space-x-1 cursor-pointer items-center"
+                onClick={() => handleMenuClick(menuItem?.name)}
+                className="w-full flex justify-between space-x-1  cursor-pointer items-center"
               >
-                {menuItem.label}{" "}
-                {menuItem.dropdownItems &&
-                  menuItem.dropdownItems.length > 0 && <PiCaretDownBold />}
+                {menuItem?.name}{" "}
+                {menuItem?.items && menuItem?.items?.length > 0 && (
+                  <PiCaretDownBold />
+                )}
               </div>
-              {visibleMenu === menuItem.key && (
+              {visibleMenu === menuItem?.name && (
                 <Menu>
-                  {menuItem.dropdownItems.map((subItem) => (
-                    <Menu.Item key={subItem.key}>
-                      <Link href={subItem.slug}>{subItem.label}</Link>
+                  {menuItem?.items?.map((subItem: SubCategory) => (
+                    <Menu.Item key={subItem?.id}>
+                      <Link href={subItem.slug}>{subItem?.name}</Link>
                     </Menu.Item>
                   ))}
                 </Menu>

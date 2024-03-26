@@ -4,14 +4,16 @@ import { Drawer, Menu } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import SmDropdown from "./SmDropdown";
+import useFetchData from "@/hook/useFetchData";
 
 const SmallScreenNavbar = () => {
+  const {fetchedData: departmentData} = useFetchData("departments")
+  const {fetchedData: servicesData} = useFetchData("services")
+  const {fetchedData: academicsData} = useFetchData("academics-program")
   const [visible, setVisible] = useState(false);
-
   const showDrawer = () => {
     setVisible(true);
   };
-
   const onClose = () => {
     setVisible(false);
   };
@@ -39,14 +41,14 @@ const SmallScreenNavbar = () => {
         placement="left"
         closable={false}
         onClose={onClose}
-        visible={visible}
+        open={visible}
       >
         <div className="grid gap-y-4">
           <NavItem name="Home" navigateTo="/" />
           <NavItem name="About" navigateTo="/about" />
-          <SmDropdown dropdownName="Departments" />
-          <SmDropdown dropdownName="Services" />
-          <NavItem name="Activities" navigateTo="/activities" />
+          <SmDropdown dropdownName="Departments" menuItems={departmentData}/>
+          <SmDropdown dropdownName="Services" menuItems={servicesData}/>
+          <NavItem name="Activities" navigateTo="/activities" menuItems={academicsData}/>
           <NavItem name="Research" navigateTo="/research" />
           <SmDropdown dropdownName="Academics" />
         </div>

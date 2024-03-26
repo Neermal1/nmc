@@ -1,96 +1,86 @@
-import React, { useState } from "react";
-import { Dropdown, Menu } from "antd";
+import { SubCategory } from "@/interface/Dropdown";
 import { CaretDownOutlined } from "@ant-design/icons";
+import { Dropdown, Menu } from "antd";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { FaChevronRight } from "react-icons/fa";
 
-const DropdownItems = ({ dropdownName }: any) => {
-  const [activeMenuItem, setActiveMenuItem] = useState<string | null>("test1");
+const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
+  const [menuItems, setMenuItems] = useState([]);
+  const [activeMenuItem, setActiveMenuItem] = useState<string | null>(null);
 
-  const menuItems = [
-    {
-      label: "test1",
-      key: "1",
-      slug: "#",
-      dropdownItems: [
-        { label: "Subitem 1.1", key: "1.1", slug: "#" },
-        { label: "Subitem 1.2", key: "1.2", slug: "#" },
-      ],
-    },
-    {
-      label: "test2",
-      key: "2",
-      slug: "#",
-      dropdownItems: [
-        { label: "Subitem 2.1", key: "2.1", slug: "#" },
-        { label: "Subitem 2.2", key: "2.2", slug: "#" },
-      ],
-    },
-    {
-      label: "test3",
-      key: "3",
-      slug: "#",
-      dropdownItems: [
-        { label: "testtt", key: "2.1", slug: "#" },
-        { label: "testtt", key: "2.2", slug: "#" },
-      ],
-    },
-  ];
+  useEffect(() => {
+    if (fetchedData && fetchedData.length > 0) {
+      setMenuItems(fetchedData);
+      setActiveMenuItem(fetchedData[0]?.name);
+    }
+  }, [fetchedData]);
 
   const handleMenuItemHover = (menuItem: any) => {
-    setActiveMenuItem(menuItem.label);
+    setActiveMenuItem(menuItem?.name);
   };
 
   return (
     <Dropdown
+      placement="bottom"
       overlay={
         <Menu>
-          <div className="min-w-80 grid grid-cols-4 space-x-8 p-4 ">
-            <div className="flex flex-col space-y-4 col-span-1 w-full">
-              {menuItems.map((menuItem) => (
-                <div
-                  key={menuItem.key}
-                  onMouseEnter={() => handleMenuItemHover(menuItem)}
+          <div className="lg:w-[70vw] xl:w-[60vw] flex">
+            <div className="w-full grid gap-4 max-h-96 overflow-y-scroll overflow-hidden custom-scrollbar-dropdown p-2">
+              {menuItems?.map((menuItem: any) => (
+                <Link
+                  key={menuItem?.id}
+                  href={`/${slugroot}/${menuItem?.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Link
-                    href={menuItem.slug}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 text-sm md:text-base lg:text-lg xl:text-xl hover hover:bg-gray-100 rounded-lg"
+                  <div
+                    onMouseEnter={() => handleMenuItemHover(menuItem)}
+                    className={`flex items-center justify-between w-full px-4 py-2 text-nowrap text-sm md:text-base lg:text-lg xl:text-xl hover:bg-gray-100 hover:text-primary rounded-lg ${
+                      menuItem?.name === activeMenuItem
+                        ? "bg-gray-100 text-primary"
+                        : ""
+                    }`}
                   >
-                    {menuItem.label}
-                  </Link>
-                </div>
+                    {menuItem?.name}
+
+                    {menuItem?.items && menuItem?.items?.length > 0 && (
+                      <div>
+                        <FaChevronRight />
+                      </div>
+                    )}
+                  </div>
+                </Link>
               ))}
             </div>
-            <div className="col-span-3 w-full">
-              {menuItems.map((menuItem) => (
+            <div className="w-full p-2">
+              {menuItems.map((menuItem: any) => (
                 <div
-                  key={menuItem.key}
-                  className={`grid grid-cols-3 lg:space-4
-                   ${menuItem.label === activeMenuItem ? "block" : "hidden"} 
-                  `}
+                  key={menuItem?.id}
+                  className={`p-4 grid lg:grid-cols-2 gap-8 ${
+                    menuItem?.name === activeMenuItem ? "block" : "hidden"
+                  }`}
                 >
-                  {menuItem.dropdownItems.map((subItem) => (
-                    <div
-                      key={subItem.key}
-                      className="text-sm md:text-base lg:text-lg"
-                    >
+                  {menuItem?.items &&
+                    menuItem?.items?.length > 0 &&
+                    menuItem?.items?.map((subItem: SubCategory) => (
                       <Link
-                        href={subItem.slug}
+                        key={subItem?.id}
+                        href={`/${slugroot}/${menuItem?.slug}/${subItem?.slug}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {subItem.label}
+                        <div className="text-sm md:text-base lg:text-lg hover:underline hover:text-primary">
+                          {subItem?.name}
+                        </div>
                       </Link>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               ))}
             </div>
           </div>
         </Menu>
       }
-      placement="bottomLeft"
     >
       <a className="text-primary text-sm md:text-base lg:text-lg font-medium hover:text-primaryYellow cursor-pointer inline-flex items-center">
         {dropdownName} <CaretDownOutlined />
