@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 *{
-    font-family: "Work Sans", sans-serif;
-    font-optical-sizing: auto;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -13,6 +13,7 @@
     --light-primary-color:#BFD2F8;
     --accent-color:#249CDE;
     --black-color:#1e1e1e;
+    --accent-main-color:#FFDD1C;
 }
 
 .layout {
@@ -25,3 +26,13 @@
 .black-color{
     color:var(--black-color);
 }
+.react-multi-carousel-dot--active button {
+    
+    background-color: var(--primary-color) !important;
+   
+}
+  
+  .react-multi-carousel-dot button {
+   background-color: white;
+  }
+  

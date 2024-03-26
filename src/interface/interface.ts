@@ -33,7 +33,7 @@ export interface IComponentHeaderProps{
     data:IComponentHeaderContent;
 }
 export interface IComponentHeaderContent{
-    small_title:string;
+    small_title?:string;
     main_title:string;
     description?:string;
 }
@@ -45,10 +45,16 @@ export interface IComponentHeaderContent{
     image:string;
     
  }
-
-
-
 interface IHealthCareDetail{
     service:string;
     package_id:string;
 }
+
+
+export interface IMessageFromDirector{
+    name:string;
+    image_link:string;
+    message:string;
+    position:string;
+}
+    
