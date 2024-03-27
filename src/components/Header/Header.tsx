@@ -1,10 +1,16 @@
-import React from "react";
+import FirstNav from "./FirstNav";
+import LogoNav from "./LogoNav";
+import MainNav from "./MainNav";
+import SmallScreenNavbar from "./SmallScreenHeader";
 
 const Header = () => {
   return (
-    <div>
-      <div className="layout lg:px-4 px-6">Header</div>
-    </div>
+    <>
+      <FirstNav />
+      <LogoNav />
+      <MainNav />
+      <SmallScreenNavbar />
+    </>
   );
 };
 
