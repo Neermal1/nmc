@@ -8,9 +8,7 @@ import Footer from "../Footer/Footer";
 const Layout = ({ children }: ILayoutProps) => {
   return (
     <div>
-      <div>
-        <Header />
-      </div>
+      <Header />
       <main>{children}</main>
       <div>
         <Footer />

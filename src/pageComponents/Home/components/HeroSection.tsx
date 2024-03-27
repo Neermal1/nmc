@@ -1,11 +1,29 @@
-const HeroSection = () => {
-  return (
-    <div className="max-w-[1920px] mx-auto">
-      <div className="lg:pt-[95px]  h-[100vh] flex items-center justify-center lg:translate-y-[-20px]    3xl:pt-[100px] pt-[50px]    relative ">
-        I am HeroSection
-      </div>
-    </div>
-  );
-};
+/* eslint-disable @next/next/no-img-element */
+import React from "react";
+import { Carousel } from "antd";
+import useFetchData from "@/hook/useFetchData";
+import { Slider } from "@/interface/interface";
+import Loader from "@/components/Loader/Loader";
 
-export default HeroSection;
+export default function HeroSection() {
+  const { fetchedData, loading } = useFetchData("slider/list");
+  if (loading) {
+    return <Loader />;
+  } else if (fetchedData) {
+    return (
+      <div className="w-full h-full">
+        <Carousel autoplay>
+          {fetchedData?.map((image: Slider) => (
+            <div key={image?.id}>
+              <img
+                src={image?.image_link}
+                alt={`Image ${image.id}`}
+                className="w-full lg:h-[80vh] object-cover"
+              />
+            </div>
+          ))}
+        </Carousel>
+      </div>
+    );
+  }
+}

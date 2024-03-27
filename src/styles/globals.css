@@ -2,37 +2,118 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+* {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-:root{
-    --primary-color:#1F2B6C;
-    --light-primary-color:#BFD2F8;
-    --accent-color:#249CDE;
-    --black-color:#1e1e1e;
-    --accent-main-color:#FFDD1C;
+:root {
+  --primary-color: #1f2b6c;
+  --light-primary-color: #bfd2f8;
+  --accent-color: #249cde;
+  --black-color: #1e1e1e;
+  --accent-main-color: #ffdd1c;
 }
 
 .layout {
-    @apply max-w-[1280px] lg:max-w-7xl mx-auto;
+  @apply max-w-[1280px] lg:max-w-7xl mx-auto;
 }
-  
+
 .component-padding {
-    @apply lg:py-[80px] py-[50px] lg:px-4 px-6 ;
+  @apply lg:py-[80px] py-[50px] lg:px-4 px-6;
 }
-.black-color{
-    color:var(--black-color);
+
+.custom-scrollbar-dropdown {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) rgba(255, 255, 255, 0.1);
+}
+.custom-scrollbar-dropdown::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar-dropdown::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 4px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 40px;
+  aspect-ratio: 1;
+  position: relative;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: -8px 0 0 -8px;
+  width: 16px;
+  aspect-ratio: 1;
+  background: #1f2b6c;
+  animation: l1-1 2s infinite, l1-2 0.5s infinite;
+}
+.loader:after {
+  background: #ffdd1c;
+  animation-delay: -1s, 0s;
+}
+@keyframes l1-1 {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  25% {
+    top: 100%;
+    left: 0;
+  }
+  50% {
+    top: 100%;
+    left: 100%;
+  }
+  75% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 0;
+  }
+}
+@keyframes l1-2 {
+  80%,
+  100% {
+    transform: rotate(0.5turn);
+  }
+}
+
+.custom-tabs {
+  border: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.html-wrapper h3 {
+  font-size: 16px !important ;
+  font-weight: bold !important;
+}
+
+.black-color {
+  color: var(--black-color);
 }
 .react-multi-carousel-dot--active button {
-    
-    background-color: var(--primary-color) !important;
-   
+  background-color: var(--primary-color) !important;
 }
-  
-  .react-multi-carousel-dot button {
-   background-color: white;
-  }
-  
+
+.react-multi-carousel-dot button {
+  background-color: white;
+}
