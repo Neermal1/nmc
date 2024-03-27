@@ -58,3 +58,20 @@ export interface IMessageFromDirector{
     position:string;
 }
     
+export interface INews{
+    title:string;
+    slug:string;
+    created_at:string;
+    image_link:string;
+    views:string;
+}
+
+export interface IRelatedDepartment{
+    name:string;
+    slug:string;
+}
+
+export interface IRelatedService{
+    name:string;
+    slug:string;
+}

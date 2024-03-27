@@ -6,6 +6,7 @@ import Facility from "@/pageComponents/Home/components/Facility";
 import HealthCarePackages from "@/pageComponents/Home/components/HealthCarePackages";
 import HeroSection from "@/pageComponents/Home/components/HeroSection";
 import MessageFromDirector from "@/pageComponents/Home/components/MessageFromDirector";
+import News from "@/pageComponents/Home/components/News";
 import OurAcademics from "@/pageComponents/Home/components/OurAcademics";
 import WhyChooseUs from "@/pageComponents/Home/components/WhyChooseUs";
 import Metatag from "@/utils/Metatag";
@@ -22,6 +23,7 @@ const index = () => {
       <MessageFromDirector />
       <OurAcademics />
       <CallToAction />
+      <News />
     </Layout>
   );
 };

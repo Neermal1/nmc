@@ -7,7 +7,6 @@ import useFetchData from "@/hooks/useFetchData";
 
 import axiosInstance from "@/axiosInstance/axiosInstance";
 import { Button, Form, Input, notification } from "antd";
-import { useForm } from "antd/es/form/Form";
 import { useState } from "react";
 import { BsInstagram, BsYoutube } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
@@ -52,7 +51,7 @@ const Footer = () => {
       ],
     },
   ];
-  const [form] = useForm();
+  const [form] = Form.useForm();
 
   const handleNewsLetter = async (values: any) => {
     try {

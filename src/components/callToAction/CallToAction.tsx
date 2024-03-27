@@ -20,7 +20,7 @@ const CallToAction = () => {
       >
         <div className="absolute top-0 left-0 right-0 bottom-0 w-full    bg-[#101A55] opacity-70"></div>
 
-        <div className="layout component-padding relative flex flex-col gap-[16px]">
+        <div className="layout component-padding relative flex flex-col gap-20">
           <div className="flex  flex-col items-center justify-center">
             <div className="text-white">Get in Touch</div>
             <div
@@ -33,7 +33,7 @@ const CallToAction = () => {
             </div>
           </div>
           <div className="grid lg:grid-cols-4 gap-5">
-            <div className="bg-white p-8 rounded-[8px] flex flex-col gap-4">
+            <div className="bg-white hover:bg-[#EAF1FF] p-8 rounded-[8px] flex flex-col gap-4">
               <div>
                 <div
                   className=""
@@ -63,7 +63,7 @@ const CallToAction = () => {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-[8px] flex flex-col gap-4">
+            <div className="bg-white hover:bg-[#EAF1FF] p-8 rounded-[8px] flex flex-col gap-4">
               <div>
                 <div
                   className=""
@@ -87,7 +87,7 @@ const CallToAction = () => {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-[8px] flex flex-col gap-4">
+            <div className="bg-white hover:bg-[#EAF1FF] p-8 rounded-[8px] flex flex-col gap-4">
               <div>
                 <div
                   className=""
@@ -117,7 +117,7 @@ const CallToAction = () => {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-[8px] flex flex-col gap-4">
+            <div className="bg-white hover:bg-[#EAF1FF] p-8 rounded-[8px] flex flex-col gap-4">
               <div>
                 <div
                   className=""
