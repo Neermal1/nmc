@@ -48,9 +48,13 @@ const SmallScreenNavbar = () => {
           <NavItem name="About" navigateTo="/about" />
           <SmDropdown dropdownName="Departments" menuItems={departmentData}/>
           <SmDropdown dropdownName="Services" menuItems={servicesData}/>
-          <NavItem name="Activities" navigateTo="/activities" menuItems={academicsData}/>
+          <NavItem name="Activities" navigateTo="/activities"/>
           <NavItem name="Research" navigateTo="/research" />
-          <SmDropdown dropdownName="Academics" />
+          <SmDropdown dropdownName="Academics"  menuItems={academicsData}/>
+          <NavItem name="News" navigateTo="/news" />
+          <NavItem name="Notice" navigateTo="/notice" />
+          <NavItem name="Gallery" navigateTo="/gallery" />
+          <NavItem name="Contact us" navigateTo="/contact" />
         </div>
       </Drawer>
     </div>

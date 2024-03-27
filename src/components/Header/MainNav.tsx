@@ -14,9 +14,9 @@ export default function MainNav() {
         <ul className="flex space-x-4 lg:space-x-8">
           <NavItem name="Home" navigateTo="/" />
           <NavItem name="About us" navigateTo="/about" />
-           <DropdownItems dropdownName="Departments" slugroot="departments" fetchedData={departmentData}/>
-           <DropdownItems dropdownName="Services" slugroot="services" fetchedData={servicesData}/>
-          <NavItem name="Activities" navigateTo="/activiities" />
+          <DropdownItems dropdownName="Departments" slugroot="departments" fetchedData={departmentData}/>
+          <DropdownItems dropdownName="Services" slugroot="services" fetchedData={servicesData}/>
+          <NavItem name="Activities" navigateTo="/activities" />
           <NavItem name="Research" navigateTo="/research" />
           <DropdownItems dropdownName="Academics" slugroot="academics" fetchedData={academicsData} />
           <NavItem name="Journal" navigateTo="/journal" />

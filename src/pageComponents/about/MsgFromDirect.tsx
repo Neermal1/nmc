@@ -3,15 +3,15 @@
 export default function MsgFromDirect({ message }: any) {
   return (
     <section className="py-8">
-      <div className="flex items-center space-x-4 lg:space-x-8">
-        <div className="w-1/2 h-full">
+      <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-8">
+        <div className="lg:w-1/2 h-full">
           <img
             src="https://img.freepik.com/free-photo/portrait-smiling-male-doctor_171337-1532.jpg?t=st=1711450648~exp=1711454248~hmac=752c3a8a1d1a0be208aa2043cbbfbf95af22fb9ea883a79d6dce9cb7806544ce&w=996"
             alt=""
             className="w-full h-full object-cover rounded-xl"
           />
         </div>
-        <div className="w-1/2 h-full flex items-center">
+        <div className="lg:w-1/2 h-full flex items-center">
           <div>
             {message ? (
               <p

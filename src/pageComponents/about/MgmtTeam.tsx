@@ -19,7 +19,7 @@ const hospitalManagementTeam = [
   {
     name: "Rajendra Thapa",
     profession: "Web Designer",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
+    image: "https://randomuser.me/api/portraits/women/8.jpg",
   },
 ];
 
@@ -28,16 +28,16 @@ export default function MgmtTeam() {
     <section className="py-4 text-center">
       <h2 className="mb-12 text-3xl font-bold">Meet the team</h2>
 
-      <div className="lg:gap-xl-12 grid gap-x-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="lg:gap-xl-12 grid gap-x-6 grid-cols-2 lg:grid-cols-4">
         {hospitalManagementTeam.map((member, index) => (
           <div key={index} className="mb-12 lg:mb-0">
             <img
               src={member.image}
               alt={`Image of ${member.name}`}
-              className="mx-auto mb-6 rounded-lg shadow-lg dark:shadow-black/20 w-[150px]"
+              className="mx-auto mb-4 rounded-lg shadow-lg dark:shadow-black/20 w-[150px]"
             />
-            <h5 className="mb-4 text-lg font-bold">{member.name}</h5>
-            <p className="mb-6">{member.profession}</p>
+            <h5 className="mb-2 text-lg font-bold">{member.name}</h5>
+            <p className="mb-2">{member.profession}</p>
           </div>
         ))}
       </div>

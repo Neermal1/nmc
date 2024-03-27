@@ -1,9 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-export default function CommonBanner({ imageLink, headerName }: any) {
+interface BannerProps {
+  imageLink: string;
+  headerName: string;
+}
+
+export default function CommonBanner({ imageLink, headerName }: BannerProps) {
   return (
-    <section className="relative w-full h-96 overflow-hidden">
+    <section className="relative w-full lg:h-96 overflow-hidden">
       <div>
-        <img src={imageLink} alt="" className="w-full h-96 object-cover" />
+        <img src={imageLink} alt="" className="w-full lg:h-96 object-cover" />
       </div>
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="absolute inset-0 flex items-center justify-center ">

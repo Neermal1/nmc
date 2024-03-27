@@ -45,8 +45,8 @@ const SmDropdown = ({ dropdownName, menuItems, slugroot }: any) => {
         </Menu>
       }
       placement="bottomCenter"
-      visible={Boolean(visibleMenu)}
-      onVisibleChange={(flag) => setVisibleMenu(flag ? "visible" : null)}
+      open={Boolean(visibleMenu)}
+      onOpenChange={(flag) => setVisibleMenu(flag ? "visible" : null)}
     >
       <div
         className="ant-dropdown-link text-base md:text-lg font-medium text-primary
