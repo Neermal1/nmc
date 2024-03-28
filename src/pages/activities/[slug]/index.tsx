@@ -1,6 +1,6 @@
 import CommonBanner from "@/components/Banner/CommonBanner";
 import Layout from "@/components/Layout/Layout";
-import useFetchData from "@/hook/useFetchData";
+import useFetchData from "@/hooks/useFetchData";
 import { ActivityDetail } from "@/interface/interface";
 import Details from "@/pageComponents/activities/Details";
 import Metatag from "@/utils/Metatag";

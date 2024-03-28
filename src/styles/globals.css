@@ -117,3 +117,11 @@
 .react-multi-carousel-dot button {
   background-color: white;
 }
+
+/* form label  */
+.form-label {
+  @apply text-[16px] font-medium;
+}
+.form-gap {
+  @apply flex flex-col gap-4;
+}

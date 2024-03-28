@@ -1,7 +1,6 @@
 //interface
-import { IMetatags } from "@/interface/interface";
-
 import Head from "next/head";
+import { IMetatags } from "@/interface/interface";
 
 const Metatag = ({ heading, subheading, description, og_image }: IMetatags) => {
   return (
@@ -10,7 +9,7 @@ const Metatag = ({ heading, subheading, description, og_image }: IMetatags) => {
       <title>{`${heading} - ${subheading}`}</title>
       <meta property="og:image" content={og_image} />
 
-      <meta name="description" content="Best Hospital" />
+      <meta name="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#1e1e1e"></meta>
       <link rel="icon" href="/favicon.ico" />

@@ -112,3 +112,16 @@ export interface IRelatedService {
   name: string;
   slug: string;
 }
+
+export interface IDepartmentBranchProps {
+  branchData: IDepartmentBranch[];
+}
+export interface IDepartmentBranch extends IRelatedDepartment {
+  image_link: any;
+  image: any;
+  department_category: IDepartmentCategory;
+}
+interface IDepartmentCategory {
+  name: string;
+  slug: string;
+}

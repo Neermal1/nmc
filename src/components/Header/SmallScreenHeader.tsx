@@ -4,12 +4,12 @@ import { Drawer, Menu } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import SmDropdown from "./SmDropdown";
-import useFetchData from "@/hook/useFetchData";
+import useFetchData from "@/hooks/useFetchData";
 
 const SmallScreenNavbar = () => {
-  const {fetchedData: departmentData} = useFetchData("departments")
-  const {fetchedData: servicesData} = useFetchData("services")
-  const {fetchedData: academicsData} = useFetchData("academics-program")
+  const { fetchedData: departmentData } = useFetchData("departments");
+  const { fetchedData: servicesData } = useFetchData("services");
+  const { fetchedData: academicsData } = useFetchData("academics-program");
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
     setVisible(true);
@@ -46,11 +46,11 @@ const SmallScreenNavbar = () => {
         <div className="grid gap-y-4">
           <NavItem name="Home" navigateTo="/" />
           <NavItem name="About" navigateTo="/about" />
-          <SmDropdown dropdownName="Departments" menuItems={departmentData}/>
-          <SmDropdown dropdownName="Services" menuItems={servicesData}/>
-          <NavItem name="Activities" navigateTo="/activities"/>
+          <SmDropdown dropdownName="Departments" menuItems={departmentData} />
+          <SmDropdown dropdownName="Services" menuItems={servicesData} />
+          <NavItem name="Activities" navigateTo="/activities" />
           <NavItem name="Research" navigateTo="/research" />
-          <SmDropdown dropdownName="Academics"  menuItems={academicsData}/>
+          <SmDropdown dropdownName="Academics" menuItems={academicsData} />
           <NavItem name="News" navigateTo="/news" />
           <NavItem name="Notice" navigateTo="/notice" />
           <NavItem name="Gallery" navigateTo="/gallery" />
@@ -66,7 +66,12 @@ export default SmallScreenNavbar;
 const NavItem = ({ name, navigateTo }: any) => {
   return (
     <div>
-      <Link href={navigateTo} className="text-base md:text-lg font-medium text-primary hover:text-primaryYellow">{name}</Link>
+      <Link
+        href={navigateTo}
+        className="text-base md:text-lg font-medium text-primary hover:text-primaryYellow"
+      >
+        {name}
+      </Link>
     </div>
   );
 };

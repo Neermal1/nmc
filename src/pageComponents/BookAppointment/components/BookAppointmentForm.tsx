@@ -1,6 +1,5 @@
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-
-//axios
 
 //antd
 import {
@@ -13,44 +12,45 @@ import {
   notification,
 } from "antd";
 
+//axiosInstance
+import axiosInstance from "@/axiosInstance/axiosInstance";
+
 //dayjs
 import dayjs from "dayjs";
-// import { useParams } from "react-router-dom";
-import axiosInstance from "@/axiosInstance/axiosInstance";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const BookAppointment = () => {
-  const checkboxRef = useRef(null);
-  const innerBannerInfo = {
-    pageName: "Doctor Appointment",
-  };
-
-  //changes
-  const [patient_type, setPatientType] = useState("");
-  const [gender_type, setGenderType] = useState("");
-  const [filtered_depart_id, setFilteredDepartId] = useState("");
-  const [filtered_doctor_id, setFilteredDoctorId] = useState("");
-  const [departmentList, setDepartmentList] = useState([]);
-  const [department_name, setDepartmentName] = useState("");
-  const [doctorName, setDoctorName] = useState("");
-  const [doctorList, setDoctorList] = useState([]);
-  const [captchaValue, setCaptchaValue] = useState(null);
-
-  //dayjs states
+const BookAppointmentForm = () => {
+  //date format
   const today = dayjs(new Date()?.toISOString(), "YYYY-MM-DD");
-  const [birthDate, setBirthDate] = useState<any>(today);
-  const handleBirthDateChange = (dateString: any) => {
-    setBirthDate(dateString);
-  };
-  const todayDate = dayjs(new Date()?.toISOString(), "YYYY-MM-DD");
-  const [appointDate, setAppointDate] = useState<any>(todayDate);
-  const handleAppointDateChange = (dateString: any) => {
-    setAppointDate(dateString);
-  };
 
+  //antd props
   const { TextArea } = Input;
   const [form] = Form.useForm();
   const { Option, OptGroup } = Select;
+
+  //states
+  const [patient_type, setPatientType] = useState("");
+  const [gender_type, setGenderType] = useState("");
+  const [departmentList, setDepartmentList] = useState([]);
+  const [doctorList, setDoctorList] = useState([]);
+  const [department_id, setDepartmentID] = useState("");
+  const [doctorID, setdoctorID] = useState("");
+
+  const [filtered_depart_id, setFilteredDepartId] = useState("");
+  const [filtered_doctor_id, setFilteredDoctorId] = useState("");
+
+  const [captchaValue, setCaptchaValue] = useState(null);
+  const [appointDate, setAppointDate] = useState<any>(today);
+  const [birthDate, setBirthDate] = useState<any>(today);
+
+  const handleBirthDateChange = (dateString: any) => {
+    setBirthDate(dateString);
+  };
+  // const todayDate = dayjs(new Date()?.toISOString(), "YYYY-MM-DD");
+
+  const handleAppointDateChange = (dateString: any) => {
+    setAppointDate(dateString);
+  };
 
   const handle_patient_type = (e: any) => {
     setPatientType(e.target.value);
@@ -60,52 +60,56 @@ const BookAppointment = () => {
     setGenderType(e.target.value);
   };
 
-  //   // params
+  //Here filtering the doctor and department to get their respective id and their name will be received from query
+  const router = useRouter();
 
-  //   const {departSlug,doctorSlug}=useParams();
-  //    useEffect(()=>{
+  const { departSlug, doctorSlug } = router.query;
 
-  //     const department_filter=departmentList?.map((data)=>{
-  //       return (
-  //         data.departments.filter((data)=>{
-  //           return data.slug===departSlug
-  //         })
-  //       )
-  //      })
+  useEffect(() => {
+    fetchDepartmentID_from_query();
+  }, [departSlug, departmentList]);
 
-  //     if(department_filter.length>0){
-  //       const filteredDepartId=department_filter[0]?.map((data)=>{
-  //         return data?.id
-  //        })
-  //       setFilteredDepartId(filteredDepartId[0]);
+  const fetchDepartmentID_from_query = async () => {
+    try {
+      const department_filter = departmentList?.map((data: any, index) => {
+        return data.departments.filter((data: any) => {
+          return data.slug === departSlug;
+        });
+      });
 
-  //     }
-  //   },[departSlug,departmentList]);
+      if (department_filter.length > 0) {
+        const filteredDepartId = department_filter[0]?.map((data: any) => {
+          return data?.id;
+        });
+        setFilteredDepartId(filteredDepartId[0]);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-  //   //fetching doctor according to the department name but from params
+  useEffect(() => {
+    fetchDoctorID_from_query();
+  }, [filtered_depart_id]);
 
-  //   useEffect(()=>{
+  const fetchDoctorID_from_query = async () => {
+    try {
+      const response = await axiosInstance.get(
+        `department/doctors/${filtered_depart_id}`
+      );
+      const doctor_filter = response.data?.filter((data: any, index: any) => {
+        return data.slug === doctorSlug;
+      });
+      if (doctor_filter[0]) {
+        setFilteredDoctorId(doctor_filter[0].id);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-  //     fetchParamsDoctor();
+  //end of fetching here...
 
-  //   },[filtered_depart_id]);
-
-  //   const fetchParamsDoctor = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         import.meta.env.VITE_API_BASE_URL +
-  //           `/api/department/doctors/${filtered_depart_id}`
-  //       );
-  //       const doctor_filter = response.data?.filter((data) => {
-  //         return data.slug === doctorSlug;
-  //       });
-  //       if (doctor_filter[0]) {
-  //         setFilteredDoctorId(doctor_filter[0].id);
-  //       }
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
   const handleAppointment = async (values: any) => {
     const payload = {
       first_name: values.first_name,
@@ -117,30 +121,32 @@ const BookAppointment = () => {
       email: values.email,
       address: values.address,
       mobile: values.phone_number,
-      // department_id:departSlug ? filtered_depart_id :department_name,
-      // doctor_id:doctorSlug ? filtered_doctor_id : doctorName,
-      department_id: department_name,
-      doctor_id: doctorName,
+      department_id: departSlug ? filtered_depart_id : department_id,
+      doctor_id: doctorSlug ? filtered_doctor_id : doctorID,
       appointment_date: dayjs(appointDate).format("YYYY-MM-DD"),
       additional_information: values.message,
     };
 
+    console.log(payload);
+
     try {
       if (captchaValue && payload) {
-        const response = await axiosInstance.post("/appointment/add", payload);
+        const response = await axiosInstance.post("appointment/add", payload);
         if (response.status === 200) {
           notification.success({
             message: response.data.message,
           });
           form.resetFields();
-          setBirthDate(" ");
-          setAppointDate(" ");
-          window.location.href = "/thankyou";
+          recaptchaRef.current.reset();
+
+          setBirthDate("");
+          setAppointDate("");
         } else {
           notification.error({
             message: "Sorry Something went wrong",
           });
           form.resetFields();
+          recaptchaRef.current.reset();
         }
       } else {
         notification.error({
@@ -154,6 +160,7 @@ const BookAppointment = () => {
       });
 
       form.resetFields();
+      recaptchaRef.current.reset();
     }
   };
 
@@ -162,15 +169,17 @@ const BookAppointment = () => {
   }, []);
 
   const fetchDepartmentList = async () => {
-    const response = await axiosInstance.get("/departments/list");
+    const response = await axiosInstance.get("departments/list");
     setDepartmentList(response.data);
   };
 
-  const formattedDepartment = departmentList?.map((department: any) => ({
+  //here formatting the department list to include in select component form antd
+
+  const formattedDepartment = departmentList?.map((department: any, index) => ({
     id: department.id,
     label: department.name,
     value: department.name,
-    children: department.departments.map((subcategory: any, index: any) => ({
+    children: department.departments.map((subcategory: any, index: number) => ({
       label: subcategory.name,
       value: subcategory.name,
       id: subcategory.id,
@@ -178,129 +187,123 @@ const BookAppointment = () => {
   }));
 
   const handleDepartment = (value: any) => {
-    setDepartmentName(value);
+    setDepartmentID(value);
   };
 
   useEffect(() => {
-    if (department_name !== "") {
+    if (department_id !== "") {
       fetchDoctorList();
     }
-  }, [department_name]);
+  }, [department_id]);
 
   const fetchDoctorList = async () => {
     const response = await axiosInstance.get(
-      `/department/doctors/${department_name}`
+      `departments/${department_id}/doctors`
     );
     setDoctorList(response.data);
+    console.log(response.data);
   };
-  const formattedDoctorList = doctorList?.map((doctor: any) => ({
+
+  //here formatting the doctor list to include in select component form antd
+
+  const formattedDoctorList = doctorList?.map((doctor: any, index) => ({
     id: doctor.id,
     label: doctor.name,
     value: doctor.name,
   }));
 
   const handleDoctorChange = (value: any) => {
-    setDoctorName(value);
+    setdoctorID(value);
   };
+
+  //recaptcha functions
   function onChangeCaptcha(value: any) {
-    console.log("Captcha value:", value);
     setCaptchaValue(value);
   }
 
+  const recaptchaRef: any = useRef();
+
   return (
     <>
-      <div className="book-appointment-page">
-        <div className="section-wrapper">
+      <div className="flex items-center justify-center ">
+        <div className="lg:w-[80%] bg-[white] drop-shadow-md rounded-[8px] p-6 flex items-center justify-center">
           <Form
             form={form}
-            className="appointment-form"
             onFinish={handleAppointment}
+            className="flex flex-col gap-10 lg:w-[80%]"
           >
-            <h2 className="heading">Appointment Form</h2>
             <div className="">
-              <div className="select-style">
-                <div className="w-[100%]">
-                  <div
-                    className="label"
-                    style={{
-                      marginBottom: "10px",
-                    }}
-                  >
-                    Department
-                  </div>
+              <div className="flex lg:flex-row flex-col gap-8">
+                <div className="w-[100%] form-gap">
+                  <div className="form-label">Department</div>
                   <div>
                     <Form.Item
                       name="department"
                       // rules={[{ required: true, message: "Please select a department" }]}
                     >
                       <div>
-                        <Select
-                          defaultValue="Select a Department"
-                          onChange={handleDepartment}
-                        >
-                          {formattedDepartment.map((department) => (
-                            <OptGroup
-                              label={department.label}
-                              key={department.value}
-                            >
-                              {department.children.map((subcategory: any) => (
-                                <Option
-                                  key={subcategory.value}
-                                  value={subcategory.id}
-                                >
-                                  {subcategory.label}
-                                </Option>
-                              ))}
-                            </OptGroup>
-                          ))}
-                        </Select>
+                        {departSlug ? (
+                          <Select defaultValue={departSlug} size="large" />
+                        ) : (
+                          <Select
+                            defaultValue="Select a Department"
+                            onChange={handleDepartment}
+                            size="large"
+                          >
+                            {formattedDepartment.map((department) => (
+                              <OptGroup
+                                label={department.label}
+                                key={department.value}
+                              >
+                                {department.children.map(
+                                  (subcategory: any, index: number) => (
+                                    <Option
+                                      key={subcategory.value}
+                                      value={subcategory.id}
+                                    >
+                                      {subcategory.label}
+                                    </Option>
+                                  )
+                                )}
+                              </OptGroup>
+                            ))}
+                          </Select>
+                        )}
                       </div>
                     </Form.Item>
                   </div>
                 </div>
-                <div className="w-[100%]">
-                  <div
-                    className="label"
-                    style={{
-                      marginBottom: "10px",
-                    }}
-                  >
-                    Doctor
-                  </div>
+                <div className="w-[100%] form-gap">
+                  <div className="form-label">Doctor</div>
                   <div>
                     <Form.Item name="doctor">
-                      {/* <div>
-                                  {
-                                    doctorSlug ? <Select defaultValue={doctorSlug}/>:
-                                    <Select defaultValue="Select A Doctor"   onChange={handleDoctorChange}  >
-
-                                    {formattedDoctorList.map(doctor => (
-                                            <Option label={doctor.label} value={doctor.id}  key={doctor.value}>
-                                              {doctor.label}
-                                            
-                                    </Option>
-                                    ))}
-                                     
-                                    </Select>
-                                  }
-                                </div> */}
+                      <div>
+                        {doctorSlug ? (
+                          <Select defaultValue={doctorSlug} size="large" />
+                        ) : (
+                          <Select
+                            defaultValue="Select A Doctor"
+                            onChange={handleDoctorChange}
+                            size="large"
+                          >
+                            {formattedDoctorList.map((doctor) => (
+                              <Option
+                                label={doctor.label}
+                                value={doctor.id}
+                                key={doctor.value}
+                              >
+                                {doctor.label}
+                              </Option>
+                            ))}
+                          </Select>
+                        )}
+                      </div>
                     </Form.Item>
                   </div>
                 </div>
               </div>
-              <div
-                className="datepicker-cover"
-                style={{
-                  marginTop: "20px",
-                }}
-              >
-                <div
-                  style={{
-                    marginBottom: "10px",
-                  }}
-                >
-                  Appointment Date
-                </div>
+              <div className="form-gap">
+                <div className="form-label">Appointment Date</div>
 
                 <DatePicker
                   className="datepicker-style"
@@ -314,10 +317,9 @@ const BookAppointment = () => {
                 />
               </div>
             </div>
-            <div className="patient-infos">
-              <div className="title">Patient Info</div>
-              <div className="fields-wrapper">
-                <div className="new-or-old">
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-6">
+                <div className="">
                   <Form.Item
                     name="patient"
                     rules={[
@@ -330,10 +332,10 @@ const BookAppointment = () => {
                     </Radio.Group>
                   </Form.Item>
                 </div>
-                <div className="triple-inputs-wrapper">
-                  <div className="input-and-label">
-                    <div className="flex items-center gap-2">
-                      <div className="label">First Name</div>
+                <div className="grid lg:grid-cols-3 gap-4">
+                  <div className="form-gap">
+                    <div className="">
+                      <div className="form-label">First Name</div>
                     </div>
                     <Form.Item
                       hasFeedback
@@ -347,28 +349,28 @@ const BookAppointment = () => {
                       className=""
                     >
                       <Input
-                        className="lg:w-[380px] w-[300px]"
+                        className="lg:w-[100%] w-[300px]"
                         size="large"
                         placeholder="Enter your full name here"
                       />
                     </Form.Item>
                   </div>
 
-                  <div className="input-and-label">
-                    <div className="flex items-center gap-2">
-                      <div className="label">Middle Name</div>
+                  <div className="form-gap">
+                    <div className="">
+                      <div className="form-label">Middle Name</div>
                     </div>
                     <Form.Item name="middle_name" className="">
                       <Input
-                        className="lg:w-[380px] w-[300px]"
+                        className="lg:w-[100%] w-[300px]"
                         size="large"
                         placeholder="Enter your middle name here"
                       />
                     </Form.Item>
                   </div>
-                  <div className="input-and-label">
-                    <div className="flex items-center gap-2">
-                      <div className="label">Last Name</div>
+                  <div className="form-gap">
+                    <div className="">
+                      <div className="form-label">Last Name</div>
                     </div>
                     <Form.Item
                       hasFeedback
@@ -382,7 +384,7 @@ const BookAppointment = () => {
                       className=""
                     >
                       <Input
-                        className="lg:w-[380px] w-[300px]"
+                        className="lg:w-[100%] w-[300px]"
                         size="large"
                         placeholder="Enter your last name here"
                       />
@@ -409,22 +411,19 @@ const BookAppointment = () => {
                     </Radio.Group>
                   </Form.Item>
                 </div>
-                <div>
-                  Date of Birth
+                <div className="form-gap">
+                  <div className="form-label"> Date of Birth</div>
                   <DatePicker
                     format="YYYY-MM-DD"
                     size="large"
-                    // disabledDate={(current) =>
-                    //   current && current < dayjs().startOf("day")
-                    // }
                     value={birthDate}
                     onChange={handleBirthDateChange}
                   />
                 </div>
-                <div className="triple-inputs-wrapper">
-                  <div className="input-and-label">
-                    <div className="flex items-center gap-2">
-                      <div className="label">Address</div>
+                <div className="grid  lg:grid-cols-3 gap-6">
+                  <div className="form-gap">
+                    <div className="">
+                      <div className="form-label">Address</div>
                     </div>
                     <Form.Item
                       hasFeedback
@@ -438,15 +437,15 @@ const BookAppointment = () => {
                       className=""
                     >
                       <Input
-                        className="lg:w-[380px] w-[300px]"
+                        className="lg:w-[100%] w-[300px]"
                         size="large"
                         placeholder="Enter your full address"
                       />
                     </Form.Item>
                   </div>
-                  <div className="input-and-label">
-                    <div className="flex items-center gap-2">
-                      <div className="label">Mobile Number</div>
+                  <div className="form-gap">
+                    <div className="">
+                      <div className="form-label">Mobile Number</div>
                     </div>
                     <Form.Item
                       hasFeedback
@@ -464,15 +463,15 @@ const BookAppointment = () => {
                       className=""
                     >
                       <Input
-                        className="lg:w-[380px] w-[300px]"
+                        className="lg:w-[100%] w-[300px]"
                         size="large"
                         placeholder="Enter your phone number here"
                       />
                     </Form.Item>
                   </div>
-                  <div className="input-and-label">
-                    <div className="flex items-center gap-2">
-                      <div className="label">Email Address</div>
+                  <div className="form-gap">
+                    <div className="">
+                      <div className="form-label">Email Address</div>
                     </div>
                     <Form.Item
                       hasFeedback
@@ -491,16 +490,16 @@ const BookAppointment = () => {
                       className=""
                     >
                       <Input
-                        className="lg:w-[380px] w-[300px]"
+                        className="lg:w-[100%] w-[300px]"
                         size="large"
                         placeholder="Enter your email address here"
                       />
                     </Form.Item>
                   </div>
                 </div>
-                <div className="brief-input-wrapper">
-                  <div className="flex items-center gap-2">
-                    <div className="field-label">
+                <div className="form-gap">
+                  <div className="">
+                    <div className="form-label">
                       Are you suffering from Any Chronic Disease?
                     </div>
                   </div>
@@ -518,39 +517,35 @@ const BookAppointment = () => {
                     <TextArea
                       rows={4}
                       cols={10}
-                      className="lg:w-[380px] w-[300px]"
+                      className="lg:w-[100%] w-[300px]"
                       placeholder="Enter your disease name here"
                       autoSize={false}
                     />
                   </Form.Item>
                 </div>
-                {/* <div className="terms-and-conditions">
-                                    <input
-                                        type="checkbox"
-                                        id="terms_and_conditions"
-                                        name="terms-and-conditions"
-                                        className="checkbox"
-                                        // value="Car"
-                                        ref={checkboxRef}
-                                        required
-                                    ></input>
-                                    <div
-                                        className="text-wrapper"
-                                        onClick={handleTermsAndConditionsClick}
-                                    >
-                                        I Agree{" "}
-                                        <span className="highlight">
-                                            Term and Conditions
-                                        </span>
-                                    </div>
-                                </div> */}
-                <ReCAPTCHA
-                  sitekey="6Lf8xZ4pAAAAAKBGk_kfWHOs7XxmQX88U4-89bK4"
-                  onChange={onChangeCaptcha}
-                />
-                <Button className="choose-btn" htmlType="submit">
-                  Book Appointment
-                </Button>
+                <div className="flex gap-4">
+                  <input type="checkbox" />
+                  <div>I Agree to Terms and Conditions</div>
+                </div>
+                <div className="flex flex-col gap-6">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey="6Lf8xZ4pAAAAAKBGk_kfWHOs7XxmQX88U4-89bK4"
+                    onChange={onChangeCaptcha}
+                  />
+
+                  <Button
+                    className="w-fit"
+                    htmlType="submit"
+                    style={{
+                      backgroundColor: "#1f2b6c",
+                      color: "white",
+                    }}
+                    size="large"
+                  >
+                    Book Appointment
+                  </Button>
+                </div>
               </div>
             </div>
           </Form>
@@ -560,4 +555,4 @@ const BookAppointment = () => {
   );
 };
 
-export default BookAppointment;
+export default BookAppointmentForm;

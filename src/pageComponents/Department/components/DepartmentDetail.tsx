@@ -12,7 +12,6 @@ import { IRelatedDepartment } from "@/interface/interface";
 import { LuDot } from "react-icons/lu";
 
 //carousel
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import Metatag from "@/utils/Metatag";
@@ -72,12 +71,6 @@ const DepartmentDetail = () => {
 
   return (
     <div>
-      <Metatag
-        heading="NMC"
-        subheading="Departments"
-        og_image="https://img.freepik.com/free-photo/medical-banner-with-doctor-wearing-coat_23-2149611219.jpg?t=st=1711523241~exp=1711526841~hmac=588e592d004db5b44c56722eee702a46bb31f6ff94820f13788c9ae5ba375a20&w=996"
-      />
-
       <div className="layout component-padding black-color flex flex-col gap-20">
         <div className="grid lg:grid-cols-8 lg:gap-20 gap-10">
           <div className="lg:col-span-5">
@@ -101,8 +94,8 @@ const DepartmentDetail = () => {
               </div>
             </div>
           </div>
-          <div className="lg:col-span-3 flex flex-col sticky top-[50px]">
-            <div className="border-[1px] flex flex-col gap-6 bg-white hover:drop-shadow-md border-gray-300 rounded-[8px] p-6">
+          <div className="lg:col-span-3 flex flex-col">
+            <div className="border-[1px] flex flex-col gap-6  sticky top-[120px] bg-white hover:drop-shadow-md border-gray-300 rounded-[8px] p-6">
               <div className="border-b-[1px] border-gray-300">
                 <div className=" border-gray-300 mb-2 lg:text-[20px] font-medium">
                   Department List
@@ -139,24 +132,25 @@ const DepartmentDetail = () => {
             Meet Our Popular Doctors
           </div>
 
-          <div className="flex items-center justify-center">
+          <div className="grid lg:grid-cols-4 gap-10">
             {fetchedData?.doctors.length > 0 &&
-              fetchedData?.doctors?.map((data: any, index: any) => {
+              fetchedData?.doctors?.map((data: any, index: number) => {
                 return (
                   <div
                     key={index}
-                    className="m-6 rounded-[8px] relative overflow-hidden "
+                    className="bg-white drop-shadow-md rounded-[8px] p-6 flex flex-col gap-4"
                   >
-                    <div className="hover:scale-110 rounded-[8px] transition-all duration-700">
-                      <Link href="#" className="  ">
-                        <img
-                          src={data && data?.image_link}
-                          alt=""
-                          className=""
-                        />
-                      </Link>
-                      <div className="w-full  bg-gradient-to-t  from-[#101A55]  absolute top-[50%] left-0 right-0 bottom-0"></div>
-                      <div className="text-white  text-[18px] font-semibold absolute bottom-[20px] w-full text-center ">
+                    <div>
+                      <img src={data && data?.image_link} alt="" />
+                    </div>
+                    <div className="black-color flex flex-col gap-1">
+                      <div className="text-[18px]">{data?.title}</div>
+                      <div
+                        className="text-[16px] font-semibold"
+                        style={{
+                          color: "var(--accent-color)",
+                        }}
+                      >
                         {data?.name}
                       </div>
                     </div>

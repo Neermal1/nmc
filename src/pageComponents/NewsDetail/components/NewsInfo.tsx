@@ -1,8 +1,12 @@
-import useFetchData from "@/hooks/useFetchData";
-import { INews } from "@/interface/interface";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+//hooks
+import useFetchData from "@/hooks/useFetchData";
+
+//interface
+import { INews } from "@/interface/interface";
 import { CiClock2 } from "react-icons/ci";
 
 const NewsInfo = () => {
@@ -29,7 +33,7 @@ const NewsInfo = () => {
     return <div>Loading</div>;
   } else if (fetchedData) {
     return (
-      <div className="black-color">
+      <div className="black-color mt-20">
         <div className="">
           <div className="layout px-4 pb-20">
             <div className="flex flex-col lg:gap-20 gap-10">

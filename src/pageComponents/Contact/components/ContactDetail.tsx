@@ -14,45 +14,47 @@ const ContactDetail = () => {
       <div className="layout component-padding">
         <div className="grid lg:grid-cols-8 lg:gap-20 gap-10">
           <div className="col-span-3 flex flex-col gap-6">
-            <div className="flex flex-col gap-4">
-              <div
-                className="text-[20px]  font-semibold"
-                style={{
-                  color: "var(--primary-color)",
-                }}
-              >
-                Want to reach us Directly?
-              </div>
-              <div>If you have any queries feel free to contact us.</div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
+            <div className="sticky top-[120px]">
+              <div className="flex flex-col gap-4 ">
                 <div
+                  className="text-[20px]  font-semibold"
                   style={{
                     color: "var(--primary-color)",
                   }}
                 >
-                  <FaPhoneAlt size={15} />
+                  Want to reach us Directly?
                 </div>
-                <a href={`tel:${fetchedData?.company_phone}`}>
-                  {fetchedData?.company_phone}
-                </a>
+                <div>If you have any queries feel free to contact us.</div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <div
+                    style={{
+                      color: "var(--primary-color)",
+                    }}
+                  >
+                    <FaPhoneAlt size={15} />
+                  </div>
+                  <a href={`tel:${fetchedData?.company_phone}`}>
+                    {fetchedData?.company_phone}
+                  </a>
 
-                <a href={`tel:${fetchedData?.company_phone2}`}>
-                  {fetchedData?.company_phone2}
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <div
-                  style={{
-                    color: "var(--primary-color)",
-                  }}
-                >
-                  <GrLocation size={15} />
+                  <a href={`tel:${fetchedData?.company_phone2}`}>
+                    {fetchedData?.company_phone2}
+                  </a>
                 </div>
-                <div>
-                  <div className="flex flex-col gap-1">
-                    <div>{fetchedData?.company_address}</div>
+                <div className="flex items-center gap-2">
+                  <div
+                    style={{
+                      color: "var(--primary-color)",
+                    }}
+                  >
+                    <GrLocation size={15} />
+                  </div>
+                  <div>
+                    <div className="flex flex-col gap-1">
+                      <div>{fetchedData?.company_address}</div>
+                    </div>
                   </div>
                 </div>
               </div>

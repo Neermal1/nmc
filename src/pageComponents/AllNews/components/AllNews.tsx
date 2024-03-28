@@ -1,3 +1,4 @@
+import CommonBanner from "@/components/Banner/CommonBanner";
 import useFetchData from "@/hooks/useFetchData";
 import { INews } from "@/interface/interface";
 import Metatag from "@/utils/Metatag";
@@ -12,12 +13,13 @@ const AllNews = () => {
     return (
       <div className="black-color">
         <Metatag heading="NMC " subheading="All News" />
+        <CommonBanner
+          headerName="News"
+          imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
+        />
         <div className="">
           <div className="layout component-padding">
             <div className="flex flex-col gap-10">
-              <div className=" w-fit text-color lg:text-[35px] text-[25px] font-semibold  ">
-                All Latest News
-              </div>
               <div className="grid lg:grid-cols-4 gap-10">
                 {fetchedData?.map((data: INews, index: number) => {
                   return (

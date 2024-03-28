@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { Carousel } from "antd";
-import useFetchData from "@/hook/useFetchData";
+import useFetchData from "@/hooks/useFetchData";
 import { Slider } from "@/interface/interface";
 import Loader from "@/components/Loader/Loader";
 
