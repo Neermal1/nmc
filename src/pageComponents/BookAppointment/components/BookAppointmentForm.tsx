@@ -19,7 +19,7 @@ import axiosInstance from "@/axiosInstance/axiosInstance";
 import dayjs from "dayjs";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const BookAppointmentForm = () => {
+const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
   //date format
   const today = dayjs(new Date()?.toISOString(), "YYYY-MM-DD");
 
@@ -63,7 +63,7 @@ const BookAppointmentForm = () => {
   //Here filtering the doctor and department to get their respective id and their name will be received from query
   const router = useRouter();
 
-  const { departSlug, doctorSlug } = router.query;
+  // const { departSlug, doctorSlug } = router.query;
 
   useEffect(() => {
     fetchDepartmentID_from_query();
@@ -71,6 +71,7 @@ const BookAppointmentForm = () => {
 
   const fetchDepartmentID_from_query = async () => {
     try {
+      console.log(departmentList);
       const department_filter = departmentList?.map((data: any, index) => {
         return data?.departments?.filter((data: any) => {
           return data?.slug === departSlug;
@@ -81,6 +82,9 @@ const BookAppointmentForm = () => {
         const filteredDepartId = department_filter?.[0]?.map((data: any) => {
           return data?.id;
         });
+
+        console.log("This is filterred depart id", { filteredDepartId });
+
         setFilteredDepartId(filteredDepartId[0]);
       }
     } catch (e) {
@@ -90,16 +94,20 @@ const BookAppointmentForm = () => {
 
   useEffect(() => {
     fetchDoctorID_from_query();
+    console.log(filtered_depart_id);
   }, [filtered_depart_id]);
 
   const fetchDoctorID_from_query = async () => {
     try {
       const response = await axiosInstance.get(
-        `department/doctors/${filtered_depart_id}`
+        `departments/${filtered_depart_id}/doctors`
       );
+      console.log("This is filterred doctor id", response);
       const doctor_filter = response.data?.filter((data: any, index: any) => {
         return data?.slug === doctorSlug;
       });
+      console.log("This is filterred depart id", { filtered_doctor_id });
+
       if (doctor_filter[0]) {
         setFilteredDoctorId(doctor_filter?.[0]?.id);
       }
@@ -225,6 +233,9 @@ const BookAppointmentForm = () => {
 
   const recaptchaRef: any = useRef();
 
+  console.log(departSlug);
+  console.log(doctorSlug);
+
   return (
     <>
       <div className="flex items-center justify-center ">
@@ -245,7 +256,7 @@ const BookAppointmentForm = () => {
                     >
                       <div>
                         {departSlug ? (
-                          <Select defaultValue={departSlug} size="large" />
+                          <Select value={departSlug} size="large" />
                         ) : (
                           <Select
                             defaultValue="Select a Department"
@@ -281,7 +292,7 @@ const BookAppointmentForm = () => {
                     <Form.Item name="doctor">
                       <div>
                         {doctorSlug ? (
-                          <Select defaultValue={doctorSlug} size="large" />
+                          <Select value={doctorSlug} size="large" />
                         ) : (
                           <Select
                             defaultValue="Select A Doctor"

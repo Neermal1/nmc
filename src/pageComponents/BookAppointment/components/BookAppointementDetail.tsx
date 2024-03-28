@@ -1,4 +1,3 @@
-import { FaPhoneAlt } from "react-icons/fa";
 import BookAppointmentForm from "./BookAppointmentForm";
 
 const BookAppointementDetail = () => {
