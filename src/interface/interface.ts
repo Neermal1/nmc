@@ -27,7 +27,7 @@ export interface Activity {
   image_link: string;
 }
 
-export interface ActivityDetail {
+export interface IActivityDetail {
   detail: {
     id: number;
     title: string;
