@@ -53,11 +53,11 @@ const BookAppointmentForm = () => {
   };
 
   const handle_patient_type = (e: any) => {
-    setPatientType(e.target.value);
+    setPatientType(e?.target?.value);
   };
 
   const handle_gender_type = (e: any) => {
-    setGenderType(e.target.value);
+    setGenderType(e?.target?.value);
   };
 
   //Here filtering the doctor and department to get their respective id and their name will be received from query
@@ -72,13 +72,13 @@ const BookAppointmentForm = () => {
   const fetchDepartmentID_from_query = async () => {
     try {
       const department_filter = departmentList?.map((data: any, index) => {
-        return data.departments.filter((data: any) => {
-          return data.slug === departSlug;
+        return data?.departments?.filter((data: any) => {
+          return data?.slug === departSlug;
         });
       });
 
-      if (department_filter.length > 0) {
-        const filteredDepartId = department_filter[0]?.map((data: any) => {
+      if (department_filter?.length > 0) {
+        const filteredDepartId = department_filter?.[0]?.map((data: any) => {
           return data?.id;
         });
         setFilteredDepartId(filteredDepartId[0]);
@@ -98,10 +98,10 @@ const BookAppointmentForm = () => {
         `department/doctors/${filtered_depart_id}`
       );
       const doctor_filter = response.data?.filter((data: any, index: any) => {
-        return data.slug === doctorSlug;
+        return data?.slug === doctorSlug;
       });
       if (doctor_filter[0]) {
-        setFilteredDoctorId(doctor_filter[0].id);
+        setFilteredDoctorId(doctor_filter?.[0]?.id);
       }
     } catch (e) {
       console.log(e);
@@ -112,19 +112,19 @@ const BookAppointmentForm = () => {
 
   const handleAppointment = async (values: any) => {
     const payload = {
-      first_name: values.first_name,
-      middle_name: values.middle_name,
-      last_name: values.last_name,
+      first_name: values?.first_name,
+      middle_name: values?.middle_name,
+      last_name: values?.last_name,
       type: patient_type,
       gender: gender_type,
       dob: dayjs(birthDate).format("YYYY-MM-DD"),
-      email: values.email,
-      address: values.address,
-      mobile: values.phone_number,
+      email: values?.email,
+      address: values?.address,
+      mobile: values?.phone_number,
       department_id: departSlug ? filtered_depart_id : department_id,
       doctor_id: doctorSlug ? filtered_doctor_id : doctorID,
       appointment_date: dayjs(appointDate).format("YYYY-MM-DD"),
-      additional_information: values.message,
+      additional_information: values?.message,
     };
 
     console.log(payload);
@@ -132,9 +132,9 @@ const BookAppointmentForm = () => {
     try {
       if (captchaValue && payload) {
         const response = await axiosInstance.post("appointment/add", payload);
-        if (response.status === 200) {
+        if (response?.status === 200) {
           notification.success({
-            message: response.data.message,
+            message: response?.data?.message,
           });
           form.resetFields();
           recaptchaRef.current.reset();
@@ -170,20 +170,22 @@ const BookAppointmentForm = () => {
 
   const fetchDepartmentList = async () => {
     const response = await axiosInstance.get("departments/list");
-    setDepartmentList(response.data);
+    setDepartmentList(response?.data);
   };
 
   //here formatting the department list to include in select component form antd
 
   const formattedDepartment = departmentList?.map((department: any, index) => ({
-    id: department.id,
-    label: department.name,
-    value: department.name,
-    children: department.departments.map((subcategory: any, index: number) => ({
-      label: subcategory.name,
-      value: subcategory.name,
-      id: subcategory.id,
-    })),
+    id: department?.id,
+    label: department?.name,
+    value: department?.name,
+    children: department?.departments?.map(
+      (subcategory: any, index: number) => ({
+        label: subcategory?.name,
+        value: subcategory?.name,
+        id: subcategory?.id,
+      })
+    ),
   }));
 
   const handleDepartment = (value: any) => {
@@ -200,16 +202,16 @@ const BookAppointmentForm = () => {
     const response = await axiosInstance.get(
       `departments/${department_id}/doctors`
     );
-    setDoctorList(response.data);
+    setDoctorList(response?.data);
     console.log(response.data);
   };
 
   //here formatting the doctor list to include in select component form antd
 
   const formattedDoctorList = doctorList?.map((doctor: any, index) => ({
-    id: doctor.id,
-    label: doctor.name,
-    value: doctor.name,
+    id: doctor?.id,
+    label: doctor?.name,
+    value: doctor?.name,
   }));
 
   const handleDoctorChange = (value: any) => {
@@ -232,7 +234,7 @@ const BookAppointmentForm = () => {
             onFinish={handleAppointment}
             className="flex flex-col gap-10 lg:w-[80%]"
           >
-            <div className="">
+            <div>
               <div className="flex lg:flex-row flex-col gap-8">
                 <div className="w-[100%] form-gap">
                   <div className="form-label">Department</div>
@@ -250,16 +252,16 @@ const BookAppointmentForm = () => {
                             onChange={handleDepartment}
                             size="large"
                           >
-                            {formattedDepartment.map((department) => (
+                            {formattedDepartment?.map((department) => (
                               <OptGroup
-                                label={department.label}
-                                key={department.value}
+                                label={department?.label}
+                                key={department?.value}
                               >
-                                {department.children.map(
+                                {department?.children?.map(
                                   (subcategory: any, index: number) => (
                                     <Option
-                                      key={subcategory.value}
-                                      value={subcategory.id}
+                                      key={subcategory?.value}
+                                      value={subcategory?.id}
                                     >
                                       {subcategory.label}
                                     </Option>
@@ -286,13 +288,13 @@ const BookAppointmentForm = () => {
                             onChange={handleDoctorChange}
                             size="large"
                           >
-                            {formattedDoctorList.map((doctor) => (
+                            {formattedDoctorList?.map((doctor) => (
                               <Option
-                                label={doctor.label}
-                                value={doctor.id}
-                                key={doctor.value}
+                                label={doctor?.label}
+                                value={doctor?.id}
+                                key={doctor?.value}
                               >
-                                {doctor.label}
+                                {doctor?.label}
                               </Option>
                             ))}
                           </Select>
