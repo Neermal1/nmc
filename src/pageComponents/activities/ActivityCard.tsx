@@ -22,14 +22,14 @@ export default function ActivityCard({
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{title}</div>
         <p
-          className="text-gray-700 text- line-clamp-4"
+          className="text-gray-700  line-clamp-4"
           dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>
       <div className="px-6 pb-4">
         <button
           onClick={() => router.push(`activities/${slug}`)}
-          className="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+          className="bg-primary hover:text-primaryYellow transition duration-300 text-white font-bold py-2 px-4 rounded-lg"
         >
           Read More
         </button>

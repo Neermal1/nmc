@@ -26,17 +26,12 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
       overlay={
         <Menu>
           <div className="lg:w-[70vw] xl:w-[60vw] flex">
-            <div className="w-full grid gap-4 max-h-96 overflow-y-scroll overflow-hidden custom-scrollbar-dropdown p-2">
+            <div className="w-full grid gap-2 max-h-96 overflow-y-scroll overflow-hidden custom-scrollbar-dropdown p-2">
               {menuItems?.map((menuItem: any) => (
-                <Link
-                  key={menuItem?.id}
-                  href={`/${slugroot}/${menuItem?.slug}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <div key={menuItem?.id}>
                   <div
                     onMouseEnter={() => handleMenuItemHover(menuItem)}
-                    className={`flex items-center justify-between w-full px-4 py-2 text-nowrap text-sm md:text-base lg:text-lg xl:text-xl hover:bg-gray-100 hover:text-primary rounded-lg ${
+                    className={`flex items-center justify-between w-full px-4 py-2 text-nowrap text-sm md:text-base lg:text-lg hover:bg-gray-100 hover:text-primary rounded-lg ${
                       menuItem?.name === activeMenuItem
                         ? "bg-gray-100 text-primary"
                         : ""
@@ -50,14 +45,14 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                       </div>
                     )}
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
             <div className="w-full p-2">
               {menuItems.map((menuItem: any) => (
                 <div
                   key={menuItem?.id}
-                  className={`p-4 grid lg:grid-cols-2 gap-8 ${
+                  className={`p-4 grid lg:grid-cols-2 gap-4 ${
                     menuItem?.name === activeMenuItem ? "block" : "hidden"
                   }`}
                 >
@@ -67,10 +62,9 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                       <Link
                         key={subItem?.id}
                         href={`/${slugroot}/${menuItem?.slug}/${subItem?.slug}`}
-                        target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className="text-sm md:text-base lg:text-lg hover:underline hover:text-primary">
+                        <div className="text-sm md:text-base hover:underline hover:text-primary">
                           {subItem?.name}
                         </div>
                       </Link>

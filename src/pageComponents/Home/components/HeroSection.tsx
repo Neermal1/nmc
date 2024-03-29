@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { Carousel } from "antd";
-import useFetchData from "@/hook/useFetchData";
 import { Slider } from "@/interface/interface";
 import Loader from "@/components/Loader/Loader";
+import useFetchData from "@/hooks/useFetchData";
 
 export default function HeroSection() {
   const { fetchedData, loading } = useFetchData("slider/list");

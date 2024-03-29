@@ -3,28 +3,32 @@ import { FaFacebook, FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
+import useFetchData from "@/hooks/useFetchData";
 
 export default function FirstNav() {
+  const { fetchedData } = useFetchData("company-profile");
   return (
     <div className="w-full h-full py-2 lg:py-3 bg-primary hidden lg:block">
       <div className="px-8 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between bg-primary text-white">
         <div>
           <ul className="flex">
             <li className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold">
-              <a href="#">
+              <a target="_blank" href={fetchedData?.facebook}>
                 <FaFacebook />
               </a>
             </li>
             <li className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold">
+              <a target="_blank" href={fetchedData?.instagram}>
               <AiFillInstagram />
+              </a>
             </li>
             <li className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold">
-              <a href="#">
+              <a target="_blank" href={fetchedData?.twitter}>
                 <FaXTwitter />
               </a>
             </li>
             <li className="px-2 lg:px-3 text-sm md:text-base font-semibold">
-              <a href="#">
+              <a target="_blank" href={fetchedData?.youtube}>
                 <FaYoutube />
               </a>
             </li>
@@ -33,7 +37,7 @@ export default function FirstNav() {
         <div>
           <ul className="flex">
             <Link
-              href="/news"
+              href="/all-news"
               className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold"
             >
               News
@@ -51,10 +55,16 @@ export default function FirstNav() {
               Gallery
             </Link>
             <Link
-              href="/contact"
+              href="/career"
+              className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold"
+            >
+              Career
+            </Link>
+            <Link
+              href="/contact-us"
               className="px-2 lg:px-3 text-sm md:text-base font-semibold"
             >
-              Contact
+              Contact us
             </Link>
           </ul>
         </div>

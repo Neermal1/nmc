@@ -1,63 +1,78 @@
-/* eslint-disable @next/next/no-img-element */
+import useFetchData from "@/hooks/useFetchData";
+import { IMessageFromDirector } from "@/interface/interface";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
-export default function MsgFromDirect({ message }: any) {
-  return (
-    <section className="py-8">
-      <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-8">
-        <div className="lg:w-1/2 h-full">
-          <img
-            src="https://img.freepik.com/free-photo/portrait-smiling-male-doctor_171337-1532.jpg?t=st=1711450648~exp=1711454248~hmac=752c3a8a1d1a0be208aa2043cbbfbf95af22fb9ea883a79d6dce9cb7806544ce&w=996"
-            alt=""
-            className="w-full h-full object-cover rounded-xl"
-          />
-        </div>
-        <div className="lg:w-1/2 h-full flex items-center">
-          <div>
-            {message ? (
-              <p
-                className="text-sm md:text-base text-justify"
-                dangerouslySetInnerHTML={{ __html: message }}
-              />
-            ) : (
-              <div className="">
-                <div className="mb-4">
-                  <h1 className="text-lg md:text-xl font-bold">
-                    Dear parents and students,
+export default function MsgFromDirect() {
+  const { fetchedData: messages, loading } = useFetchData("messages");
+
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+  };
+  if (loading) {
+    return <div>Loading...</div>;
+  } else if (messages) {
+    return (
+      <section className="py-8">
+        <Carousel
+          responsive={responsive}
+          swipeable={true}
+          draggable={true}
+          infinite={true}
+          pauseOnHover={false}
+          arrows={true}
+          showDots={false}
+        >
+          {messages?.map((person: IMessageFromDirector, index: number) => (
+            <div key={index} className="lg:px-6">
+              <div className="flex items-center justify-center mb-4 lg:mb-8">
+                <div className="text-center">
+                  <h1 className="text-lg md:text-2xl font-medium">
+                    {person?.name}
                   </h1>
-                </div>
-
-                <div className="mb-4">
-                  <p className="text-justify text-lg leading-relaxed">
-                    On behalf of Nepal Medical College, I extend a warm welcome
-                    to all parents and students who have chosen our institution
-                    for their medical education journey. It&apos;s a privilege
-                    to have you join our esteemed community, and we are
-                    committed to providing you with the highest quality of
-                    education and support throughout your time here.
-                  </p>
-                </div>
-
-                <div className="mb-4">
-                  <p className="text-justify text-lg leading-relaxed">
-                    Our faculty and staff are dedicated to nurturing your
-                    academic and personal growth, ensuring that you emerge as
-                    skilled and compassionate healthcare professionals. We
-                    encourage you to make the most of the opportunities
-                    available at Nepal Medical College and to actively engage in
-                    all aspects of learning, research, and extracurricular
-                    activities.
-                  </p>
-                </div>
-
-                <div className="">
-                  <p className="text-lg font-semibold">Prof. Dr. RRR</p>
-                  <p className="text-gray-600">Director</p>
+                  <h2 className="text-sm lg:text-base">{person?.position}</h2>
                 </div>
               </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+              <div className=" flex flex-col lg:flex-row  space-y-4 lg:space-y-0 lg:space-x-8">
+                <div className="lg:w-1/2 h-full">
+                  <img
+                    src={person?.image_link}
+                    alt=""
+                    className="w-full h-full object-cover rounded-xl"
+                  />
+                </div>
+                <div className="lg:w-1/2 h-full flex items-center">
+                  <div>
+                    <p
+                      className="text-sm md:text-base text-justify"
+                      dangerouslySetInnerHTML={{ __html: person?.message }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Carousel>
+      </section>
+    );
+  }
 }
