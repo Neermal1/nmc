@@ -35,7 +35,11 @@ const SmDropdown = ({ dropdownName, menuItems, slugroot }: any) => {
                 <Menu>
                   {menuItem?.items?.map((subItem: SubCategory) => (
                     <Menu.Item key={subItem?.id}>
-                      <Link href={subItem.slug}>{subItem?.name}</Link>
+                      <Link
+                        href={`/${slugroot}/${menuItem?.slug}/${subItem?.slug}`}
+                      >
+                        {subItem?.name}
+                      </Link>
                     </Menu.Item>
                   ))}
                 </Menu>
