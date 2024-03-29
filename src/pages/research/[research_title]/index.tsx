@@ -6,7 +6,7 @@ import Details from "@/pageComponents/research/Details";
 import Metatag from "@/utils/Metatag";
 import { useRouter } from "next/router";
 
-export default function ResearchDetail() {
+export default function Detail() {
   const router = useRouter();
   const { research_title } = router.query;
   const { fetchedData } = useFetchData(`/research/detail/${research_title}`);
