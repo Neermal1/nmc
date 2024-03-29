@@ -9,6 +9,7 @@ import MessageFromDirector from "@/pageComponents/Home/components/MessageFromDir
 import News from "@/pageComponents/Home/components/News";
 import OurAcademics from "@/pageComponents/Home/components/OurAcademics";
 import WhyChooseUs from "@/pageComponents/Home/components/WhyChooseUs";
+import Testimonials from "@/pageComponents/testimonials/Testimonials";
 import Metatag from "@/utils/Metatag";
 
 const index = () => {
@@ -22,6 +23,7 @@ const index = () => {
       <WhyChooseUs />
       <MessageFromDirector />
       <OurAcademics />
+      <Testimonials />
       <CallToAction />
       <News />
     </Layout>

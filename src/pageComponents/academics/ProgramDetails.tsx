@@ -2,7 +2,7 @@
 import useFetchData from "@/hooks/useFetchData";
 import { ProgramDetail } from "@/interface/interface";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBookOpen, FaBriefcase, FaUserGraduate } from "react-icons/fa";
 import Professors from "./Professors";
 
@@ -12,7 +12,15 @@ export default function ProgramContent() {
   const router = useRouter();
   const { program } = router.query;
 
-  const { fetchedData } = useFetchData(`academics/detail/${program}`);
+  const { fetchedData, refetchData } = useFetchData(
+    `academics/detail/${program}`
+  );
+
+  useEffect(() => {
+    if (program) {
+      refetchData();
+    }
+  }, [program]);
 
   const fetchedProgram: ProgramDetail = fetchedData;
 

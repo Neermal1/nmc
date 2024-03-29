@@ -32,7 +32,7 @@ const DepartmentList = () => {
           {departments?.map((department: IDepartment, index: number) => (
             <DepartmentCard
               key={index}
-              icon={department?.image_link}
+              icon={department?.icon_link}
               name={department?.name}
               description={department?.description}
               slug={department?.slug}

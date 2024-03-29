@@ -196,6 +196,7 @@ export interface IDepartment {
   slug: string;
   description: string;
   image_link: string;
+  icon_link: string;
 }
 
 export interface ITeamMember {
@@ -215,4 +216,48 @@ export interface ITeamCategory {
   name: string;
   status: string;
   teams: ITeamMember[];
+}
+
+export interface ITextTestimonial {
+  id: number;
+  name: string;
+  message: string;
+  status: string;
+  image: string | null;
+  type: "Text";
+  link: null;
+  image_link: string;
+}
+
+export interface IVideoTestimonial {
+  id: number;
+  name: string;
+  message: string | null;
+  status: string;
+  image: string | null;
+  type: "Video";
+  link: string;
+  image_link: string;
+}
+
+export interface TestimonialsData {
+  text: ITextTestimonial[];
+  video: IVideoTestimonial[];
+}
+
+export interface IVacancy {
+  id: number;
+  title: string;
+  slug: string;
+  no_of_opening: string;
+  type: string;
+  image: string;
+  short_description: string | null;
+  description: string;
+  expire_at: string;
+  meta_title: string | null;
+  meta_keywords: string | null;
+  meta_description: string | null;
+  status: string;
+  image_link: string;
 }
