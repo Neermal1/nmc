@@ -2,9 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-//hooks
-import useFetchData from "@/hooks/useFetchData";
-
 //interface
 import { IRelatedDepartment } from "@/interface/interface";
 
@@ -14,60 +11,21 @@ import { LuDot } from "react-icons/lu";
 //carousel
 import "react-multi-carousel/lib/styles.css";
 
-import Metatag from "@/utils/Metatag";
-
 //images
 
-const DepartmentDetail = () => {
+const DepartmentDetail = ({ departmentInfo }: any) => {
   //for params
   const router = useRouter();
 
   //states
   const [department_name, set_department_name] = useState<any>();
-  const [department_branch, set_department_branch] = useState<any>();
 
   useEffect(() => {
     if (router.isReady) {
       const { department_name } = router.query;
-      const { department_branch } = router.query;
-
       set_department_name(department_name);
-      set_department_branch(department_branch);
     }
   }, [router]);
-
-  const { fetchedData, refetchData } = useFetchData(
-    `departments/${department_name}/${department_branch}/detail`
-  );
-
-  useEffect(() => {
-    refetchData();
-  }, [department_branch]);
-
-  //carousel items
-
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 4,
-      slidesToSlide: 4,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4,
-      slidesToSlide: 1,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-  };
 
   return (
     <div>
@@ -77,18 +35,14 @@ const DepartmentDetail = () => {
             <div>
               <div className="flex flex-col gap-10">
                 <div className=" rounded-[8px] overflow-hidden">
-                  <img
-                    src="https://img.freepik.com/free-photo/medical-banner-with-doctor-wearing-coat_23-2149611219.jpg?t=st=1711523241~exp=1711526841~hmac=588e592d004db5b44c56722eee702a46bb31f6ff94820f13788c9ae5ba375a20&w=996"
-                    alt=""
-                    className="h-[50vh] w-[100%] object-cover rounded-[8px] hover:scale-110 transition-all duration-700"
-                  />
+                  <img src={`${departmentInfo?.department?.image_link}`} />
                 </div>
                 <div className="flex flex-col gap-6">
                   <div className="lg:text-[35px] text-[25px] font-semibold">
-                    {fetchedData?.department?.name}
+                    {departmentInfo?.department?.name}
                   </div>
                   <div className="leading-[30px]">
-                    {fetchedData?.department?.description}
+                    {departmentInfo?.department?.description}
                   </div>
                 </div>
               </div>
@@ -102,7 +56,7 @@ const DepartmentDetail = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-2">
-                {fetchedData?.related?.map(
+                {departmentInfo?.related?.map(
                   (data: IRelatedDepartment, index: number) => {
                     return (
                       <div key={index}>
@@ -133,10 +87,11 @@ const DepartmentDetail = () => {
           </div>
 
           <div className="grid lg:grid-cols-4 gap-10">
-            {fetchedData?.doctors.length > 0 &&
-              fetchedData?.doctors?.map((data: any, index: number) => {
+            {departmentInfo?.doctors.length > 0 &&
+              departmentInfo?.doctors?.map((data: any, index: number) => {
                 return (
-                  <div
+                  <Link
+                    href={`/doctor/${data?.slug}`}
                     key={index}
                     className="bg-white drop-shadow-md rounded-[8px] p-6 flex flex-col gap-4"
                   >
@@ -154,7 +109,7 @@ const DepartmentDetail = () => {
                         {data?.name}
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
           </div>

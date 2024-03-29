@@ -22,8 +22,6 @@ const ServiceInfo = () => {
     service_name && `service/${service_name}`
   );
 
-  console.log(fetchedData);
-
   useEffect(() => {
     refetchData();
   }, [service_name]);

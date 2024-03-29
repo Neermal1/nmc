@@ -1,9 +1,8 @@
 // "use client";
-//axiosInstance
-import axiosInstance from "@/axiosInstance/axiosInstance";
 
 //components
 import Layout from "@/components/Layout/Layout";
+import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
 import DepartmentDetail from "@/pageComponents/Department/components/DepartmentDetail";
 
 //Metatag
@@ -24,7 +23,7 @@ const DepartmentBranch = ({ data }: any) => {
         og_image={`${data?.department?.image_link}`}
         description={`${data?.department?.meta_description}`}
       />
-      <DepartmentDetail />
+      <DepartmentDetail departmentInfo={data} />
     </Layout>
   );
 };
@@ -33,21 +32,47 @@ export default DepartmentBranch;
 
 export async function getServerSideProps({ params }: any) {
   try {
-    const res = await axiosInstance.get(
-      `departments/${params.department_name}/${params.department_branch}/detail`
+    const { data } = await SSR_fetchData(
+      `departments/${params?.department_name}/${params?.department_branch}/detail`
     );
-    const data = await res.data;
-    // console.log(data);
-    // console.log("This is", params);
+
+    console.log(data);
+
     return {
       props: { data },
     };
-  } catch (e) {
-    console.log(e);
-    return {
-      props: {
-        data: null,
-      },
-    };
+  } catch (e: any) {
+    if (e.response && e.response.status === 429) {
+      const retryAfter = parseInt(e.response.headers["retry-after"]);
+      console.log("This is retry after", retryAfter);
+      if (!isNaN(retryAfter)) {
+        await new Promise((resolve) => setTimeout(resolve, retryAfter * 1000));
+        try {
+          console.log("refetching");
+          const { data } = await SSR_fetchData(
+            `departments/${params.department_name}/${params.department_branch}/detail`
+          );
+          return {
+            props: {
+              data,
+            },
+          };
+        } catch (retryError) {
+          console.error("Retry failed:", retryError);
+        }
+      }
+
+      return {
+        props: {
+          data: null,
+        },
+      };
+    } else {
+      return {
+        props: {
+          data: null,
+        },
+      };
+    }
   }
 }

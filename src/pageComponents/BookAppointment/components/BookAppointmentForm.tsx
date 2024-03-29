@@ -71,7 +71,6 @@ const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
 
   const fetchDepartmentID_from_query = async () => {
     try {
-      console.log(departmentList);
       const department_filter = departmentList?.map((data: any, index) => {
         return data?.departments?.filter((data: any) => {
           return data?.slug === departSlug;
@@ -83,8 +82,6 @@ const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
           return data?.id;
         });
 
-        console.log("This is filterred depart id", { filteredDepartId });
-
         setFilteredDepartId(filteredDepartId[0]);
       }
     } catch (e) {
@@ -94,22 +91,23 @@ const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
 
   useEffect(() => {
     fetchDoctorID_from_query();
-    console.log(filtered_depart_id);
   }, [filtered_depart_id]);
 
   const fetchDoctorID_from_query = async () => {
     try {
-      const response = await axiosInstance.get(
-        `departments/${filtered_depart_id}/doctors`
-      );
-      console.log("This is filterred doctor id", response);
-      const doctor_filter = response.data?.filter((data: any, index: any) => {
-        return data?.slug === doctorSlug;
-      });
-      console.log("This is filterred depart id", { filtered_doctor_id });
+      if (filtered_depart_id) {
+        const response = await axiosInstance.get(
+          `departments/${filtered_depart_id}/doctors`
+        );
+        const doctor_filter = response.data?.filter?.(
+          (data: any, index: any) => {
+            return data?.slug === doctorSlug;
+          }
+        );
 
-      if (doctor_filter[0]) {
-        setFilteredDoctorId(doctor_filter?.[0]?.id);
+        if (doctor_filter) {
+          setFilteredDoctorId(doctor_filter?.[0]?.id);
+        }
       }
     } catch (e) {
       console.log(e);
@@ -177,8 +175,12 @@ const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
   }, []);
 
   const fetchDepartmentList = async () => {
-    const response = await axiosInstance.get("departments/list");
-    setDepartmentList(response?.data);
+    try {
+      const response = await axiosInstance.get("departments/list");
+      setDepartmentList(response?.data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   //here formatting the department list to include in select component form antd
@@ -207,11 +209,14 @@ const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
   }, [department_id]);
 
   const fetchDoctorList = async () => {
-    const response = await axiosInstance.get(
-      `departments/${department_id}/doctors`
-    );
-    setDoctorList(response?.data);
-    console.log(response.data);
+    try {
+      const response = await axiosInstance.get(
+        `departments/${department_id}/doctors`
+      );
+      setDoctorList(response?.data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   //here formatting the doctor list to include in select component form antd
@@ -232,9 +237,6 @@ const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
   }
 
   const recaptchaRef: any = useRef();
-
-  console.log(departSlug);
-  console.log(doctorSlug);
 
   return (
     <>

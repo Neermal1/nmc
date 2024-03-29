@@ -1,40 +1,38 @@
 //components
 import Layout from "@/components/Layout/Layout";
-import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
-import DepartmentHeadDetail from "@/pageComponents/DepartmentHead/components/DepartmentHeadDetail";
-import Metatag from "@/utils/Metatag";
+import DoctorDetail from "@/pageComponents/DoctorDetail/components/DoctorDetail";
 
-const DepartmentHead = ({ data }: any) => {
+//axiosInstance
+import axiosInstance from "@/axiosInstance/axiosInstance";
+
+//metatag
+import Metatag from "@/utils/Metatag";
+import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
+
+const DoctorInfoDetail = ({ data }: any) => {
   return (
     <Layout>
       <Metatag
-        heading={`${
-          data?.details?.meta_title ? data?.details?.meta_title : "NMC"
-        }`}
-        subheading={`${
-          data?.details?.meta_description
-            ? data?.details?.meta_description
-            : "Hospital"
-        }`}
-        og_image={`${data?.details?.image_link}`}
-        description={`${data?.details?.meta_description}`}
+        heading="NMC"
+        subheading={data?.name}
+        og_image={data?.image_link}
       />
-      <DepartmentHeadDetail departmentHeadInfo={data} />
+      <DoctorDetail doctorInfo={data} />
     </Layout>
   );
 };
 
-export default DepartmentHead;
+export default DoctorInfoDetail;
 
 export async function getServerSideProps({ params }: any) {
   try {
+    console.log(params);
     const { data } = await SSR_fetchData(
-      `departments/${params?.department_head}/details`
+      `doctor/detail/${params?.doctor_info_detail}`
     );
+
     return {
-      props: {
-        data,
-      },
+      props: { data },
     };
   } catch (e: any) {
     if (e.response && e.response.status === 429) {
@@ -45,7 +43,7 @@ export async function getServerSideProps({ params }: any) {
         try {
           console.log("refetching");
           const { data } = await SSR_fetchData(
-            `departments/${params?.department_head}/details`
+            `doctor/detail/${params?.doctor_info_detail}`
           );
           return {
             props: {

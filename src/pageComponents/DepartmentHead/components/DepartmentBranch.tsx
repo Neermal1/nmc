@@ -22,7 +22,7 @@ const DepartmentBranch = ({ branchData }: IDepartmentBranchProps) => {
                     <img
                       src={data?.image_link}
                       alt="loading"
-                      className="h-[55px] w-[55px] object-contain"
+                      className="h-[55px] w-[55px] object-cover"
                     />
                   ) : (
                     <div className="">

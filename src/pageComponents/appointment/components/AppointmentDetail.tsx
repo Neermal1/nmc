@@ -1,6 +1,9 @@
-import BookAppointmentForm from "@/pageComponents/BookAppointment/components/BookAppointmentForm";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
+//components
+
+import BookAppointmentForm from "@/pageComponents/BookAppointment/components/BookAppointmentForm";
 
 const AppointmentDetail = () => {
   const router = useRouter();
@@ -21,8 +24,8 @@ const AppointmentDetail = () => {
     <div className="layout component-padding">
       <div className="">
         <BookAppointmentForm
-          departSlug={departmentName && departmentName}
-          doctorSlug={doctorName && doctorName}
+          departSlug={departmentName}
+          doctorSlug={doctorName}
         />
       </div>
     </div>

@@ -1,5 +1,6 @@
 export interface ILayoutProps {
   children?: React.ReactNode;
+  title?: any;
 }
 
 export interface IMetatags {
@@ -66,6 +67,8 @@ export interface IClinicalServiceProps {
   description: string;
   image_link: string;
   image: string;
+  icon_link: string;
+  icon: string;
 }
 
 export interface IComponentHeaderProps {
@@ -124,4 +127,23 @@ export interface IDepartmentBranch extends IRelatedDepartment {
 interface IDepartmentCategory {
   name: string;
   slug: string;
+}
+
+export interface IDoctor {
+  doctorInfo: IDoctorInfo;
+}
+interface IDoctorInfo {
+  name: string;
+  info: string;
+  image_link: string;
+  degree: string;
+  designation: string;
+  nmc_no: string;
+  email: string;
+  address: string;
+  phone: string;
+  slug: string;
+  department: {
+    slug: string;
+  };
 }
