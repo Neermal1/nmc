@@ -1,46 +1,56 @@
-/* eslint-disable @next/next/no-img-element */
-
-const hospitalManagementTeam = [
-  {
-    name: "Rajendra Thapa",
-    profession: "Chief Medical Officer",
-    image: "https://randomuser.me/api/portraits/men/1.jpg",
-  },
-  {
-    name: "Rajendra Thapa",
-    profession: "Hospital Administrator",
-    image: "https://randomuser.me/api/portraits/women/2.jpg",
-  },
-  {
-    name: "Rajendra Thapa",
-    profession: "Digital Marketing Manager",
-    image: "https://randomuser.me/api/portraits/men/7.jpg",
-  },
-  {
-    name: "Rajendra Thapa",
-    profession: "Web Designer",
-    image: "https://randomuser.me/api/portraits/women/8.jpg",
-  },
-];
+import useFetchData from "@/hooks/useFetchData";
+import { ITeamCategory } from "@/interface/interface";
+import { FiMail, FiPhone } from "react-icons/fi";
 
 export default function MgmtTeam() {
+  const { fetchedData } = useFetchData("team-member/list");
+
   return (
     <section className="py-4 text-center">
-      <h2 className="mb-12 text-3xl font-bold">Meet the team</h2>
+      <h2 className="mb-4 lg:mb-8 text-3xl font-bold">Meet the team</h2>
 
-      <div className="lg:gap-xl-12 grid gap-x-6 grid-cols-2 lg:grid-cols-4">
-        {hospitalManagementTeam.map((member, index) => (
-          <div key={index} className="mb-12 lg:mb-0">
-            <img
-              src={member.image}
-              alt={`Image of ${member.name}`}
-              className="mx-auto mb-4 rounded-lg shadow-lg dark:shadow-black/20 w-[150px]"
-            />
-            <h5 className="mb-2 text-lg font-bold">{member.name}</h5>
-            <p className="mb-2">{member.profession}</p>
+      {fetchedData?.map((teamCategory: ITeamCategory, index: number) => (
+        <div key={index} className="mb-8">
+          <h3 className="text-xl font-bold mb-4 lg:mb-8">
+            {teamCategory.name}
+          </h3>
+          <div className="grid gap-4 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {teamCategory.teams.map((member) => (
+              <div key={member.id} className="mb-6">
+                <img
+                  src={member.image_link}
+                  alt={`Image of ${member.name}`}
+                  className="mx-auto mb-4 rounded-lg shadow-lg dark:shadow-black/20 w-[150px]"
+                />
+                <h5 className="mb-1 text-lg font-bold">{member.name}</h5>
+                <p className="mb-1 text-primary text-sm md:text-base font-medium">
+                  {member.designation}
+                </p>
+                <div className="flex flex-col items-center space-y-2">
+                  {member.email && (
+                    <div className="flex items-center space-x-2">
+                      <FiMail />
+                      <a
+                        href={`mailto:${member.email}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {member?.email}
+                      </a>
+                    </div>
+                  )}
+                  {member.phone && (
+                    <div className="flex items-center space-x-2">
+                      <FiPhone />
+                      <a href={`tel:${member.phone}`}>{member?.phone}</a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </section>
   );
 }

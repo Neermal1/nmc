@@ -39,18 +39,30 @@ const SmallScreenNavbar = () => {
       <Drawer
         title="Nepal Medical College"
         placement="left"
-        closable={false}
+        closable={true}
         onClose={onClose}
         open={visible}
       >
         <div className="grid gap-y-4">
           <NavItem name="Home" navigateTo="/" />
           <NavItem name="About" navigateTo="/about" />
-          <SmDropdown dropdownName="Departments" menuItems={departmentData} />
-          <SmDropdown dropdownName="Services" menuItems={servicesData} />
+          <SmDropdown
+            slugroot="department"
+            dropdownName="Departments"
+            menuItems={departmentData}
+          />
+          <SmDropdown
+            slugroot="services"
+            dropdownName="Services"
+            menuItems={servicesData}
+          />
           <NavItem name="Activities" navigateTo="/activities" />
           <NavItem name="Research" navigateTo="/research" />
-          <SmDropdown dropdownName="Academics" menuItems={academicsData} />
+          <SmDropdown
+            slugroot="academics"
+            dropdownName="Academics"
+            menuItems={academicsData}
+          />
           <NavItem name="News" navigateTo="/news" />
           <NavItem name="Notice" navigateTo="/notice" />
           <NavItem name="Gallery" navigateTo="/gallery" />

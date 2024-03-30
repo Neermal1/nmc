@@ -15,13 +15,18 @@ export default function MainNav() {
           <NavItem name="About us" navigateTo="/about" />
           <DropdownItems
             dropdownName="Departments"
-            slugroot="departments"
+            slugroot="department"
             fetchedData={departmentData}
           />
           <DropdownItems
             dropdownName="Services"
-            slugroot="services"
+            slugroot="service"
             fetchedData={servicesData}
+          />
+          <DropdownItems
+            dropdownName="Academics"
+            slugroot="academics"
+            fetchedData={academicsData}
           />
           <NavItem name="Activities" navigateTo="/activities" />
           <NavItem name="Research" navigateTo="/research" />

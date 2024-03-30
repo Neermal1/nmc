@@ -7,18 +7,20 @@ import AboutHospital from "./AboutHospital";
 import MsgFromDirect from "./MsgFromDirect";
 import MissionVission from "./MissionVission";
 import MgmtTeam from "./MgmtTeam";
+import useFetchData from "@/hooks/useFetchData";
 
 export default function AboutContent() {
   const [activeTab, setActiveTab] = useState(0);
+  const { fetchedData } = useFetchData("company-profile");
 
   const tabs = [
     {
       label: "About hospital",
       icon: <FaRegHospital />,
-      content: <AboutHospital />,
+      content: <AboutHospital description={fetchedData?.introduction} />,
     },
     {
-      label: "Message from director",
+      label: "Messages from Team",
       icon: <IoMdMail />,
       content: <MsgFromDirect />,
     },
@@ -46,7 +48,7 @@ export default function AboutContent() {
             onClick={() => setActiveTab(index)}
           >
             <span className="mr-2 text-2xl lg:text-4xl">{tab.icon}</span>
-            <span className="text-lg md:text-2xl">{tab.label}</span>
+            <span className="text-lg md:text-xl">{tab.label}</span>
           </div>
         ))}
       </div>

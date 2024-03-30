@@ -6,7 +6,7 @@ import Details from "@/pageComponents/activities/Details";
 import Metatag from "@/utils/Metatag";
 import { useRouter } from "next/router";
 
-export default function ActivityDetail() {
+export default function Detail() {
   const router = useRouter();
   const { slug } = router.query;
   const { fetchedData } = useFetchData(`/activity/detail/${slug}`);
