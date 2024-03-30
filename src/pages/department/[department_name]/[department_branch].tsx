@@ -36,8 +36,6 @@ export async function getServerSideProps({ params }: any) {
       `departments/${params?.department_name}/${params?.department_branch}/detail`
     );
 
-    console.log(data);
-
     return {
       props: { data },
     };
