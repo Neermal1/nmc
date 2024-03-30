@@ -30,7 +30,11 @@ const News = () => {
           <div className="grid lg:grid-cols-2 max-w-5xl mx-auto gap-10">
             {fetchedData?.slice(0, 4).map((data: INews, index: any) => {
               return (
-                <Link href="#" key={index} className="flex gap-4">
+                <Link
+                  href={`/news/${data?.slug}`}
+                  key={index}
+                  className="flex gap-4"
+                >
                   <div>
                     <div className="h-[150px] w-[150px]">
                       <img

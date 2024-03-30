@@ -81,7 +81,7 @@ const ContactForm = () => {
                   message: "Please provide your full name",
                 },
               ]}
-              className=""
+              className="form-label"
             >
               <Input
                 className="lg:w-[380px] w-[300px]"

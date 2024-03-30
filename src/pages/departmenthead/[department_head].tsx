@@ -1,43 +1,40 @@
-// "use client";
-
 //components
 import Layout from "@/components/Layout/Layout";
 import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
-import DepartmentDetail from "@/pageComponents/Department/components/DepartmentDetail";
-
-//Metatag
+import DepartmentHeadDetail from "@/pageComponents/DepartmentHead/components/DepartmentHeadDetail";
 import Metatag from "@/utils/Metatag";
 
-const DepartmentBranch = ({ data }: any) => {
+const DepartmentHead = ({ data }: any) => {
   return (
     <Layout>
       <Metatag
         heading={`${
-          data?.department?.meta_title ? data?.department?.meta_title : "NMC"
+          data?.details?.meta_title ? data?.details?.meta_title : "NMC"
         }`}
         subheading={`${
-          data?.department?.meta_description
-            ? data?.department?.meta_description
+          data?.details?.meta_description
+            ? data?.details?.meta_description
             : "Hospital"
         }`}
-        og_image={`${data?.department?.image_link}`}
-        description={`${data?.department?.meta_description}`}
+        og_image={`${data?.details?.image_link}`}
+        description={`${data?.details?.meta_description}`}
       />
-      <DepartmentDetail departmentInfo={data} />
+      <DepartmentHeadDetail departmentHeadInfo={data} />
     </Layout>
   );
 };
 
-export default DepartmentBranch;
+export default DepartmentHead;
 
 export async function getServerSideProps({ params }: any) {
   try {
     const { data } = await SSR_fetchData(
-      `departments/${params?.department_name}/${params?.department_branch}/detail`
+      `departments/${params?.department_head}/details`
     );
-
     return {
-      props: { data },
+      props: {
+        data,
+      },
     };
   } catch (e: any) {
     if (e.response && e.response.status === 429) {
@@ -48,7 +45,7 @@ export async function getServerSideProps({ params }: any) {
         try {
           console.log("refetching");
           const { data } = await SSR_fetchData(
-            `departments/${params.department_name}/${params.department_branch}/detail`
+            `departments/${params?.department_head}/details`
           );
           return {
             props: {

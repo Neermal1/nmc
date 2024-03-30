@@ -1,10 +1,11 @@
+import Layout from "@/components/Layout/Layout";
 import NewsInfo from "@/pageComponents/NewsDetail/components/NewsInfo";
 
 const NewsDetail = () => {
   return (
-    <div>
+    <Layout>
       <NewsInfo />
-    </div>
+    </Layout>
   );
 };
 

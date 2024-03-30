@@ -1,4 +1,4 @@
-import useFetchData from "@/hook/useFetchData";
+import useFetchData from "@/hooks/useFetchData";
 import GalleryCard from "./GalleryCard";
 
 export default function GalleryList() {

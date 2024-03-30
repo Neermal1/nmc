@@ -1,39 +1,34 @@
-// "use client";
-
 //components
 import Layout from "@/components/Layout/Layout";
-import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
-import DepartmentDetail from "@/pageComponents/Department/components/DepartmentDetail";
+import DoctorDetail from "@/pageComponents/DoctorDetail/components/DoctorDetail";
 
-//Metatag
+//axiosInstance
+import axiosInstance from "@/axiosInstance/axiosInstance";
+
+//metatag
 import Metatag from "@/utils/Metatag";
+import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
 
-const DepartmentBranch = ({ data }: any) => {
+const DoctorInfoDetail = ({ data }: any) => {
   return (
     <Layout>
       <Metatag
-        heading={`${
-          data?.department?.meta_title ? data?.department?.meta_title : "NMC"
-        }`}
-        subheading={`${
-          data?.department?.meta_description
-            ? data?.department?.meta_description
-            : "Hospital"
-        }`}
-        og_image={`${data?.department?.image_link}`}
-        description={`${data?.department?.meta_description}`}
+        heading="NMC"
+        subheading={data?.name}
+        og_image={data?.image_link}
       />
-      <DepartmentDetail departmentInfo={data} />
+      <DoctorDetail doctorInfo={data} />
     </Layout>
   );
 };
 
-export default DepartmentBranch;
+export default DoctorInfoDetail;
 
 export async function getServerSideProps({ params }: any) {
   try {
+    console.log(params);
     const { data } = await SSR_fetchData(
-      `departments/${params?.department_name}/${params?.department_branch}/detail`
+      `doctor/detail/${params?.doctor_info_detail}`
     );
 
     return {
@@ -48,7 +43,7 @@ export async function getServerSideProps({ params }: any) {
         try {
           console.log("refetching");
           const { data } = await SSR_fetchData(
-            `departments/${params.department_name}/${params.department_branch}/detail`
+            `doctor/detail/${params?.doctor_info_detail}`
           );
           return {
             props: {

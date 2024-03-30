@@ -1,7 +1,7 @@
 import CommonBanner from "@/components/Banner/CommonBanner";
 import Layout from "@/components/Layout/Layout";
-import useFetchData from "@/hook/useFetchData";
-import { ActivityDetail } from "@/interface/interface";
+import useFetchData from "@/hooks/useFetchData";
+import { IActivityDetail } from "@/interface/interface";
 import Details from "@/pageComponents/activities/Details";
 import Metatag from "@/utils/Metatag";
 import { useRouter } from "next/router";
@@ -10,7 +10,7 @@ export default function Detail() {
   const router = useRouter();
   const { slug } = router.query;
   const { fetchedData } = useFetchData(`/activity/detail/${slug}`);
-  const activity: ActivityDetail = fetchedData;
+  const activity: IActivityDetail = fetchedData;
   return (
     <Layout>
       <Metatag heading="NMC" subheading="Activities" og_image="" />

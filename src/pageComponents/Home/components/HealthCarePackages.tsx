@@ -128,7 +128,7 @@ const HealthCarePackages = () => {
                           </div>
                         </div>
                       </div>
-                      <Link href="#">
+                      <Link href="/contact-us">
                         <SecondaryButton
                           data={{
                             name: "Choose Us",

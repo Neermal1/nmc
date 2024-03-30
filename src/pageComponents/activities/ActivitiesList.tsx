@@ -1,4 +1,4 @@
-import useFetchData from "@/hook/useFetchData";
+import useFetchData from "@/hooks/useFetchData";
 import { Activity } from "@/interface/interface";
 import ActivityCard from "./ActivityCard";
 

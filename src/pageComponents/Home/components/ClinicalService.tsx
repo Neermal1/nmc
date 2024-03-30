@@ -50,12 +50,16 @@ const ClinicalService = () => {
               <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
                 {fetchedData?.map((data: IClinicalServiceProps, index: any) => {
                   return (
-                    <Link href={data?.slug} key={index} className="group">
+                    <Link
+                      href={`/departmenthead/${data?.slug}`}
+                      key={index}
+                      className="group"
+                    >
                       <div className="flex items-center gap-2 h-[12vh] group-hover:bg-[#1F2B6C] border-[#1e1e1e] border-[1px] px-6 py-3 rounded-[8px] group-hover:text-[#FFDD1C]">
                         <div>
-                          {data?.image.length > 0 ? (
+                          {data?.icon.length > 0 ? (
                             <img
-                              src={data?.image_link}
+                              src={data?.icon_link}
                               alt="loading"
                               className="h-[55px] w-[55px] object-contain"
                             />

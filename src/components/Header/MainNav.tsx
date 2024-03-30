@@ -1,6 +1,6 @@
 import Link from "next/link";
 import DropdownItems from "./Dropdown";
-import useFetchData from "@/hook/useFetchData";
+import useFetchData from "@/hooks/useFetchData";
 
 export default function MainNav() {
   const { fetchedData: departmentData } = useFetchData("departments");
@@ -30,8 +30,12 @@ export default function MainNav() {
           />
           <NavItem name="Activities" navigateTo="/activities" />
           <NavItem name="Research" navigateTo="/research" />
-
-          {/* <NavItem name="Journal" navigateTo="/journal" /> */}
+          <DropdownItems
+            dropdownName="Academics"
+            slugroot="academics"
+            fetchedData={academicsData}
+          />
+          <NavItem name="Journal" navigateTo="/journal" />
         </ul>
       </div>
     </nav>
