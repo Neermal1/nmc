@@ -1,6 +1,5 @@
 import CommonBanner from "@/components/Banner/CommonBanner";
 import Button from "@/components/Button/Button";
-import { IDoctor } from "@/interface/interface";
 import Link from "next/link";
 
 //images
@@ -10,7 +9,7 @@ import suitcase from "../../../../public/images/random/suitcase.png";
 import Image from "next/image";
 import DoctorMoreDetailCard from "./DoctorMoreDetailCard";
 
-const DoctorDetail = ({ doctorInfo }: IDoctor) => {
+const DoctorDetail = ({ doctorInfo }: any) => {
   return (
     <div className="black-color">
       <CommonBanner
