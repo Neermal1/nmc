@@ -17,7 +17,7 @@ export default function AboutContent() {
     {
       label: "About hospital",
       icon: <FaRegHospital />,
-      content: <AboutHospital description={fetchedData?.introduction} />,
+      content: <AboutHospital />,
     },
     {
       label: "Messages from Team",

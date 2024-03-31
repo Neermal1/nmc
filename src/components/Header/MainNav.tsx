@@ -32,7 +32,7 @@ export default function MainNav() {
           <NavItem name="Activities" navigateTo="/activities" />
           <NavItem name="Research" navigateTo="/research" />
 
-          <NavItem name="Journal" navigateTo="/journal" />
+          {/* <NavItem name="Journal" navigateTo="/journal" /> */}
         </ul>
       </div>
     </nav>

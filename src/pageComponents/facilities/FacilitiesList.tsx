@@ -1,4 +1,4 @@
-import useFetchData from "@/hook/useFetchData";
+import useFetchData from "@/hooks/useFetchData";
 import FacilityCard from "./FaciltityCard";
 import { IFacility } from "@/interface/interface";
 
