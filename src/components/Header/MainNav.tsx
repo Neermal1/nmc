@@ -30,11 +30,7 @@ export default function MainNav() {
           />
           <NavItem name="Activities" navigateTo="/activities" />
           <NavItem name="Research" navigateTo="/research" />
-          <DropdownItems
-            dropdownName="Academics"
-            slugroot="academics"
-            fetchedData={academicsData}
-          />
+
           <NavItem name="Journal" navigateTo="/journal" />
         </ul>
       </div>

@@ -1,31 +1,8 @@
-import useFetchData from "@/hooks/useFetchData";
 import { IRelatedService } from "@/interface/interface";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { LuDot } from "react-icons/lu";
 
-const ServiceInfo = () => {
-  const router = useRouter();
-
-  //states
-  const [service_name, set_service_name] = useState<any>();
-
-  useEffect(() => {
-    if (router.isReady) {
-      const { service_name } = router.query;
-      set_service_name(service_name);
-    }
-  }, [router]);
-
-  const { fetchedData, loading, refetchData } = useFetchData(
-    service_name && `service/${service_name}`
-  );
-
-  useEffect(() => {
-    refetchData();
-  }, [service_name]);
-
+const ServiceInfo = ({ serviceInfo }: any) => {
   return (
     <div>
       <div className="layout component-padding black-color flex flex-col gap-20">
@@ -42,12 +19,12 @@ const ServiceInfo = () => {
                 </div>
                 <div className="flex flex-col gap-6">
                   <div className="lg:text-[35px] text-[25px] font-semibold">
-                    {fetchedData?.detail?.name}
+                    {serviceInfo?.detail?.name}
                   </div>
                   <div
                     className="leading-[30px]"
                     dangerouslySetInnerHTML={{
-                      __html: fetchedData?.detail?.description,
+                      __html: serviceInfo?.detail?.description,
                     }}
                   ></div>
                 </div>
@@ -62,7 +39,7 @@ const ServiceInfo = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-2">
-                {fetchedData?.related?.map(
+                {serviceInfo?.related?.map(
                   (data: IRelatedService, index: number) => {
                     return (
                       <div key={index}>

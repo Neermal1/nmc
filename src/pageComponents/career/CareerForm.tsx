@@ -1,70 +1,87 @@
-import { Form, Input, Button, Upload, message, UploadProps } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
-import axios from "axios";
-
-const props: UploadProps = {
-  name: "file",
-  action: "https://admin.xavierschool.edu.np/api/career-application/store",
-  onChange(info) {
-    if (info.file.status !== "uploading") {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === "done") {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === "error") {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  progress: {
-    strokeColor: {
-      "0%": "#108ee9",
-      "100%": "#87d068",
-    },
-    strokeWidth: 3,
-    format: (percent) => percent && `${parseFloat(percent.toFixed(2))}%`,
-  },
-};
-
-interface Payload {
-  vacancy_id: string;
-  full_name: string;
-  email: string;
-  phone: string;
-  cv: File;
-  cover_letter: File;
-}
+import axiosInstance from "@/axiosInstance/axiosInstance";
+import { Form, Input, message } from "antd";
+import { useEffect, useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function CareerForm({ vacancyId }: any) {
   const [form] = Form.useForm();
 
+  //states
+  const [cv, setCV] = useState<any>();
+  const [cover_letter, set_cover_letter] = useState<any>();
+  const [captchaValue, setCaptchaValue] = useState(null);
+
   const onFinish = async (values: any) => {
-    const payload: Payload = {
-      vacancy_id: vacancyId,
-      full_name: values.full_name,
-      email: values.email,
-      phone: values.phone,
-      cv: values.cv?.[0]?.originFileObj,
-      cover_letter: values.cover_letter?.[0]?.originFileObj,
-    };
-
-    console.log(payload);
-
     try {
-      const response = await axios.post(
-        "https://admin.xavierschool.edu.np/api/career-application/store",
-        payload
-      );
+      const formData = new FormData();
+      formData.append("vacancy_id", vacancyId);
+      formData.append("name", values.full_name);
+      formData.append("email", values.email);
+      formData.append("phone", values.phone);
+      if (cv) {
+        formData.append("cv", cv);
+      }
+      if (cover_letter) {
+        formData.append("cover_letter", cover_letter);
+      }
 
-      if (response.status === 200) {
-        message.success("Your application has been submitted successfully!");
-        form.resetFields();
+      if (captchaValue && formData) {
+        const response = await axiosInstance.post(
+          "vacancy/applicant/add",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          message.success("Your application has been submitted successfully!");
+          form.resetFields();
+          recaptchaRef.current.reset();
+        } else {
+          message.error("Something went wrong. Please try again.");
+        }
       } else {
-        message.error("Something went wrong. Please try again.");
+        message.error("Please verify you are a human or not");
       }
     } catch (error: any) {
+      console.log(error);
       message.error("An error occurred. Please try again.");
     }
   };
+
+  const handleCoverLetter = (e: any) => {
+    if (e?.target?.files) {
+      const coverLetter = e?.target?.files[0];
+      if (coverLetter) {
+        set_cover_letter(coverLetter);
+      }
+    }
+  };
+  const handleCV = (e: any) => {
+    if (e?.target?.files) {
+      const cv = e?.target?.files[0];
+      if (cv) {
+        setCV(e.target.files[0]);
+      }
+    }
+  };
+
+  useEffect(() => {
+    console.log(cv);
+  }, [cv]);
+
+  useEffect(() => {
+    console.log(cover_letter);
+  }, [cover_letter]);
+
+  const recaptchaRef: any = useRef();
+  function onChangeCaptcha(value: any) {
+    console.log("Captcha value:", value);
+    setCaptchaValue(value);
+  }
 
   return (
     <Form
@@ -126,44 +143,57 @@ export default function CareerForm({ vacancyId }: any) {
       </Form.Item>
 
       <Form.Item
-        label="CV"
+        hasFeedback
         name="cv"
-        rules={[{ required: true, message: "Please upload your CV!" }]}
-        valuePropName="fileList"
-        getValueFromEvent={(e: any) => e.fileList}
-        className="mb-4"
+        label="CV"
+        rules={[{ required: true, message: "Please provide your CV" }]}
+        className="file-input-icon-wrapper"
       >
-        <Upload
-          {...props}
-          name="cv"
-          accept=".pdf"
-          maxCount={1}
-          showUploadList={true}
-        >
-          <Button icon={<UploadOutlined />}>Upload CV</Button>
-        </Upload>
+        <label className="file-input-icon">
+          <div className="uploaded-file-name">
+            {!cv ? "No file selected." : <div>{cv.name}</div>}
+          </div>
+          <input
+            type="file"
+            id="cover_letter"
+            className="cover-letter file-input "
+            onChange={handleCV}
+          />
+        </label>
       </Form.Item>
 
       <Form.Item
         label="Cover Letter"
+        hasFeedback
         name="cover_letter"
         rules={[
-          { required: true, message: "Please upload your cover letter!" },
+          { required: true, message: "Please provide your cover letter" },
         ]}
-        valuePropName="fileList"
-        getValueFromEvent={(e: any) => e.fileList}
-        className="mb-4"
+        className="file-input-icon-wrapper"
       >
-        <Upload
-          {...props}
-          name="cover_letter"
-          accept=".pdf"
-          maxCount={1}
-          showUploadList={true}
-        >
-          <Button icon={<UploadOutlined />}>Upload Cover Letter</Button>
-        </Upload>
+        <label className="">
+          <div className="">
+            {!cover_letter ? (
+              "No file selected."
+            ) : (
+              <div>{cover_letter[0]?.name}</div>
+            )}
+          </div>
+          <input
+            type="file"
+            id="cover_letter"
+            className="cover-letter file-input"
+            onChange={handleCoverLetter}
+          />
+        </label>
       </Form.Item>
+
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        datatype="image"
+        sitekey="6Lf8xZ4pAAAAAKBGk_kfWHOs7XxmQX88U4-89bK4"
+        onChange={onChangeCaptcha}
+      />
 
       <Form.Item>
         <button

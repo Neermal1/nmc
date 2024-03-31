@@ -39,7 +39,7 @@ const NewsInfo = () => {
             <div className="flex flex-col lg:gap-20 gap-10">
               <div className="flex flex-col lg:gap-20 gap-10">
                 <div className="flex flex-col gap-4 items-center justify-center">
-                  <div className="lg:text-[35px] text-[25px] font-semibold">
+                  <div className="lg:text-[35px] text-[25px]  font-semibold">
                     {fetchedData?.detail.title}
                   </div>
                   <div className="text-color font-medium text-[16px]">

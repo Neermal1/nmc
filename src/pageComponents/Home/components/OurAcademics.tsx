@@ -22,26 +22,32 @@ const OurAcademics = () => {
     {
       title: "Academic programs",
       icon: <IoBookSharp size={70} />,
+      slug: "all-department",
     },
     {
       title: "Faculty",
       icon: <FaUserGraduate size={70} />,
+      slug: "/all-department",
     },
     {
       title: "Student Zone",
       icon: <FiUsers size={70} />,
+      slug: "/about",
     },
     {
       title: "Notice",
       icon: <FaNewspaper size={70} />,
+      slug: "/notice",
     },
     {
       title: "Facilities & Services",
       icon: <RiFirstAidKitLine size={70} />,
+      slug: "/facilities",
     },
     {
       title: "Life At NMC",
       icon: <CiStethoscope size={70} />,
+      slug: "/about",
     },
   ];
 
@@ -59,7 +65,7 @@ const OurAcademics = () => {
               {academicList?.map((data, index) => {
                 return (
                   <Link
-                    href="#"
+                    href={data?.slug}
                     key={index}
                     className="border-[1px] group hover:bg-[#1F2B6C] gap-6 p-4 rounded-[8px]  flex flex-col items-center justify-center border-[#1e1e1e]"
                   >

@@ -30,7 +30,7 @@ const WhyChooseUs = () => {
               }}
             ></div>
             <div>
-              <Link href="#">
+              <Link href="/about">
                 <Button
                   data={{
                     name: "Learn More",
