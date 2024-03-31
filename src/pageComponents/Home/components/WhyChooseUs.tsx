@@ -30,7 +30,7 @@ const WhyChooseUs = () => {
               }}
             ></div>
             <div>
-              <Link href="#">
+              <Link href="/about">
                 <Button
                   data={{
                     name: "Learn More",
@@ -50,7 +50,7 @@ const WhyChooseUs = () => {
           </div>
         </div>
         <div>
-          <div className="grid lg:grid-cols-5 gap-6 grid-cols-2">
+          <div className="grid lg:grid-cols-4 gap-6 grid-cols-2">
             {fetchedData?.list?.map((data: any, index: number) => {
               return (
                 <div

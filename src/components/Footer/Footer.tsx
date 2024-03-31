@@ -6,7 +6,7 @@ import useFetchData from "@/hooks/useFetchData";
 //antd components
 
 import axiosInstance from "@/axiosInstance/axiosInstance";
-import { Button, Form, Input, notification } from "antd";
+import { Button, Divider, Form, Input, notification } from "antd";
 import { useState } from "react";
 import { BsInstagram, BsYoutube } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
@@ -24,15 +24,22 @@ const Footer = () => {
       list: [
         {
           name: "Appointment",
+          slug: "book-an-appointment",
+          linktype: null,
+          link: false,
         },
+
         {
-          name: "Doctors",
-        },
-        {
-          name: "Services",
+          name: "Department",
+          slug: "all-department",
+          linktype: null,
+          link: false,
         },
         {
           name: "About Us",
+          slug: "about",
+          linktype: null,
+          link: false,
         },
       ],
     },
@@ -41,12 +48,16 @@ const Footer = () => {
       list: [
         {
           name: ` ${fetchedData?.company_phone}`,
+          linktype: "tel:",
         },
         {
           name: `${fetchedData?.company_email}`,
+          linktype: "mailto",
         },
         {
           name: `${fetchedData?.company_address}`,
+          linktype: null,
+          link: true,
         },
       ],
     },
@@ -115,11 +126,26 @@ const Footer = () => {
                         {data?.title}
                       </div>
                       <div className="flex flex-col gap-4">
-                        {data?.list.map((data, index) => {
+                        {data?.list.map((data: any, index) => {
                           return (
-                            <Link href="#" key={index}>
-                              <div>{data?.name}</div>
-                            </Link>
+                            <div key={index}>
+                              {data?.linktype !== null ? (
+                                <a href={`${data?.linktype}:${data?.name}`}>
+                                  {data?.name}
+                                </a>
+                              ) : (
+                                <div>
+                                  {data?.link == true && (
+                                    <div>{data?.name}</div>
+                                  )}
+                                </div>
+                              )}
+                              {data?.slug && (
+                                <Link href={`/${data?.slug}`} key={index}>
+                                  <div className={``}>{data?.name}</div>
+                                </Link>
+                              )}
+                            </div>
                           );
                         })}
                       </div>

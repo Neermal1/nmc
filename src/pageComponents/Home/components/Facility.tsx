@@ -9,22 +9,22 @@ const Facility = () => {
     {
       icons: <FaHospitalAlt size={45} />,
       name: "Book An Appointment",
-      slug: "#",
+      slug: "/book-an-appointment",
     },
     {
       icons: <RiFirstAidKitFill size={45} />,
-      name: "View Health Record",
-      slug: "#",
+      name: "Contact Us",
+      slug: "/contact-us",
     },
     {
       icons: <MdHealthAndSafety size={45} />,
-      name: "Our Services",
-      slug: "#",
+      name: "Our Department",
+      slug: "all-department",
     },
     {
       icons: <FaUniversity size={45} />,
-      name: "NMC Academics",
-      slug: "#",
+      name: "Research",
+      slug: "research",
     },
   ];
 

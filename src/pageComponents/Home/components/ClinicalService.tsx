@@ -23,7 +23,7 @@ const ClinicalService = () => {
         <div className="layout component-padding black-color">
           <div className="grid lg:grid-cols-2  grid-cols-1 gap-10">
             <div className="">
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-8 sticky top-[140px]">
                 <div className="flex flex-col gap-6">
                   <div
                     style={{
@@ -37,7 +37,7 @@ const ClinicalService = () => {
                     Learn about the world class health care we provide
                   </div>
                 </div>
-                <Link href="/explore-more">
+                <Link href="/all-department">
                   <Button
                     data={{
                       name: "Explore More",

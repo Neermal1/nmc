@@ -26,12 +26,12 @@ export default function LogoNav() {
           {/* <button className="px-4 py-2 text-sm lg:text-base bg-secondary rounded-full text-primary font-medium hover:bg-primary hover:text-primaryYellow transition duration-300">
             Lab Report
           </button> */}
-          <button
-            onClick={() => router.push(`/book-an-appointment`)}
+          <Link
+            href="/book-an-appointment"
             className="px-4 py-2 text-sm lg:text-base bg-secondary rounded-full text-primary font-medium hover:bg-primary hover:text-primaryYellow transition duration-300"
           >
             Book an Appointment
-          </button>
+          </Link>
         </div>
       </div>
     </div>
