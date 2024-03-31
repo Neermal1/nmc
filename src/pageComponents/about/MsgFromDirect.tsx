@@ -1,3 +1,4 @@
+import Loader from "@/components/Loader/Loader";
 import useFetchData from "@/hooks/useFetchData";
 import { IMessageFromDirector } from "@/interface/interface";
 import Carousel from "react-multi-carousel";
@@ -29,7 +30,11 @@ export default function MsgFromDirect() {
     },
   };
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   } else if (messages) {
     return (
       <section className="py-8">

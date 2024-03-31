@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
-import { jobs } from "./careerData";
+import useFetchData from "@/hooks/useFetchData";
+import { IVacancy } from "@/interface/interface";
 
 export default function CareerList() {
+  const { fetchedData: jobs } = useFetchData("vacancies");
   const router = useRouter();
 
   return (
@@ -10,34 +12,34 @@ export default function CareerList() {
         Open Positions
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {jobs.map((job, index) => (
+        {jobs?.map((job: IVacancy, index: number) => (
           <div
             key={index}
             className="bg-white border border-primary rounded-lg overflow-hidden"
           >
             <div className="px-6 py-6">
-              <h2 className="text-xl font-semibold text-primary mb-1">
-                {job.position}
+              <h2 className="text-xl font-semibold text-primary mb-4 md:mb-6">
+                {job?.title}
               </h2>
-              <p className="text-gray-600 mb-4 md:mb-6">{job.department}</p>
+              {/* <p className="text-gray-600 mb-4 md:mb-6">{job.department}</p> */}
 
               <div className="flex items-center space-x-4 text-gray-500 mb-4 md:mb-6">
                 <div className="bg-gray-200 text-gray-600 px-2 py-1 rounded-full text-xs lg:text-sm">
-                  No. of vacancies: {job.vacancies}
+                  No. of vacancies: {job?.no_of_opening}
                 </div>
                 <div className="bg-gray-200 text-gray-600 px-2 py-1 rounded-full text-xs lg:text-sm">
-                  {job.employmentType}
+                  {job?.type}
                 </div>
               </div>
 
               <div className="flex justify-between space-x-4 text-gray-500 mb-4">
-                <div className="flex flex-col">
+                {/* <div className="flex flex-col">
                   <span className="font-semibold">Published:</span>{" "}
-                  {job.publishedDate}
-                </div>
+                  {job?.}
+                </div> */}
                 <div className="flex flex-col">
                   <span className="font-semibold">Deadline:</span>{" "}
-                  {job.applicationDeadline}
+                  {job?.expire_at}
                 </div>
               </div>
 

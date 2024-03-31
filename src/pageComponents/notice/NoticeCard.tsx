@@ -1,15 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
+import { INotice } from "@/interface/interface";
+import { formatDate } from "@/utils/FormatDate";
+import { Modal } from "antd";
 import { useState } from "react";
-import { Button, Modal } from "antd";
 import { AiFillEye } from "react-icons/ai";
 
-interface NoticeProps {
-  name: string;
-  date: string;
-  image: string;
-}
-
-export default function NoticeCard({ notice }: { notice: NoticeProps }) {
+export default function NoticeCard({ notice }: { notice: INotice }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleViewImage = () => {
@@ -26,10 +21,10 @@ export default function NoticeCard({ notice }: { notice: NoticeProps }) {
         <div className="flex items-center justify-between">
           <div>
             <span className="text-gray-700  font-medium text-base md:text-lg lg:text-xl">
-              {notice.date}
+              {formatDate(notice?.created_at)}
             </span>
-            <h3 className="text-lg md:text-xl lg:text-2xl font-normal text-primary mb-2">
-              {notice.name}
+            <h3 className="text-sm md:text-base lg:text-lg font-normal text-primary mb-2">
+              {notice?.title}
             </h3>
           </div>
           <div>
@@ -45,8 +40,8 @@ export default function NoticeCard({ notice }: { notice: NoticeProps }) {
       </div>
       <Modal open={modalVisible} onCancel={handleCloseModal} footer={null}>
         <img
-          src={notice.image}
-          alt={notice.name}
+          src={notice?.image_link}
+          alt={notice?.title}
           style={{ maxWidth: "100%", height: "auto" }}
         />
       </Modal>

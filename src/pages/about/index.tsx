@@ -6,10 +6,10 @@ import Metatag from "@/utils/Metatag";
 export default function About() {
   return (
     <Layout>
-      <Metatag heading="NMC" subheading="About" og_image="" />
+      <Metatag heading="NMC" subheading="About" og_image="/images/ogImage/homePage.png" />
       <CommonBanner
         headerName="About us"
-        imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
+        imageLink="/images/Banners/Banner1.png"
       />
       <AboutContent />
     </Layout>

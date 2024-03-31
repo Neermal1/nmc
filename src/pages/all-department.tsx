@@ -9,12 +9,12 @@ export default function Department() {
       <Metatag
         heading="NMC"
         subheading="Departments"
-        og_image=""
+        og_image="/images/ogImage/homePage.png"
         description=""
       />
       <CommonBanner
         headerName="Departments"
-        imageLink="https://img.freepik.com/free-photo/team-doctors-meeting_107420-84791.jpg?t=st=1711692780~exp=1711696380~hmac=013ee7f057be0678ddb08e918cb965f2ed72b7cc85e5dfe28cd427f87f3431ac&w=996"
+        imageLink="/images/Banners/Banner2.png"
       />
       <DepartmentList />
     </Layout>

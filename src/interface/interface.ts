@@ -18,6 +18,19 @@ export interface Slider {
   image_link: string;
 }
 
+export interface IFacility {
+  id: number;
+  title: string;
+  slug: string;
+  description: string;
+  image: string;
+  status: string;
+  image_link: string;
+  meta_title: string;
+  meta_keywords: string;
+  meta_description: string;
+}
+
 export interface Activity {
   id: number;
   title: string;
@@ -26,6 +39,9 @@ export interface Activity {
   image: string;
   status: string;
   image_link: string;
+  meta_title: string;
+  meta_keywords: string;
+  meta_description: string;
 }
 
 export interface IActivityDetail {
@@ -37,6 +53,9 @@ export interface IActivityDetail {
     image: string;
     status: string;
     image_link: string;
+    meta_title: string;
+    meta_keywords: string;
+    meta_description: string;
   };
   related: {
     id: number;
@@ -231,6 +250,7 @@ export interface IDepartment {
   slug: string;
   description: string;
   image_link: string;
+  icon_link: string;
 }
 
 export interface ITeamMember {
@@ -250,4 +270,67 @@ export interface ITeamCategory {
   name: string;
   status: string;
   teams: ITeamMember[];
+}
+
+export interface ITextTestimonial {
+  id: number;
+  name: string;
+  message: string;
+  status: string;
+  image: string | null;
+  type: "Text";
+  link: null;
+  image_link: string;
+}
+
+export interface IVideoTestimonial {
+  id: number;
+  name: string;
+  message: string | null;
+  status: string;
+  image: string | null;
+  type: "Video";
+  link: string;
+  image_link: string;
+}
+
+export interface TestimonialsData {
+  text: ITextTestimonial[];
+  video: IVideoTestimonial[];
+}
+
+export interface IVacancy {
+  id: number;
+  title: string;
+  slug: string;
+  no_of_opening: string;
+  type: string;
+  image: string;
+  short_description: string | null;
+  description: string;
+  expire_at: string;
+  meta_title: string | null;
+  meta_keywords: string | null;
+  meta_description: string | null;
+  status: string;
+  image_link: string;
+}
+
+export interface INoticeCategory {
+  id: number;
+  name: string;
+  slug: string;
+  status: string;
+}
+
+export interface INotice {
+  id: number;
+  title: string;
+  slug: string;
+  notice_category_id: string;
+  description: string | null;
+  image: string;
+  status: string;
+  image_link: string;
+  created_at: string;
 }
