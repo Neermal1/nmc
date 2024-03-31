@@ -1,8 +1,10 @@
 import Loader from "@/components/Loader/Loader";
 import useFetchData from "@/hooks/useFetchData";
 import { IDepartment } from "@/interface/interface";
+import { useRouter } from "next/router";
 
 const DepartmentCard = ({ icon, name, slug }: any) => {
+  const router = useRouter();
   return (
     <div className="p-4 bg-white rounded-lg shadow border border-secondary hover:bg-secondary hover:shadow-lg transition duration-300">
       <div className="flex items-center justify-center  mb-4">
@@ -12,7 +14,10 @@ const DepartmentCard = ({ icon, name, slug }: any) => {
         <h3 className="text-xl font-semibold mb-2 text-primary text-center">
           {name}
         </h3>
-        <button className="text-primary px-4 py-2 border border-primary rounded-full hover:bg-primary hover:text-primaryYellow transition duration-300">
+        <button
+          onClick={() => router.push(`/departmenthead/${slug}`)}
+          className="text-primary px-4 py-2 border border-primary rounded-full hover:bg-primary hover:text-primaryYellow transition duration-300"
+        >
           Learn more
         </button>
       </div>

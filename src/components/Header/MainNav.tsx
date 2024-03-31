@@ -28,7 +28,7 @@ export default function MainNav() {
             slugroot="academics"
             fetchedData={academicsData}
           />
-          <NavItem name="Facilities" navigateTo="facilities" />
+          <NavItem name="Facilities" navigateTo="/facilities" />
           <NavItem name="Activities" navigateTo="/activities" />
           <NavItem name="Research" navigateTo="/research" />
 

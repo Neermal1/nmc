@@ -37,7 +37,16 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                         : ""
                     }`}
                   >
-                    {menuItem?.name}
+                    {slugroot === "department" ? (
+                      <Link
+                        href={`/departmenthead/${menuItem?.slug}`}
+                        rel="noopener noreferrer"
+                      >
+                        <span>{menuItem?.name}</span>
+                      </Link>
+                    ) : (
+                      <span>{menuItem?.name}</span>
+                    )}
 
                     {menuItem?.items && menuItem?.items?.length > 0 && (
                       <div>
@@ -61,7 +70,11 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                     menuItem?.items?.map((subItem: SubCategory) => (
                       <Link
                         key={subItem?.id}
-                        href={`/${slugroot}/${menuItem?.slug}/${subItem?.slug}`}
+                        href={
+                          slugroot === "service"
+                            ? `/${slugroot}/${subItem?.slug}`
+                            : `/${slugroot}/${menuItem?.slug}/${subItem?.slug}`
+                        }
                         rel="noopener noreferrer"
                       >
                         <div className="text-sm md:text-base hover:underline hover:text-primary">

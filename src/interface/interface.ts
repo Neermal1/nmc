@@ -17,6 +17,19 @@ export interface Slider {
   image_link: string;
 }
 
+export interface IFacility {
+  id: number;
+  title: string;
+  slug: string;
+  description: string;
+  image: string;
+  status: string;
+  image_link: string;
+  meta_title: string;
+  meta_keywords: string;
+  meta_description: string;
+}
+
 export interface Activity {
   id: number;
   title: string;
@@ -25,6 +38,9 @@ export interface Activity {
   image: string;
   status: string;
   image_link: string;
+  meta_title: string;
+  meta_keywords: string;
+  meta_description: string;
 }
 
 export interface ActivityDetail {
@@ -36,6 +52,9 @@ export interface ActivityDetail {
     image: string;
     status: string;
     image_link: string;
+    meta_title: string;
+    meta_keywords: string;
+    meta_description: string;
   };
   related: {
     id: number;
@@ -260,4 +279,23 @@ export interface IVacancy {
   meta_description: string | null;
   status: string;
   image_link: string;
+}
+
+export interface INoticeCategory {
+  id: number;
+  name: string;
+  slug: string;
+  status: string;
+}
+
+export interface INotice {
+  id: number;
+  title: string;
+  slug: string;
+  notice_category_id: string;
+  description: string | null;
+  image: string;
+  status: string;
+  image_link: string;
+  created_at: string;
 }

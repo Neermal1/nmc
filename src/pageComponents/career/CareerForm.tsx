@@ -71,7 +71,7 @@ export default function CareerForm({ vacancyId }: any) {
       form={form}
       name="careerForm"
       onFinish={onFinish}
-      className="bg-gray-50 p-4 rounded shadow-md"
+      className="bg-gray-50 p-4 rounded shadow-md sticky top-16"
       layout="vertical"
       initialValues={{ remember: true }}
     >

@@ -6,10 +6,10 @@ import Metatag from "@/utils/Metatag";
 export default function Activities() {
   return (
     <Layout>
-      <Metatag heading="NMC" subheading="Activities" />
+      <Metatag heading="NMC" subheading="Activities" og_image="/images/ogImage/homePage.png"/>
       <CommonBanner
         headerName="Activities"
-        imageLink="https://www.facs.org/media/hu1dq3y5/638602068.jpg?rnd=132960668912900000"
+        imageLink="/images/Banners/Banner1.png"
       />
       <ActivitiesList />
     </Layout>

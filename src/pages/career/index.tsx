@@ -6,10 +6,14 @@ import Metatag from "@/utils/Metatag";
 export default function Career() {
   return (
     <Layout>
-      <Metatag heading="NMC" subheading="Career" og_image="" />
+      <Metatag
+        heading="NMC"
+        subheading="Career"
+        og_image="/images/ogImage/homePage.png"
+      />
       <CommonBanner
         headerName="Career at NMC"
-        imageLink="https://img.freepik.com/premium-photo/medical-workers-team-wearing-face-mask-while-standing-together-with-blurred-background-hospital_175634-20538.jpg?w=1380"
+        imageLink="/images/Banners/Banner2.png"
       />
       <CareerList />
     </Layout>

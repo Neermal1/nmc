@@ -75,7 +75,7 @@ const DepartmentDetail = () => {
       <Metatag
         heading="NMC"
         subheading="Departments"
-        og_image="https://img.freepik.com/free-photo/medical-banner-with-doctor-wearing-coat_23-2149611219.jpg?t=st=1711523241~exp=1711526841~hmac=588e592d004db5b44c56722eee702a46bb31f6ff94820f13788c9ae5ba375a20&w=996"
+        og_image="/images/Banners/Banner2.png"
       />
 
       <div className="layout component-padding black-color flex flex-col gap-20">

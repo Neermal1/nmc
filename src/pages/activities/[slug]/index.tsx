@@ -13,10 +13,15 @@ export default function Detail() {
   const activity: ActivityDetail = fetchedData;
   return (
     <Layout>
-      <Metatag heading="NMC" subheading="Activities" og_image="" />
+      <Metatag
+        heading="NMC"
+        subheading={activity?.detail?.title || "Activities"}
+        description={activity?.detail?.meta_description}
+        og_image={activity?.detail?.image_link}
+      />
       <CommonBanner
         headerName="Activities"
-        imageLink="https://www.facs.org/media/hu1dq3y5/638602068.jpg?rnd=132960668912900000"
+        imageLink="/images/Banners/Banner1.png"
       />
       <Details
         title={activity?.detail?.title}
