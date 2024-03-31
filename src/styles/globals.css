@@ -48,24 +48,25 @@
   justify-content: center;
   overflow: hidden;
   transform-origin: 50% 116.5%;
-  animation: l17 2s infinite linear; 
+  animation: l17 2s infinite linear;
 }
 .loader:before {
-  content:"";
+  content: "";
   min-width: 233%;
   height: 233%;
-  background: 
-    radial-gradient(farthest-side,#1F2B6C 90%,#0000) top,
-    radial-gradient(farthest-side,#BFD2F8 90%,#0000) left,
-    radial-gradient(farthest-side,#FFDD1C 90%,#0000) bottom,
-    radial-gradient(farthest-side,#BFD2F8 90%,#0000) right;
+  background: radial-gradient(farthest-side, #1f2b6c 90%, #0000) top,
+    radial-gradient(farthest-side, #bfd2f8 90%, #0000) left,
+    radial-gradient(farthest-side, #ffdd1c 90%, #0000) bottom,
+    radial-gradient(farthest-side, #bfd2f8 90%, #0000) right;
   background-size: 43% 43%;
   background-repeat: no-repeat;
   animation: inherit;
   animation-direction: reverse;
 }
 @keyframes l17 {
-  100% {transform: rotate(360deg)}
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .custom-tabs {
   border: none;
@@ -103,4 +104,8 @@
 }
 .form-gap {
   @apply flex flex-col gap-4;
+}
+
+ul {
+  list-style: none;
 }

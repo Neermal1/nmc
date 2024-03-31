@@ -8,6 +8,7 @@ export interface IMetatags {
   subheading: string;
   og_image?: any;
   description?: string;
+  type?: string;
 }
 
 export interface Slider {
@@ -142,6 +143,7 @@ export interface IDepartmentBranch extends IRelatedDepartment {
   image_link: any;
   image: any;
   department_category: IDepartmentCategory;
+  icon_link: any;
 }
 interface IDepartmentCategory {
   name: string;
