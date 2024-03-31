@@ -72,12 +72,6 @@ const DepartmentDetail = () => {
 
   return (
     <div>
-      <Metatag
-        heading="NMC"
-        subheading="Departments"
-        og_image="/images/Banners/Banner2.png"
-      />
-
       <div className="layout component-padding black-color flex flex-col gap-20">
         <div className="grid lg:grid-cols-8 lg:gap-20 gap-10">
           <div className="lg:col-span-5">
