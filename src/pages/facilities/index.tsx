@@ -1,21 +1,21 @@
 import CommonBanner from "@/components/Banner/CommonBanner";
 import Layout from "@/components/Layout/Layout";
-import CareerList from "@/pageComponents/career/CareerList";
+import FacilitiesList from "@/pageComponents/facilities/FacilitiesList";
 import Metatag from "@/utils/Metatag";
 
-export default function Career() {
+export default function Facilities() {
   return (
     <Layout>
       <Metatag
         heading="NMC"
-        subheading="Career"
+        subheading="Facilities"
         og_image="/images/ogImage/homePage.png"
       />
       <CommonBanner
-        headerName="Career at NMC"
+        headerName="Facilities"
         imageLink="/images/Banners/Banner2.png"
       />
-      <CareerList />
+      <FacilitiesList />
     </Layout>
   );
 }

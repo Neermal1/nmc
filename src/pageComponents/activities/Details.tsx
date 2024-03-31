@@ -1,4 +1,5 @@
 import { Activity } from "@/interface/interface";
+import Link from "next/link";
 
 /* eslint-disable @next/next/no-img-element */
 export default function DetailsComponent({
@@ -35,8 +36,9 @@ export default function DetailsComponent({
           </h2>
           <div className="grid gap-4">
             {relatedActivities?.map((activity: Activity) => (
-              <div
+              <Link
                 key={activity?.id}
+                href={`/activities/${activity?.slug}`}
                 className="w-full p-2 rounded-lg shadow-lg"
               >
                 <div className="flex items-center space-x-4">
@@ -49,7 +51,7 @@ export default function DetailsComponent({
                     {activity?.title}
                   </h3>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

@@ -1,34 +1,23 @@
 import { useState } from "react";
-import { BiCalendarEdit } from "react-icons/bi"; // Assuming this is the icon you want to use for the date
-import { AiFillEye, AiOutlineCloseCircle } from "react-icons/ai"; // Assuming these are the icons you want to use
+import { BiCalendarEdit } from "react-icons/bi";
+import { AiFillEye, AiOutlineCloseCircle } from "react-icons/ai";
 import NoticeCard from "./NoticeCard";
-
-const noticesData = [
-  {
-    id: 1,
-    category: "General",
-    date: "February 26, 2024",
-    name: "NMC Examination Form",
-    image:
-      "https://nmc.org.np/photos/4/Special%20Examination%20Notice.%20copy.jpg",
-  },
-  {
-    id: 2,
-    category: "Events",
-    date: "February 26, 2024",
-    name: "Examination",
-    image:
-      "https://www.collegenp.com/uploads/2021/02/Nepal-Medical-Council-(NMC)-Special-Examination-Online-Application-Submission-Notice.png",
-  },
-];
+import useFetchData from "@/hooks/useFetchData";
+import { INotice, INoticeCategory } from "@/interface/interface";
 
 export default function NoticeList() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const { fetchedData: notices } = useFetchData("notices");
+  const { fetchedData: categories } = useFetchData(
+    "notices/categories"
+  );
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
   const filteredNotices =
     selectedCategory === "All"
-      ? noticesData
-      : noticesData.filter((notice) => notice.category === selectedCategory);
+      ? notices
+      : notices?.filter(
+          (notice: INotice) => notice.notice_category_id === selectedCategory
+        );
 
   return (
     <section className="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-16 px-8 md:px-16 lg:px-24 xl:px-32 py-8">
@@ -43,22 +32,22 @@ export default function NoticeList() {
         >
           All
         </button>
-        {noticesData.map((notice, index) => (
+        {categories?.map((category: INoticeCategory, index: number) => (
           <button
             key={index}
             className={`mb-4 px-4 py-2 rounded-md focus:outline-none focus:border-none text-sm md:text-base lg:text-lg font-medium ${
-              selectedCategory === notice.category
+              selectedCategory === category.id.toString()
                 ? "bg-primary text-white"
                 : "bg-blue-50 text-black"
             }`}
-            onClick={() => setSelectedCategory(notice.category)}
+            onClick={() => setSelectedCategory(category.id.toString())}
           >
-            {notice.category}
+            {category.name}
           </button>
         ))}
       </div>
       <div className="w-full flex flex-col gap-6">
-        {filteredNotices.map((notice, index) => (
+        {filteredNotices?.map((notice: INotice, index: number) => (
           <NoticeCard key={index} notice={notice} />
         ))}
       </div>
