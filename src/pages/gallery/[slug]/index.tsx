@@ -15,7 +15,11 @@ export default function GalleryDetailImages() {
   const { fetchedData: imagesList } = useFetchData(`gallery/${slug}/images`);
   return (
     <Layout>
-      <Metatag heading="NMC" subheading="Gallery" og_image="" />
+      <Metatag
+        heading="Nepal Medical College"
+        subheading="Gallery"
+        og_image=""
+      />
       <CommonBanner
         headerName={galleryFound?.name}
         imageLink={galleryFound?.image_link}

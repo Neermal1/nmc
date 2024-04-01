@@ -31,6 +31,11 @@ export interface IFacility {
   meta_description: string;
 }
 
+export interface IFacilityDetail {
+  detail: IFacility;
+  related: IFacility[];
+}
+
 export interface Activity {
   id: number;
   title: string;

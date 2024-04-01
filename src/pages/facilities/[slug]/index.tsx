@@ -1,28 +1,81 @@
+import CommonBanner from "@/components/Banner/CommonBanner";
 import Layout from "@/components/Layout/Layout";
+import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
 import useFetchData from "@/hooks/useFetchData";
-import { IFacility } from "@/interface/interface";
+import { IFacility, IFacilityDetail } from "@/interface/interface";
 import DetailsComponent from "@/pageComponents/facilities/Details";
 import Metatag from "@/utils/Metatag";
+import { Descriptions } from "antd";
 import { useRouter } from "next/router";
 
-export default function FacilityDetail() {
+export default function FacilityDetail({ data }: any) {
   const router = useRouter();
   const { slug } = router.query;
   const { fetchedData } = useFetchData(`/facility/${slug}`);
-  const facility: IFacility = fetchedData;
+  const facility: IFacilityDetail = fetchedData;
+  console.log("facility");
   return (
     <Layout>
       <Metatag
-        heading="NMC"
-        subheading={facility?.title || "Facilities"}
-        description={facility?.meta_description}
-        og_image={facility?.image_link}
+        heading="Nepal Medical College"
+        subheading={data?.detail?.meta_title ? data?.detail?.meta_title : "NMC"}
+        description={
+          data?.detail?.meta_description ? data?.detail?.meta_description : ""
+        }
+        og_image={data?.detail?.image_link ? data?.detail?.image_link : ""}
+      />
+      <CommonBanner
+        headerName="Facilities"
+        imageLink="/images/Banners/Banner2.png"
       />
       <DetailsComponent
-        title={facility?.title}
-        description={facility?.description}
-        imageLink={facility?.image_link}
+        title={data?.detail?.title}
+        description={data?.detail?.description}
+        imageLink={data?.detail?.image_link}
+        relatedActivities={data?.related}
       />
     </Layout>
   );
+}
+
+export async function getServerSideProps({ params }: any) {
+  try {
+    const { data } = await SSR_fetchData(`facility/${params?.slug}`);
+    console.log(data);
+
+    return {
+      props: { data },
+    };
+  } catch (e: any) {
+    if (e.response && e.response.status === 429) {
+      const retryAfter = parseInt(e.response.headers["retry-after"]);
+      console.log("This is retry after", retryAfter);
+      if (!isNaN(retryAfter)) {
+        await new Promise((resolve) => setTimeout(resolve, retryAfter * 1000));
+        try {
+          console.log("refetching");
+          const { data } = await SSR_fetchData(`facility/${params?.slug}`);
+          return {
+            props: {
+              data,
+            },
+          };
+        } catch (retryError) {
+          console.error("Retry failed:", retryError);
+        }
+      }
+
+      return {
+        props: {
+          data: null,
+        },
+      };
+    } else {
+      return {
+        props: {
+          data: null,
+        },
+      };
+    }
+  }
 }

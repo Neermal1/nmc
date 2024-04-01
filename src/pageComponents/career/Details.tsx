@@ -4,21 +4,21 @@ import { useRouter } from "next/router";
 import CareerForm from "./CareerForm";
 import Metatag from "@/utils/Metatag";
 import CommonBanner from "@/components/Banner/CommonBanner";
+import { useEffect } from "react";
 
-export default function JobDetail() {
+export default function JobDetail({ data }: any) {
   const router = useRouter();
   const { career_name } = router.query;
-  const { fetchedData } = useFetchData(`/vacancy/${career_name}`);
+  const { fetchedData, refetchData } = useFetchData(`/vacancy/${career_name}`);
   const career: IVacancy = fetchedData;
+
+  useEffect(() => {
+    refetchData();
+  }, [career_name]);
 
   return (
     <>
-      <Metatag
-        heading="NMC"
-        subheading="Career"
-        description={fetchedData?.meta_description}
-        og_image="/images/ogImage/homePage.png"
-      />
+      
       <CommonBanner
         headerName="Career at NMC"
         imageLink="/images/Banners/Banner2.png"
@@ -28,13 +28,13 @@ export default function JobDetail() {
           {/* Job Details */}
           <div className="w-full h-full col-span-3 pr-8">
             <h1 className="text-xl md:text-2xl lg:text-4xl text-primary font-semibold mb-4">
-              {career?.title}
+              {data?.title}
             </h1>
             <div className="mt-4">
               <p
                 className="text-gray-700 text-sm md:text-base text-justify"
                 dangerouslySetInnerHTML={{
-                  __html: career?.description as string,
+                  __html: data?.description as string,
                 }}
               />
             </div>
@@ -42,7 +42,7 @@ export default function JobDetail() {
 
           {/* Form */}
           <div className="relative w-full h-full col-span-2 ">
-            <CareerForm vacancyId={career?.id} />
+            <CareerForm vacancyId={data?.id} />
           </div>
         </div>
       </section>
