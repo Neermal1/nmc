@@ -1,4 +1,5 @@
 import { IFacility } from "@/interface/interface";
+import Link from "next/link";
 
 /* eslint-disable @next/next/no-img-element */
 export default function DetailsComponent({
@@ -10,7 +11,7 @@ export default function DetailsComponent({
   return (
     <section className="px-8 md:px-16 lg:px-24 xl:px-32 py-8">
       <div className="grid lg:grid-cols-4 space-x-4 lg:space-x-8">
-        <div className="col-span-3">
+        <div className="col-span-3 w-full h-full">
           <div>
             <h1 className="mb-2 text-2xl lg:text-4xl text-primary font-semibold">
               {title}
@@ -29,14 +30,15 @@ export default function DetailsComponent({
             />
           </div>
         </div>
-        <div className="col-span-1 lg:h-full sticky top-16">
+        <div className="col-span-1 lg:h-screen sticky top-32">
           <h2 className="text-xl lg:text-2xl font-medium mb-4">
             Related Facilities
           </h2>
           <div className="grid gap-4">
             {relatedFacilities?.map((facility: IFacility) => (
-              <div
+              <Link
                 key={facility?.id}
+                href={`/facility/${facility?.slug}`}
                 className="w-full p-2 rounded-lg shadow-lg"
               >
                 <div className="flex items-center space-x-4">
@@ -49,7 +51,7 @@ export default function DetailsComponent({
                     {facility?.title}
                   </h3>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

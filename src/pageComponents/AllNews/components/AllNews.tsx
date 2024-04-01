@@ -12,7 +12,7 @@ const AllNews = () => {
   } else if (fetchedData) {
     return (
       <div className="black-color">
-        <Metatag heading="NMC " subheading="All News" />
+        <Metatag heading="NMC " subheading="All News" og_type="article" description="" og_image="/images/ogImage/homePage.png"/>
         <CommonBanner
           headerName="News"
           imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"

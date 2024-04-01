@@ -11,7 +11,7 @@ export default function ProgramDetail({ data }: any) {
       <Metatag
         heading="Nepal Medical College"
         subheading={data?.meta_title || "Academics"}
-        description={data?.meta_description}
+        description={data?.meta_description || ""}
         og_image={data?.image_link}
       />
       <ProgramDetails data={data} />

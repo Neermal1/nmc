@@ -40,7 +40,7 @@ export default function AboutContent() {
   return (
     <>
       <Metatag
-        heading={fetchedData?.meta_title}
+        heading={fetchedData?.meta_title || "Nepal Medical College"}
         subheading="About"
         description={fetchedData?.meta_description}
         og_image="/images/ogImage/homePage.png"
