@@ -6,7 +6,7 @@ import Metatag from "@/utils/Metatag";
 export default function Research() {
   return (
     <Layout>
-      <Metatag heading="NMC" subheading="Research" description="" og_image="/images/ogImage/homePage.png" />
+      <Metatag heading="Nepal Medical College" subheading="Research" description="" og_image="/images/ogImage/homePage.png" />
       <CommonBanner
         headerName="NMC Research"
         imageLink="/images/Banners/Researchbanner.png"

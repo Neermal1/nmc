@@ -7,12 +7,12 @@ export default function Gallery() {
   return (
     <Layout>
       <Metatag
-        heading="NMC"
+        heading="Nepal Medical College"
         subheading="Gallery"
         og_image="/images/ogImage/homePage.png"
       />
       <CommonBanner
-        headerName="NMC Gallery"
+        headerName="Gallery"
         imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
       />
       <GalleryList />

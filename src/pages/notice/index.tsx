@@ -6,7 +6,11 @@ import Metatag from "@/utils/Metatag";
 export default function Notices() {
   return (
     <Layout>
-      <Metatag heading="NMC" subheading="Notice" og_image="/images/ogImage/homePage.png" />
+      <Metatag
+        heading="Nepal Medical College"
+        subheading="Notice"
+        og_image="/images/ogImage/homePage.png"
+      />
       <CommonBanner
         headerName="Notice"
         imageLink="/images/Banners/Banner2.png"

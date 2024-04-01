@@ -8,7 +8,7 @@ export default function Detail({ data }: any) {
   return (
     <Layout>
       <Metatag
-        heading="NMC"
+        heading="Nepal Medical College"
         subheading={data?.detail?.meta_title || "Research"}
         description={data?.detail?.meta_description || ""}
         og_image={data?.detail?.image_link}

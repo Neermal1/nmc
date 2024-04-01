@@ -7,7 +7,7 @@ export default function CareerDetail({ data }: any) {
   return (
     <Layout>
       <Metatag
-        heading="NMC"
+        heading="Nepal Medical College"
         subheading={data?.meta_title || "Career"}
         description={data?.meta_description || ""}
         og_image={data?.image_link}

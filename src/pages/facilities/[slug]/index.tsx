@@ -1,3 +1,4 @@
+import CommonBanner from "@/components/Banner/CommonBanner";
 import Layout from "@/components/Layout/Layout";
 import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
 import useFetchData from "@/hooks/useFetchData";
@@ -16,12 +17,16 @@ export default function FacilityDetail({ data }: any) {
   return (
     <Layout>
       <Metatag
-        heading="NMC"
+        heading="Nepal Medical College"
         subheading={data?.detail?.meta_title ? data?.detail?.meta_title : "NMC"}
         description={
           data?.detail?.meta_description ? data?.detail?.meta_description : ""
         }
         og_image={data?.detail?.image_link ? data?.detail?.image_link : ""}
+      />
+      <CommonBanner
+        headerName="Facilities"
+        imageLink="/images/Banners/Banner2.png"
       />
       <DetailsComponent
         title={data?.detail?.title}
