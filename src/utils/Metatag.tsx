@@ -21,7 +21,7 @@ const Metatag = ({
       <link rel="icon" href="/favicon.ico" />
 
       <meta property="og:locale" content="en" />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={type ? "type" : "website"} />
       <meta property="og:description" content={description} />
     </Head>
   );
