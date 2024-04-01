@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-//hooks
-
 //interface
 import { INews } from "@/interface/interface";
+
+//react icons
 import { CiClock2 } from "react-icons/ci";
 
 const NewsInfo = ({ newsInfo }: any) => {
@@ -13,7 +13,7 @@ const NewsInfo = ({ newsInfo }: any) => {
         <div className="layout px-4 pb-20">
           <div className="flex flex-col lg:gap-20 gap-10">
             <div className="flex flex-col lg:gap-20 gap-10">
-              <div className="flex flex-col gap-4 items-center justify-center">
+              <div className="flex flex-col gap-4 ">
                 <div className="lg:text-[35px] text-[25px]  font-semibold">
                   {newsInfo?.detail.title}
                 </div>
@@ -36,11 +36,11 @@ const NewsInfo = ({ newsInfo }: any) => {
                 </div>
               </div>
               <div className="flex flex-col gap-16 lg:gap-10">
-                <div className="flex  items-center justify-center">
+                <div className="flex ">
                   <img
                     src={newsInfo?.detail.image_link}
                     alt=""
-                    className="h-[50vh] lg:w-[60%] rounded-[8px] object-cover"
+                    className="h-[50vh] lg:w-[80%] rounded-[8px] object-cover"
                   />
                 </div>
 

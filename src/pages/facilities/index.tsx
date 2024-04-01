@@ -7,7 +7,7 @@ export default function Facilities() {
   return (
     <Layout>
       <Metatag
-        heading="NMC"
+        heading="Nepal Medical College"
         subheading="Facilities"
         og_image="/images/ogImage/homePage.png"
       />

@@ -5,21 +5,22 @@ export default function DetailsComponent({
   description,
   title,
   imageLink,
+  relatedFacilities,
 }: any) {
   return (
     <section className="px-8 md:px-16 lg:px-24 xl:px-32 py-8">
-      <div className="flex flex-col lg:flex-row space-x-4 lg:space-x-8">
-        <div className="w-full lg:h-full">
+      <div className="grid lg:grid-cols-4 space-x-4 lg:space-x-8">
+        <div className="col-span-3">
           <div>
             <h1 className="mb-2 text-2xl lg:text-4xl text-primary font-semibold">
               {title}
             </h1>
             <div className="w-32 border-2 border-primaryYellow"></div>
-            <div className="w-full my-4">
+            <div className="w-full my-4 lg:my-8">
               <img
                 src={imageLink}
                 alt=""
-                className="w-full lg:h-72 rounded-lg object-cover"
+                className="w-full lg:h-96 rounded-lg object-cover"
               />
             </div>
             <div
@@ -28,12 +29,12 @@ export default function DetailsComponent({
             />
           </div>
         </div>
-        {/* <div className="lg:w-1/4 lg:h-full sticky top-16">
+        <div className="col-span-1 lg:h-full sticky top-16">
           <h2 className="text-xl lg:text-2xl font-medium mb-4">
-            Related Activities
+            Related Facilities
           </h2>
           <div className="grid gap-4">
-            {relatedActivities?.map((facility: IFacility) => (
+            {relatedFacilities?.map((facility: IFacility) => (
               <div
                 key={facility?.id}
                 className="w-full p-2 rounded-lg shadow-lg"
@@ -51,7 +52,7 @@ export default function DetailsComponent({
               </div>
             ))}
           </div>
-        </div> */}
+        </div>
       </div>
     </section>
   );

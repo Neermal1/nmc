@@ -17,11 +17,11 @@ export default function DetailsComponent({
               {title}
             </h1>
             <div className="w-32 border-2 border-primaryYellow"></div>
-            <div className="w-full my-4">
+            <div className="w-full my-4 lg:my-8">
               <img
                 src={imageLink}
                 alt=""
-                className="w-full lg:h-72 rounded-lg object-cover"
+                className="w-full lg:h-96 rounded-lg object-cover"
               />
             </div>
             <div

@@ -40,14 +40,7 @@ const MessageFromDirector = () => {
   } else if (fetchedData) {
     return (
       <div className="bg-[#EAF1FF]">
-        <div className="layout component-padding flex flex-col gap-20">
-          <div className="flex items-center justify-center">
-            <ComponentHeader
-              data={{
-                main_title: "Message From Director",
-              }}
-            />
-          </div>
+        <div className="layout  component-padding flex flex-col gap-20">
           <Carousel
             responsive={responsive}
             swipeable={true}
@@ -67,24 +60,33 @@ const MessageFromDirector = () => {
                     style={{
                       marginBottom: "20px",
                     }}
-                    className="grid lg:grid-cols-5 gap-10"
+                    className="flex flex-col gap-10"
                   >
-                    <div className="lg:col-span-2">
-                      <div className="">
-                        <img
-                          src={data?.image_link}
-                          alt=""
-                          className="lg:w-[50vh] lg:h-[50vh] w-[25vh] h-[25vh] rounded-full  object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="lg:col-span-3">
-                      <div
-                        className="leading-[28px]"
-                        dangerouslySetInnerHTML={{
-                          __html: data?.message,
+                    <div className="flex items-center justify-center">
+                      <ComponentHeader
+                        data={{
+                          main_title: `Message From ${data?.position}`,
                         }}
-                      ></div>
+                      />
+                    </div>
+                    <div className="grid lg:grid-cols-5 gap-10">
+                      <div className="lg:col-span-2">
+                        <div className="sticky top-[140px]">
+                          <img
+                            src={data?.image_link}
+                            alt=""
+                            className="lg:w-[50vh] lg:h-[50vh] w-[25vh] h-[25vh] rounded-full  object-cover"
+                          />
+                        </div>
+                      </div>
+                      <div className="lg:col-span-3">
+                        <div
+                          className="leading-[28px]"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.message,
+                          }}
+                        ></div>
+                      </div>
                     </div>
                   </div>
                 );

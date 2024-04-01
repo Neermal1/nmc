@@ -7,7 +7,7 @@ export default function Career() {
   return (
     <Layout>
       <Metatag
-        heading="NMC"
+        heading="Nepal Medical College"
         subheading="Career"
         og_image="/images/ogImage/homePage.png"
       />
