@@ -5,6 +5,7 @@ import { INews } from "@/interface/interface";
 
 //react icons
 import { CiClock2 } from "react-icons/ci";
+import { formatDate } from "@/utils/FormatDate";
 
 const NewsInfo = ({ newsInfo }: any) => {
   return (
@@ -22,16 +23,7 @@ const NewsInfo = ({ newsInfo }: any) => {
                     <div className="ml-[4px]">
                       <CiClock2 size={20} />
                     </div>
-                    <div>
-                      {new Date(newsInfo?.detail.created_at).toLocaleDateString(
-                        "en-GB",
-                        {
-                          year: "numeric",
-                          month: "2-digit",
-                          day: "2-digit",
-                        }
-                      )}
-                    </div>
+                    <div>{formatDate(newsInfo?.detail?.created_at)}</div>
                   </div>
                 </div>
               </div>

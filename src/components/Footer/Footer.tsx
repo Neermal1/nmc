@@ -1,16 +1,13 @@
-import Link from "next/link";
-
-//hooks
 import useFetchData from "@/hooks/useFetchData";
-
-//antd components
-
-import axiosInstance from "@/axiosInstance/axiosInstance";
 import { Button, Divider, Form, Input, notification } from "antd";
 import { useState } from "react";
 import { BsInstagram, BsYoutube } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { FiPhone, FiMail, FiMapPin } from "react-icons/fi"; // Import icons
+
+import Link from "next/link";
+import axiosInstance from "@/axiosInstance/axiosInstance";
 
 const Footer = () => {
   const { fetchedData, loading } = useFetchData("company-profile");
@@ -61,19 +58,23 @@ const Footer = () => {
         {
           name: ` ${fetchedData?.company_phone}`,
           linktype: "tel:",
+          icon: <FiPhone />, // Add phone icon
         },
         {
           name: `${fetchedData?.company_email}`,
           linktype: "mailto",
+          icon: <FiMail />, // Add mail icon
         },
         {
           name: `${fetchedData?.company_address}`,
           linktype: null,
           link: true,
+          icon: <FiMapPin />, // Add location icon
         },
       ],
     },
   ];
+
   const [form] = Form.useForm();
 
   const handleNewsLetter = async (values: any) => {
@@ -141,22 +142,25 @@ const Footer = () => {
                         {data?.list.map((data: any, index) => {
                           return (
                             <div key={index}>
-                              {data?.linktype !== null ? (
-                                <a href={`${data?.linktype}:${data?.name}`}>
-                                  {data?.name}
-                                </a>
-                              ) : (
-                                <div>
-                                  {data?.link == true && (
-                                    <div>{data?.name}</div>
-                                  )}
-                                </div>
-                              )}
-                              {data?.slug && (
-                                <Link href={`/${data?.slug}`} key={index}>
-                                  <div className={``}>{data?.name}</div>
-                                </Link>
-                              )}
+                              <div className="flex items-center">
+                                {data.icon && <span className="mr-2">{data.icon}</span>}
+                                {data?.linktype !== null ? (
+                                  <a href={`${data?.linktype}:${data?.name}`}>
+                                    {data?.name}
+                                  </a>
+                                ) : (
+                                  <div>
+                                    {data?.link == true && (
+                                      <div>{data?.name}</div>
+                                    )}
+                                  </div>
+                                )}
+                                {data?.slug && (
+                                  <Link href={`/${data?.slug}`} key={index}>
+                                    <div className={``}>{data?.name}</div>
+                                  </Link>
+                                )}
+                              </div>
                             </div>
                           );
                         })}
