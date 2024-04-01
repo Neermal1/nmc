@@ -41,6 +41,18 @@ const Footer = () => {
           linktype: null,
           link: false,
         },
+        {
+          name: "Notice",
+          slug: "notice",
+          linktype: null,
+          link: false,
+        },
+        {
+          name: "Research",
+          slug: "/research",
+          linktype: null,
+          link: false,
+        },
       ],
     },
     {
@@ -211,7 +223,7 @@ const Footer = () => {
                         className="  bg-[#EAF1FF] hover:border-[1px] hover:border-[#EAF1FF] text-black  outline-[#EAF1FF] rounded-full p-2 hover:bg-primary hover:text-white hover:bg-transparent"
                         target="_blank"
                       >
-                        <BsInstagram className="h-[2.5vh] w-[2.5vh]" />
+                        <FaFacebookF className="h-[2.5vh] w-[2.5vh]" />
                       </Link>
                     )}
                     {fetchedData?.instagram && (
@@ -221,7 +233,7 @@ const Footer = () => {
                         target="_blank"
                       >
                         {" "}
-                        <FaFacebookF className="h-[2.5vh] w-[2.5vh]" />
+                        <BsInstagram className="h-[2.5vh] w-[2.5vh]" />
                       </Link>
                     )}
 

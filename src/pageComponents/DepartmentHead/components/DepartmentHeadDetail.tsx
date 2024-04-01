@@ -20,7 +20,7 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
                 <div className="flex flex-col gap-10">
                   <div className=" rounded-[8px] overflow-hidden">
                     <img
-                      src="https://img.freepik.com/free-photo/medical-banner-with-doctor-wearing-coat_23-2149611219.jpg?t=st=1711523241~exp=1711526841~hmac=588e592d004db5b44c56722eee702a46bb31f6ff94820f13788c9ae5ba375a20&w=996"
+                      src={departmentHeadInfo?.details?.image_link}
                       alt=""
                       className="h-[50vh] w-[100%] object-cover rounded-[8px] hover:scale-110 transition-all duration-700"
                     />
