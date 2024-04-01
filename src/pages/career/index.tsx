@@ -9,11 +9,11 @@ export default function Career() {
       <Metatag
         heading="Nepal Medical College"
         subheading="Career"
-        og_image="/images/ogImage/homePage.png"
+        og_image="https://fjwp.s3.amazonaws.com/blog/wp-content/uploads/2020/08/17064425/Portfolio-Career-1024x512.png"
       />
       <CommonBanner
         headerName="Career at NMC"
-        imageLink="/images/Banners/Banner2.png"
+        imageLink="https://fjwp.s3.amazonaws.com/blog/wp-content/uploads/2020/08/17064425/Portfolio-Career-1024x512.png"
       />
       <CareerList />
     </Layout>

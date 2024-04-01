@@ -12,7 +12,6 @@ export default function FacilityDetail({ data }: any) {
   const router = useRouter();
   const { slug } = router.query;
   const { fetchedData } = useFetchData(`/facility/${slug}`);
-  const facility: IFacilityDetail = fetchedData;
   console.log("facility");
   return (
     <Layout>
@@ -32,7 +31,7 @@ export default function FacilityDetail({ data }: any) {
         title={data?.detail?.title}
         description={data?.detail?.description}
         imageLink={data?.detail?.image_link}
-        relatedActivities={data?.related}
+        relatedFacilities={data?.related}
       />
     </Layout>
   );
@@ -42,6 +41,7 @@ export async function getServerSideProps({ params }: any) {
   try {
     const { data } = await SSR_fetchData(`facility/${params?.slug}`);
     console.log(data);
+    console.log("this is related data", data?.related);
 
     return {
       props: { data },
