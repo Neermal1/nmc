@@ -8,7 +8,7 @@ const ContactUs = () => {
       <Metatag
         heading="Nepal Medical College"
         subheading="Contact Us"
-        og_image="https://media.istockphoto.com/id/1365543480/video/contact-us-concept.jpg?s=640x640&k=20&c=G16GzQ4uJKlITww2ArmKNB9UKb1-IT2eyJrUxkUmAIY="
+        og_image="https://bluerevolution.ifremer.fr/var/storage/images/_aliases/opengraphimage/medias-ifremer/medias-bluerevolution/contact-us/1811720-1-eng-GB/Contact-us.png"
       />
 
       <ContactDetail />

@@ -20,7 +20,7 @@ import Button from "@/components/Button/Button";
 const OurAcademics = () => {
   const academicList = [
     {
-      title: "Academic programs",
+      title: "Gallery",
       icon: <RiGalleryFill size={70} />,
       slug: "/gallery",
     },
