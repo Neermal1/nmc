@@ -57,15 +57,17 @@ export default function MsgFromDirect() {
                   <h2 className="text-sm lg:text-base">{person?.position}</h2>
                 </div>
               </div>
-              <div className=" flex flex-col lg:flex-row  space-y-4 lg:space-y-0 lg:space-x-8">
-                <div className="lg:w-1/2 h-full">
-                  <img
-                    src={person?.image_link}
-                    alt=""
-                    className="w-full h-full object-cover rounded-xl"
-                  />
+              <div className=" flex flex-col lg:flex-row  space-y-4 lg:space-y-0 lg:space-x-8 ">
+                <div className="lg:w-4/10">
+                  <div className="lg:w-96 lg:h-96">
+                    <img
+                      src={person?.image_link}
+                      alt=""
+                      className="w-full h-full object-top object-cover rounded-xl"
+                    />
+                  </div>
                 </div>
-                <div className="lg:w-1/2 h-full flex items-center">
+                <div className="lg:w-6/10 flex items-center">
                   <div>
                     <p
                       className="text-sm md:text-base text-justify"

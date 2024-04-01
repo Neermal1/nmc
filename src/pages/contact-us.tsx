@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout/Layout";
+import ContDetail from "@/pageComponents/Contact/components/ContDetail";
 import ContactDetail from "@/pageComponents/Contact/components/ContactDetail";
 import Metatag from "@/utils/Metatag";
 
@@ -11,7 +12,8 @@ const ContactUs = () => {
         og_image="https://bluerevolution.ifremer.fr/var/storage/images/_aliases/opengraphimage/medias-ifremer/medias-bluerevolution/contact-us/1811720-1-eng-GB/Contact-us.png"
       />
 
-      <ContactDetail />
+      {/* <ContactDetail /> */}
+      <ContDetail />
     </Layout>
   );
 };

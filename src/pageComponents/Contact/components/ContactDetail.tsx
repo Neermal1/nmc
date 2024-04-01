@@ -63,10 +63,6 @@ const ContactDetail = () => {
                   </div>
                 </div>
               </div>
-              {/* for map  */}
-              <div className="mt-4 lg:mt-8">
-                <div dangerouslySetInnerHTML={{ __html: fetchedData?.map }} />
-              </div>
             </div>
           </div>
           <div className="col-span-5 flex lg:justify-end">

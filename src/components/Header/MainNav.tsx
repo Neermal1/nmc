@@ -8,7 +8,7 @@ export default function MainNav() {
   const { fetchedData: academicsData } = useFetchData("academics-program");
 
   return (
-    <nav className="w-full px-8 md:px-16 lg:px-24 xl:px-32 py-2 lg:py-4 sticky top-0 bg-white z-50 hidden lg:block drop-shadow-lg">
+    <nav className="w-full px-8 md:px-16 lg:px-24 xl:px-32 py-2 lg:py-4 sticky top-0 bg-white hidden lg:block drop-shadow-lg !z-50">
       <div className="flex items-center justify-center">
         <ul className="flex space-x-4 lg:space-x-8">
           <NavItem name="Home" navigateTo="/" />

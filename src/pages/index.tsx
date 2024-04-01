@@ -16,6 +16,8 @@ import Metatag from "@/utils/Metatag";
 
 //data fetcher
 import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
+import MsgFromDirect from "@/pageComponents/about/MsgFromDirect";
+import ComponentHeader from "@/components/componentHeader/ComponentHeader";
 
 const index = ({ data }: any) => {
   return (
@@ -31,7 +33,17 @@ const index = ({ data }: any) => {
       <ClinicalService />
       <HealthCarePackages />
       <WhyChooseUs />
-      <MessageFromDirector />
+      {/* <MessageFromDirector /> */}
+      <div className="px-8 md:px-16 lg:px-24 xl:px-32 py-8 md:py-16 bg-[#EAF1FF]">
+        <div className="flex items-center justify-center">
+          <ComponentHeader
+            data={{
+              main_title: `Message From`,
+            }}
+          />
+        </div>
+        <MsgFromDirect />
+      </div>
       <OurAcademics />
       <Testimonials />
       <CallToAction />
