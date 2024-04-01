@@ -3,12 +3,17 @@ import useFetchData from "@/hooks/useFetchData";
 import ContactForm from "./ContactForm";
 import { FaPhoneAlt } from "react-icons/fa";
 import { GrLocation } from "react-icons/gr";
+import Loader from "@/components/Loader/Loader";
 
 const ContactDetail = () => {
   //states
   const { fetchedData, loading } = useFetchData("company-profile");
   if (loading) {
-    return <div>Loading</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   } else if (fetchedData) {
     return (
       <div className="layout component-padding">

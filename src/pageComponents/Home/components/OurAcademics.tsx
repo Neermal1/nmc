@@ -4,8 +4,8 @@ import Link from "next/link";
 import { IoBookSharp } from "react-icons/io5";
 import { FaUserGraduate } from "react-icons/fa6";
 import { FiUsers } from "react-icons/fi";
-import { FaNewspaper } from "react-icons/fa";
-import { RiFirstAidKitLine } from "react-icons/ri";
+import { FaHospitalAlt, FaNewspaper, FaSearchengin } from "react-icons/fa";
+import { RiFirstAidKitLine, RiGalleryFill } from "react-icons/ri";
 import { CiStethoscope } from "react-icons/ci";
 import { BsFillTelephoneFill } from "react-icons/bs";
 
@@ -21,18 +21,18 @@ const OurAcademics = () => {
   const academicList = [
     {
       title: "Academic programs",
-      icon: <IoBookSharp size={70} />,
-      slug: "all-department",
+      icon: <RiGalleryFill size={70} />,
+      slug: "/gallery",
     },
     {
-      title: "Faculty",
-      icon: <FaUserGraduate size={70} />,
+      title: "Department",
+      icon: <FaHospitalAlt size={70} />,
       slug: "/all-department",
     },
     {
-      title: "Student Zone",
-      icon: <FiUsers size={70} />,
-      slug: "/about",
+      title: "Research",
+      icon: <FaSearchengin size={70} />,
+      slug: "/research",
     },
     {
       title: "Notice",
@@ -40,7 +40,7 @@ const OurAcademics = () => {
       slug: "/notice",
     },
     {
-      title: "Facilities & Services",
+      title: "Facilities ",
       icon: <RiFirstAidKitLine size={70} />,
       slug: "/facilities",
     },

@@ -31,7 +31,6 @@ export default ServiceDetail;
 export async function getServerSideProps({ params }: any) {
   try {
     const { data } = await SSR_fetchData(`service/${params?.service_name}`);
-    console.log(data);
     return {
       props: {
         data,
