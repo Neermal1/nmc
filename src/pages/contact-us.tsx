@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout/Layout";
+import ContDetail from "@/pageComponents/Contact/components/ContDetail";
 import ContactDetail from "@/pageComponents/Contact/components/ContactDetail";
 import Metatag from "@/utils/Metatag";
 
@@ -11,7 +12,8 @@ const ContactUs = () => {
         og_image="https://media.istockphoto.com/id/1365543480/video/contact-us-concept.jpg?s=640x640&k=20&c=G16GzQ4uJKlITww2ArmKNB9UKb1-IT2eyJrUxkUmAIY="
       />
 
-      <ContactDetail />
+      {/* <ContactDetail /> */}
+      <ContDetail />
     </Layout>
   );
 };

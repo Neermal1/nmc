@@ -61,7 +61,7 @@ const ContactForm = () => {
 
   return (
     <div className="">
-      <div className="bg-white drop-shadow-md p-20 rounded-[8px]">
+      <div className="bg-white drop-shadow-md p-4 md:p-8 lg:p-20 rounded-[8px]">
         <Form
           form={form}
           layout="vertical"
