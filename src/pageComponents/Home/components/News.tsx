@@ -4,6 +4,7 @@ import SecondaryButton from "@/components/Button/SecondaryButton";
 import ComponentHeader from "@/components/componentHeader/ComponentHeader";
 import useFetchData from "@/hooks/useFetchData";
 import { INews } from "@/interface/interface";
+import { formatDate } from "@/utils/FormatDate";
 import Link from "next/link";
 import { FaEye } from "react-icons/fa";
 
@@ -49,16 +50,7 @@ const News = () => {
                       <div className="text-[18px] font-semibold text-[#249CDE]">
                         {data?.title}
                       </div>
-                      <div>
-                        {new Date(data?.created_at).toLocaleDateString(
-                          "en-GB",
-                          {
-                            year: "numeric",
-                            month: "2-digit",
-                            day: "2-digit",
-                          }
-                        )}
-                      </div>
+                      <div>{formatDate(data?.created_at)}</div>
                     </div>
                     <div className="flex gap-2 items-center">
                       <FaEye className="text-[#249CDE]" />
