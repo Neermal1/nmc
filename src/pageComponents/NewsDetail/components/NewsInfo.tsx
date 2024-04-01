@@ -40,7 +40,7 @@ const NewsInfo = ({ newsInfo }: any) => {
                   <img
                     src={newsInfo?.detail.image_link}
                     alt=""
-                    className="h-[50vh] lg:w-[80%] rounded-[8px] object-cover"
+                    className="h-[65vh] lg:w-[100%] rounded-[8px] object-cover"
                   />
                 </div>
 
