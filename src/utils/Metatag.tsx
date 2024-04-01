@@ -2,7 +2,7 @@
 import Head from "next/head";
 import { IMetatags } from "@/interface/interface";
 
-const Metatag = ({ heading, subheading, description, og_image }: IMetatags) => {
+const Metatag = ({ heading, subheading, description, og_image, og_type }: IMetatags) => {
   return (
     <Head>
       <meta charSet="UTF-8"></meta>
@@ -15,7 +15,7 @@ const Metatag = ({ heading, subheading, description, og_image }: IMetatags) => {
       <link rel="icon" href="/favicon.ico" />
 
       <meta property="og:locale" content="en" />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={og_type || "website"} />
       <meta property="og:description" content={description} />
     </Head>
   );

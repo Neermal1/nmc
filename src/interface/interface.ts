@@ -8,6 +8,7 @@ export interface IMetatags {
   subheading: string;
   og_image?: any;
   description?: string;
+  og_type?: string;
 }
 
 export interface Slider {
