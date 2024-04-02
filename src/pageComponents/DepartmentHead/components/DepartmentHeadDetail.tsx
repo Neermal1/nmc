@@ -40,7 +40,7 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
               <div className="border-[1px] flex flex-col gap-6  sticky top-[120px] bg-white hover:drop-shadow-md border-gray-300 rounded-[8px] p-6">
                 <div className="border-b-[1px] border-gray-300">
                   <div className=" border-gray-300 mb-2 lg:text-[20px] font-medium">
-                    Related Department
+                    Related Departments
                   </div>
                 </div>
                 <div className="flex flex-col gap-4">
