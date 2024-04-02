@@ -242,13 +242,6 @@ const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
   return (
     <>
       <div className="flex lg:flex-col gap-8 items-center justify-center ">
-        <div>
-          <ComponentHeader
-            data={{
-              main_title: "Book An Appointment",
-            }}
-          />
-        </div>
         <div className="lg:w-[80%]  bg-[white] drop-shadow-md rounded-[8px] p-6 flex items-center justify-center">
           <Form
             form={form}
