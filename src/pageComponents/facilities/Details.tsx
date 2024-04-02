@@ -30,29 +30,31 @@ export default function DetailsComponent({
             />
           </div>
         </div>
-        <div className="col-span-1 lg:h-screen sticky top-32">
-          <h2 className="text-xl lg:text-2xl font-medium mb-4">
-            Related Facilities
-          </h2>
-          <div className="grid gap-4">
-            {relatedFacilities?.map((facility: IFacility) => (
-              <Link
-                key={facility?.id}
-                href={`/facility/${facility?.slug}`}
-                className="w-full p-2 rounded-lg shadow-lg"
-              >
-                <div className="flex items-center space-x-4">
-                  <img
-                    src={facility?.image_link}
-                    alt=""
-                    className="w-16 h-16 object-cover rounded-lg"
-                  />
-                  <h3 className="text-lg lg:text-xl font-medium">
-                    {facility?.title}
-                  </h3>
-                </div>
-              </Link>
-            ))}
+        <div className="col-span-1">
+          <div className="  sticky top-32">
+            <h2 className="text-xl lg:text-2xl font-medium mb-4">
+              Related Facilities
+            </h2>
+            <div className="grid gap-4">
+              {relatedFacilities?.map((facility: IFacility) => (
+                <Link
+                  key={facility?.id}
+                  href={`/facility/${facility?.slug}`}
+                  className="w-full p-2 rounded-lg shadow-lg"
+                >
+                  <div className="flex items-center space-x-4">
+                    <img
+                      src={facility?.image_link}
+                      alt=""
+                      className="w-16 h-16 object-cover rounded-lg"
+                    />
+                    <h3 className="text-lg lg:text-xl font-medium">
+                      {facility?.title}
+                    </h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
