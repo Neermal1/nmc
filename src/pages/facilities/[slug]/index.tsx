@@ -40,8 +40,6 @@ export default function FacilityDetail({ data }: any) {
 export async function getServerSideProps({ params }: any) {
   try {
     const { data } = await SSR_fetchData(`facility/${params?.slug}`);
-    console.log(data);
-    console.log("this is related data", data?.related);
 
     return {
       props: { data },

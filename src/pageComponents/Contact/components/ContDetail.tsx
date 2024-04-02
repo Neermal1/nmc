@@ -1,6 +1,6 @@
 import useFetchData from "@/hooks/useFetchData";
 import { FaPhoneAlt } from "react-icons/fa";
-import { GrLocation } from "react-icons/gr";
+import { GrLocation, GrMail } from "react-icons/gr";
 import ContactForm from "./ContactForm";
 
 export default function ContDetail() {
@@ -22,7 +22,7 @@ export default function ContDetail() {
               </div>
               <div>If you have any queries feel free to contact us.</div>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 mt-4">
               <div className="flex items-center gap-2">
                 <div
                   style={{
@@ -50,6 +50,20 @@ export default function ContDetail() {
                 <div>
                   <div className="flex flex-col gap-1">
                     <div>{fetchedData?.company_address}</div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div
+                  style={{
+                    color: "var(--primary-color)",
+                  }}
+                >
+                  <GrMail size={15} />
+                </div>
+                <div>
+                  <div className="flex flex-col gap-1">
+                    <div>{fetchedData?.company_email}</div>
                   </div>
                 </div>
               </div>

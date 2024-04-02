@@ -32,7 +32,6 @@ export async function getServerSideProps({ params }: any) {
     const { data } = await SSR_fetchData(
       `research/detail/${params?.research_title}`
     );
-    console.log("This is data", data);
 
     return {
       props: { data },

@@ -22,7 +22,6 @@ export default function ProgramDetail({ data }: any) {
 export async function getServerSideProps({ params }: any) {
   try {
     const { data } = await SSR_fetchData(`academics/detail/${params?.program}`);
-    console.log("This is data", data);
 
     return {
       props: { data },

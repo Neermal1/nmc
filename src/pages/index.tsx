@@ -35,13 +35,6 @@ const index = ({ data }: any) => {
       <WhyChooseUs />
       {/* <MessageFromDirector /> */}
       <div className="px-8 md:px-16 lg:px-24 xl:px-32 py-8 md:py-16 bg-[#EAF1FF]">
-        <div className="flex items-center justify-center">
-          <ComponentHeader
-            data={{
-              main_title: `Message From`,
-            }}
-          />
-        </div>
         <MsgFromDirect />
       </div>
       <OurAcademics />

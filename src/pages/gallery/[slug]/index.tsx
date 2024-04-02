@@ -33,7 +33,6 @@ export default function GalleryDetailImages({ data }: any) {
 export async function getServerSideProps({ params }: any) {
   try {
     const { data } = await SSR_fetchData(`gallery/images`);
-    console.log("This is data", data);
 
     return {
       props: { data },

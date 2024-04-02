@@ -120,3 +120,7 @@ ul {
   list-style: revert;
   padding: 24px;
 }
+
+.react-multiple-carousel__arrow {
+  z-index: auto !important;
+}
