@@ -27,7 +27,7 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                 <div className="lg:text-[35px] text-[25px] font-semibold">
                   {doctorInfo?.name}
                 </div>
-                <div className="flex gap-4">
+                <div className="flex lg:flex-row flex-col gap-4">
                   {doctorInfo?.department?.name !== null && (
                     <div className="flex items-center gap-2">
                       <div className="bg-white drop-shadow-md rounded-[8px] flex items-center justify-center">
@@ -38,7 +38,7 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                           width={25}
                         ></Image>
                       </div>
-                      <div className="text-[20px] text-[#1f2b6c] font-semibold">
+                      <div className="lg:text-[20px] text-[16px] text-[#1f2b6c] font-semibold">
                         {doctorInfo?.department?.name}
                       </div>
                     </div>
@@ -54,13 +54,13 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                           width={25}
                         ></Image>
                       </div>
-                      <div className="text-[20px] text-[#1f2b6c] font-semibold">
+                      <div className="lg:text-[20px] text-[16px] text-[#1f2b6c] font-semibold">
                         {doctorInfo?.designation}
                       </div>
                     </div>
                   )}
 
-                  {/* {doctorInfo?.degree !== null && (
+                  {doctorInfo?.degree !== null && (
                     <div className="flex items-center gap-2">
                       <div className="bg-white drop-shadow-md rounded-[8px] flex items-center justify-center">
                         <Image
@@ -70,20 +70,20 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                           width={25}
                         ></Image>
                       </div>
-                      <div className="text-[20px] text-[#1f2b6c] font-semibold">
+                      <div className="lg:text-[20px] text-[16px] text-[#1f2b6c] font-semibold">
                         {doctorInfo?.degree}
                       </div>
                     </div>
-                  )} */}
+                  )}
                 </div>
               </div>
-              {/* <div
+              <div
                 className="leading-[30px] lg:w-[80%]"
                 dangerouslySetInnerHTML={{
                   __html: doctorInfo?.info,
                 }}
-              ></div> */}
-              <div className="lg:w-[80%]">
+              ></div>
+              {/* <div className="lg:w-[80%]">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo,
                 nesciunt? Minus eaque earum iure officia ab odit tempore dicta
                 soluta. Lorem ipsum dolor sit, amet consectetur adipisicing
@@ -96,7 +96,7 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                 deleniti totam nam quidem esse repellendus, debitis eos tempore,
                 perferendis distinctio cumque, libero laborum. Dolor corporis
                 enim veritatis nisi deserunt reiciendis quod!
-              </div>
+              </div> */}
               <Link
                 href={`/appointment/${doctorInfo?.department?.slug}/${doctorInfo?.slug}`}
                 className="w-fit"
@@ -123,7 +123,7 @@ const DoctorDetail = ({ doctorInfo }: any) => {
           <div className="lg:text-[35px] text-[25px] font-semibold">
             More Details
           </div>
-          <div className="flex items-center gap-4 lg:flex-row flex-col">
+          <div className="lg:flex grid grid-cols-2 lg:items-center gap-4 lg:flex-row flex-col">
             {doctorInfo?.degree !== null && (
               <DoctorMoreDetailCard title="Degree">
                 <div>{doctorInfo?.degree}</div>
@@ -134,18 +134,18 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                 <div>{doctorInfo?.nmc_no}</div>
               </DoctorMoreDetailCard>
             )}
-
-            {doctorInfo?.email !== null && (
-              <DoctorMoreDetailCard title="Email">
-                <a href={`mailto:${doctorInfo?.email}`}>{doctorInfo?.email}</a>
-              </DoctorMoreDetailCard>
-            )}
-
+            {/* <div className="lg:flex lg:flex-row gap-4 grid grid-cols-1"> */}
             {doctorInfo?.phone !== null && (
               <DoctorMoreDetailCard title="Phone Number">
                 <a href={`tel:${doctorInfo?.phone}`}>{doctorInfo?.phone}</a>
               </DoctorMoreDetailCard>
             )}
+            {doctorInfo?.email !== null && (
+              <DoctorMoreDetailCard title="Email">
+                <a href={`mailto:${doctorInfo?.email}`}>{doctorInfo?.email}</a>
+              </DoctorMoreDetailCard>
+            )}
+            {/* </div> */}
           </div>
         </div>
       </div>

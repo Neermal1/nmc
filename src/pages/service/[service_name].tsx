@@ -11,7 +11,9 @@ const ServiceDetail = ({ data }: any) => {
     <Layout>
       <Metatag
         heading={`${
-          data?.detail?.meta_title ? data?.detail?.meta_title : "NMC"
+          data?.detail?.meta_title
+            ? data?.detail?.meta_title
+            : "Nepal Medical College"
         }`}
         subheading={`${
           data?.detail?.meta_description
