@@ -18,6 +18,9 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
             <div className="lg:col-span-5">
               <div>
                 <div className="flex flex-col gap-10">
+                  <div className="lg:text-[35px] text-[25px] font-semibold">
+                    {departmentHeadInfo?.details?.name}
+                  </div>
                   <div className=" rounded-[8px] overflow-hidden">
                     <img
                       src={departmentHeadInfo?.details?.image_link}
@@ -26,9 +29,6 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
                     />
                   </div>
                   <div className="flex flex-col gap-6">
-                    <div className="lg:text-[35px] text-[25px] font-semibold">
-                      {departmentHeadInfo?.details?.name}
-                    </div>
                     <div className="leading-[30px]">
                       {departmentHeadInfo?.details?.description}
                     </div>

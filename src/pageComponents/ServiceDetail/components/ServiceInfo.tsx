@@ -1,3 +1,4 @@
+import CommonBanner from "@/components/Banner/CommonBanner";
 import { IRelatedService } from "@/interface/interface";
 import Link from "next/link";
 import { LuDot } from "react-icons/lu";
@@ -5,22 +6,31 @@ import { LuDot } from "react-icons/lu";
 const ServiceInfo = ({ serviceInfo }: any) => {
   return (
     <div>
+      <CommonBanner
+        headerName="Service"
+        imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
+      />
       <div className="layout component-padding black-color flex flex-col gap-20">
         <div className="grid lg:grid-cols-8 lg:gap-20 gap-10">
           <div className="lg:col-span-5">
             <div>
               <div className="flex flex-col gap-10">
+                <div className="flex flex-col gap-4">
+                  <div className="lg:text-[35px] text-[25px] font-semibold">
+                    {serviceInfo?.detail?.service_category?.name}
+                  </div>
+                  <div className="text-[20px] font-medium">
+                    {serviceInfo?.detail?.name}
+                  </div>
+                </div>
                 <div className=" rounded-[8px] overflow-hidden">
                   <img
-                    src="https://img.freepik.com/free-photo/medical-banner-with-doctor-wearing-coat_23-2149611219.jpg?t=st=1711523241~exp=1711526841~hmac=588e592d004db5b44c56722eee702a46bb31f6ff94820f13788c9ae5ba375a20&w=996"
+                    src={serviceInfo?.detail?.image_link}
                     alt=""
                     className="h-[50vh] w-[100%] object-cover rounded-[8px] hover:scale-110 transition-all duration-700"
                   />
                 </div>
                 <div className="flex flex-col gap-6">
-                  <div className="lg:text-[35px] text-[25px] font-semibold">
-                    {serviceInfo?.detail?.name}
-                  </div>
                   <div
                     className="leading-[30px]"
                     dangerouslySetInnerHTML={{

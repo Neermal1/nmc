@@ -1,12 +1,15 @@
+import Link from "next/link";
+import Image from "next/image";
+
+//components
 import CommonBanner from "@/components/Banner/CommonBanner";
 import Button from "@/components/Button/Button";
-import Link from "next/link";
 
 //images
 import degree from "../../../../public/images/random/degree.png";
 import suitcase from "../../../../public/images/random/suitcase.png";
+import department from "../../../../public/images/random/department.png";
 
-import Image from "next/image";
 import DoctorMoreDetailCard from "./DoctorMoreDetailCard";
 
 const DoctorDetail = ({ doctorInfo }: any) => {
@@ -30,8 +33,8 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                       <Image
                         src={degree}
                         alt="degree"
-                        height={45}
-                        width={45}
+                        height={35}
+                        width={35}
                       ></Image>
                     </div>
                     <div className="text-[20px] text-[#1f2b6c] font-semibold">
@@ -44,12 +47,28 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                         <Image
                           src={suitcase}
                           alt="suitcase"
-                          height={45}
-                          width={45}
+                          height={35}
+                          width={35}
                         ></Image>
                       </div>
                       <div className="text-[20px] text-[#1f2b6c] font-semibold">
                         {doctorInfo?.designation}
+                      </div>
+                    </div>
+                  )}
+
+                  {doctorInfo?.department?.name !== null && (
+                    <div className="flex items-center gap-2">
+                      <div className="bg-white drop-shadow-md rounded-[8px] flex items-center justify-center">
+                        <Image
+                          src={department}
+                          alt="suitcase"
+                          height={35}
+                          width={35}
+                        ></Image>
+                      </div>
+                      <div className="text-[20px] text-[#1f2b6c] font-semibold">
+                        {doctorInfo?.department?.name}
                       </div>
                     </div>
                   )}

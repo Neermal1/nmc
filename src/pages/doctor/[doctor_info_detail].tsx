@@ -1,13 +1,10 @@
 //components
 import Layout from "@/components/Layout/Layout";
 import DoctorDetail from "@/pageComponents/DoctorDetail/components/DoctorDetail";
-
-//axiosInstance
-import axiosInstance from "@/axiosInstance/axiosInstance";
+import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
 
 //metatag
 import Metatag from "@/utils/Metatag";
-import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
 
 const DoctorInfoDetail = ({ data }: any) => {
   return (
