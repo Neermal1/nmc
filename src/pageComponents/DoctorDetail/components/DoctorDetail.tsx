@@ -28,27 +28,30 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                   {doctorInfo?.name}
                 </div>
                 <div className="flex gap-4">
-                  <div className="flex items-center gap-2">
-                    <div className="bg-white drop-shadow-md rounded-[8px] flex items-center justify-center">
-                      <Image
-                        src={degree}
-                        alt="degree"
-                        height={35}
-                        width={35}
-                      ></Image>
+                  {doctorInfo?.department?.name !== null && (
+                    <div className="flex items-center gap-2">
+                      <div className="bg-white drop-shadow-md rounded-[8px] flex items-center justify-center">
+                        <Image
+                          src={department}
+                          alt="suitcase"
+                          height={25}
+                          width={25}
+                        ></Image>
+                      </div>
+                      <div className="text-[20px] text-[#1f2b6c] font-semibold">
+                        {doctorInfo?.department?.name}
+                      </div>
                     </div>
-                    <div className="text-[20px] text-[#1f2b6c] font-semibold">
-                      {doctorInfo?.degree}
-                    </div>
-                  </div>
+                  )}
+
                   {doctorInfo?.designation !== null && (
                     <div className="flex items-center gap-2">
                       <div className="bg-white drop-shadow-md rounded-[8px] flex items-center justify-center">
                         <Image
                           src={suitcase}
                           alt="suitcase"
-                          height={35}
-                          width={35}
+                          height={25}
+                          width={25}
                         ></Image>
                       </div>
                       <div className="text-[20px] text-[#1f2b6c] font-semibold">
@@ -57,29 +60,29 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                     </div>
                   )}
 
-                  {doctorInfo?.department?.name !== null && (
+                  {/* {doctorInfo?.degree !== null && (
                     <div className="flex items-center gap-2">
                       <div className="bg-white drop-shadow-md rounded-[8px] flex items-center justify-center">
                         <Image
-                          src={department}
-                          alt="suitcase"
-                          height={35}
-                          width={35}
+                          src={degree}
+                          alt="degree"
+                          height={25}
+                          width={25}
                         ></Image>
                       </div>
                       <div className="text-[20px] text-[#1f2b6c] font-semibold">
-                        {doctorInfo?.department?.name}
+                        {doctorInfo?.degree}
                       </div>
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
               {/* <div
-                  className="leading-[30px]"
-                  dangerouslySetInnerHTML={{
-                    __html: doctorInfo?.info,
-                  }}
-                ></div> */}
+                className="leading-[30px] lg:w-[80%]"
+                dangerouslySetInnerHTML={{
+                  __html: doctorInfo?.info,
+                }}
+              ></div> */}
               <div className="lg:w-[80%]">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo,
                 nesciunt? Minus eaque earum iure officia ab odit tempore dicta
@@ -121,6 +124,11 @@ const DoctorDetail = ({ doctorInfo }: any) => {
             More Details
           </div>
           <div className="flex items-center gap-4 lg:flex-row flex-col">
+            {doctorInfo?.degree !== null && (
+              <DoctorMoreDetailCard title="Degree">
+                <div>{doctorInfo?.degree}</div>
+              </DoctorMoreDetailCard>
+            )}
             {doctorInfo?.nmc_no !== null && (
               <DoctorMoreDetailCard title="NMC NO">
                 <div>{doctorInfo?.nmc_no}</div>
@@ -136,12 +144,6 @@ const DoctorDetail = ({ doctorInfo }: any) => {
             {doctorInfo?.phone !== null && (
               <DoctorMoreDetailCard title="Phone Number">
                 <a href={`tel:${doctorInfo?.phone}`}>{doctorInfo?.phone}</a>
-              </DoctorMoreDetailCard>
-            )}
-
-            {doctorInfo?.address !== null && (
-              <DoctorMoreDetailCard title="Address">
-                <div>{doctorInfo?.address}</div>
               </DoctorMoreDetailCard>
             )}
           </div>
