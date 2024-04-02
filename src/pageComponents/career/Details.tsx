@@ -1,10 +1,9 @@
+import CommonBanner from "@/components/Banner/CommonBanner";
 import useFetchData from "@/hooks/useFetchData";
 import { IVacancy } from "@/interface/interface";
 import { useRouter } from "next/router";
-import CareerForm from "./CareerForm";
-import Metatag from "@/utils/Metatag";
-import CommonBanner from "@/components/Banner/CommonBanner";
 import { useEffect } from "react";
+import CareerForm from "./CareerForm";
 
 export default function JobDetail({ data }: any) {
   const router = useRouter();
@@ -18,7 +17,6 @@ export default function JobDetail({ data }: any) {
 
   return (
     <>
-      
       <CommonBanner
         headerName="Career at NMC"
         imageLink="/images/Banners/Banner2.png"
@@ -26,7 +24,7 @@ export default function JobDetail({ data }: any) {
       <section className="px-8 md:px-16 lg:px-24 xl:px-32 py-4 md:py-8">
         <div className="grid lg:grid-cols-5 gap-16">
           {/* Job Details */}
-          <div className="w-full h-full col-span-3 pr-8">
+          <div className="w-full h-full lg:col-span-3 pr-8">
             <h1 className="text-xl md:text-2xl lg:text-4xl text-primary font-semibold mb-4">
               {data?.title}
             </h1>
@@ -41,7 +39,7 @@ export default function JobDetail({ data }: any) {
           </div>
 
           {/* Form */}
-          <div className="relative w-full h-full col-span-2 ">
+          <div className="relative w-full h-full lg:col-span-2">
             <CareerForm vacancyId={data?.id} />
           </div>
         </div>
