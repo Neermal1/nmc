@@ -9,7 +9,9 @@ const DepartmentHead = ({ data }: any) => {
     <Layout>
       <Metatag
         heading={`${
-          data?.details?.meta_title ? data?.details?.meta_title : "NMC"
+          data?.details?.meta_title
+            ? data?.details?.meta_title
+            : "Nepal Medical College"
         }`}
         subheading={`${
           data?.details?.meta_description

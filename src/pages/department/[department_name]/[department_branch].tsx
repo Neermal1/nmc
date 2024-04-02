@@ -13,7 +13,9 @@ const DepartmentBranch = ({ data }: any) => {
     <Layout>
       <Metatag
         heading={`${
-          data?.department?.meta_title ? data?.department?.meta_title : "NMC"
+          data?.department?.meta_title
+            ? data?.department?.meta_title
+            : "Nepal Medical College"
         }`}
         subheading={`${
           data?.department?.meta_description

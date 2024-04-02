@@ -10,7 +10,7 @@ const DoctorInfoDetail = ({ data }: any) => {
   return (
     <Layout>
       <Metatag
-        heading="NMC"
+        heading="Nepal Medical College"
         subheading={data?.name}
         og_image={data?.image_link}
       />
@@ -23,11 +23,9 @@ export default DoctorInfoDetail;
 
 export async function getServerSideProps({ params }: any) {
   try {
-    console.log(params);
     const { data } = await SSR_fetchData(
       `doctor/detail/${params?.doctor_info_detail}`
     );
-
     return {
       props: { data },
     };
