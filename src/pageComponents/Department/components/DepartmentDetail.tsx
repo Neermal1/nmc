@@ -10,6 +10,7 @@ import { LuDot } from "react-icons/lu";
 
 //carousel
 import "react-multi-carousel/lib/styles.css";
+import CommonBanner from "@/components/Banner/CommonBanner";
 
 //images
 
@@ -29,18 +30,26 @@ const DepartmentDetail = ({ departmentInfo }: any) => {
 
   return (
     <div>
+      <CommonBanner
+        headerName="Department Branch"
+        imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
+      />
       <div className="layout component-padding black-color flex flex-col gap-20">
         <div className="grid lg:grid-cols-8 lg:gap-20 gap-10">
           <div className="lg:col-span-5">
             <div>
               <div className="flex flex-col gap-10">
-                <div className=" rounded-[8px] overflow-hidden">
-                  <img src={`${departmentInfo?.department?.image_link}`} />
+                <div className="lg:text-[35px] text-[25px] font-semibold">
+                  {departmentInfo?.department?.name}
                 </div>
-                <div className="flex flex-col gap-6">
-                  <div className="lg:text-[35px] text-[25px] font-semibold">
-                    {departmentInfo?.department?.name}
-                  </div>
+                <div className=" rounded-[8px] overflow-hidden">
+                  <img
+                    alt="loading"
+                    src={`${departmentInfo?.department?.image_link}`}
+                    className="hover:scale-110 transition-all duration-700"
+                  />
+                </div>
+                <div className="flex flex-col gap-6 ">
                   <div className="leading-[30px]">
                     {departmentInfo?.department?.description}
                   </div>
@@ -86,28 +95,33 @@ const DepartmentDetail = ({ departmentInfo }: any) => {
             Meet Our Popular Doctors
           </div>
 
-          <div className="grid lg:grid-cols-4 gap-10">
+          <div className="grid lg:grid-cols-4 gap-10 ">
             {departmentInfo?.doctors.length > 0 &&
               departmentInfo?.doctors?.map((data: any, index: number) => {
                 return (
                   <Link
                     href={`/doctor/${data?.slug}`}
                     key={index}
-                    className="bg-white drop-shadow-md rounded-[8px] p-6 flex flex-col gap-4"
+                    className="bg-white drop-shadow-md items-center rounded-[8px] p-6 flex flex-col gap-4"
                   >
                     <div>
                       <img src={data && data?.image_link} alt="" />
                     </div>
-                    <div className="black-color flex flex-col gap-1">
+                    <div className="black-color flex flex-col items-center gap-1">
                       <div className="text-[18px]">{data?.title}</div>
-                      <div
-                        className="text-[16px] font-semibold"
-                        style={{
-                          color: "var(--accent-color)",
-                        }}
-                      >
+                      <div className="text-[16px] text-center font-semibold">
                         {data?.name}
                       </div>
+                      {data?.designation !== null && (
+                        <div
+                          className="text-[16px] font-semibold"
+                          style={{
+                            color: "var(--accent-color)",
+                          }}
+                        >
+                          {data?.designation}
+                        </div>
+                      )}
                     </div>
                   </Link>
                 );

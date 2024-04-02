@@ -131,7 +131,7 @@ const HealthCarePackages = () => {
                       <Link href="/contact-us">
                         <SecondaryButton
                           data={{
-                            name: "Choose Us",
+                            name: "Book Now",
                           }}
                         />
                       </Link>
