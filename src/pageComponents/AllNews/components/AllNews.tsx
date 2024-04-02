@@ -30,7 +30,7 @@ const AllNews = () => {
                         <img
                           src={data?.image_link}
                           alt=""
-                          className="h-[200px] object-cover"
+                          className="lg:h-[200px] object-cover"
                         />
                       </div>
                       <div className="text-[20px] font-semibold line-clamp-2 text-color">

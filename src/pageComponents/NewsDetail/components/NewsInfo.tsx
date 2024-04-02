@@ -58,7 +58,7 @@ const NewsInfo = ({ newsInfo }: any) => {
                             <img
                               src={data?.image_link}
                               alt=""
-                              className="h-[200px] object-cover rounded-[8px]"
+                              className="lg:h-[200px] object-cover rounded-[8px]"
                             />
                           </div>
                           <div className="text-[20px] font-semibold line-clamp-2 text-color">

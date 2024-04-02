@@ -18,6 +18,7 @@ import axiosInstance from "@/axiosInstance/axiosInstance";
 //dayjs
 import dayjs from "dayjs";
 import ReCAPTCHA from "react-google-recaptcha";
+import ComponentHeader from "@/components/componentHeader/ComponentHeader";
 
 const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
   //date format
@@ -240,8 +241,15 @@ const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
 
   return (
     <>
-      <div className="flex items-center justify-center ">
-        <div className="lg:w-[80%] bg-[white] drop-shadow-md rounded-[8px] p-6 flex items-center justify-center">
+      <div className="flex lg:flex-col gap-8 items-center justify-center ">
+        <div>
+          <ComponentHeader
+            data={{
+              main_title: "Book An Appointment",
+            }}
+          />
+        </div>
+        <div className="lg:w-[80%]  bg-[white] drop-shadow-md rounded-[8px] p-6 flex items-center justify-center">
           <Form
             form={form}
             onFinish={handleAppointment}
@@ -258,7 +266,17 @@ const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
                     >
                       <div>
                         {departSlug ? (
-                          <Select value={departSlug} size="large" />
+                          <Select
+                            value={
+                              departSlug &&
+                              departSlug
+                                .replace(/-/g, " ")
+                                .replace(/(^|\s)\S/g, function (t: any) {
+                                  return t.toUpperCase();
+                                })
+                            }
+                            size="large"
+                          />
                         ) : (
                           <Select
                             defaultValue="Select a Department"
@@ -294,7 +312,17 @@ const BookAppointmentForm = ({ departSlug, doctorSlug }: any) => {
                     <Form.Item name="doctor">
                       <div>
                         {doctorSlug ? (
-                          <Select value={doctorSlug} size="large" />
+                          <Select
+                            value={
+                              doctorSlug &&
+                              doctorSlug
+                                .replace(/-/g, " ")
+                                .replace(/(^|\s)\S/g, function (t: any) {
+                                  return t.toUpperCase();
+                                })
+                            }
+                            size="large"
+                          />
                         ) : (
                           <Select
                             defaultValue="Select A Doctor"
