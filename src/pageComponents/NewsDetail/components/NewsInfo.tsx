@@ -61,11 +61,11 @@ const NewsInfo = ({ newsInfo }: any) => {
                     return (
                       <Link href={`/news/${data?.slug}`} key={index}>
                         <div className="flex flex-col gap-5">
-                          <div>
+                          <div className="overflow-hidden rounded-[8px]">
                             <img
                               src={data?.image_link}
                               alt=""
-                              className="lg:h-[200px] object-cover rounded-[8px]"
+                              className="lg:h-[200px] object-cover rounded-[8px] hover:scale-110 transition-all duration-700"
                             />
                           </div>
                           <div className="text-[20px] font-semibold line-clamp-2 text-color">
