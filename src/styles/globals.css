@@ -124,3 +124,7 @@ ul {
 .react-multiple-carousel__arrow {
   z-index: auto !important;
 }
+
+li {
+  list-style-type: none;
+}

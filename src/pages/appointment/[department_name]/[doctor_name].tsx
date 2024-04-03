@@ -1,6 +1,9 @@
+//components
 import CommonBanner from "@/components/Banner/CommonBanner";
 import Layout from "@/components/Layout/Layout";
 import AppointmentDetail from "@/pageComponents/appointment/components/AppointmentDetail";
+
+//Metatags
 import Metatag from "@/utils/Metatag";
 
 const DoctorAppointment = () => {
