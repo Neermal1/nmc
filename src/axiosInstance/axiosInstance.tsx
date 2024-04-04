@@ -1,5 +1,5 @@
 import axios from "axios";
 const axiosInstance = axios.create({
-  baseURL: "https://nmc-api.terracecafe.com.np/api/",
+  baseURL: "https://admin.nmcth.edu/api/",
 });
 export default axiosInstance;
