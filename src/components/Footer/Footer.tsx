@@ -143,7 +143,9 @@ const Footer = () => {
                           return (
                             <div key={index}>
                               <div className="flex items-center">
-                                {data.icon && <span className="mr-2">{data.icon}</span>}
+                                {data.icon && (
+                                  <span className="mr-2">{data.icon}</span>
+                                )}
                                 {data?.linktype !== null ? (
                                   <a href={`${data?.linktype}:${data?.name}`}>
                                     {data?.name}

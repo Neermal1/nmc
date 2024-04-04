@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
-import { Drawer, Menu } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
-import Link from "next/link";
-import SmDropdown from "./SmDropdown";
 import useFetchData from "@/hooks/useFetchData";
+import { MenuOutlined } from "@ant-design/icons";
+import { Drawer } from "antd";
+import Link from "next/link";
+import { useState } from "react";
+import SmDropdown from "./SmDropdown";
 
 const SmallScreenNavbar = () => {
   const { fetchedData: departmentData } = useFetchData("departments");
@@ -63,7 +63,7 @@ const SmallScreenNavbar = () => {
             dropdownName="Academics"
             menuItems={academicsData}
           />
-          <NavItem name="News" navigateTo="/all-news" />
+          <NavItem name="News" navigateTo="/news" />
           <NavItem name="Notice" navigateTo="/notice" />
           <NavItem name="Gallery" navigateTo="/gallery" />
           <NavItem name="Contact us" navigateTo="/contact-us" />

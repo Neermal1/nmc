@@ -37,7 +37,7 @@ export default function FirstNav() {
         <div>
           <div className="flex">
             <Link
-              href="/all-news"
+              href="/news"
               className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold"
             >
               News
