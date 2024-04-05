@@ -64,7 +64,7 @@ const SmallScreenNavbar = () => {
             menuItems={academicsData}
           />
           <NavItem name="News" navigateTo="/news" />
-          <NavItem name="Notice" navigateTo="/notice" />
+          <NavItem name="Notice" navigateTo="/notices" />
           <NavItem name="Gallery" navigateTo="/gallery" />
           <NavItem name="Contact us" navigateTo="/contact-us" />
         </div>

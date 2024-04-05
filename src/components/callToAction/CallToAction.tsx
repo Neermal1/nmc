@@ -56,7 +56,6 @@ const CallToAction = () => {
                 <a href={`tel:${fetchedData?.company_phone}`}>
                   {fetchedData?.company_phone}
                 </a>
-                <br />
                 <a href={`tel:${fetchedData?.company_phone2}`}>
                   {fetchedData?.company_phone2}
                 </a>
@@ -110,7 +109,6 @@ const CallToAction = () => {
                 <a href={`mailto:${fetchedData?.company_email}`}>
                   {fetchedData?.company_email}
                 </a>
-                <br />
                 <a href={`mailto:${fetchedData?.company_email2}`}>
                   {fetchedData?.company_email2}
                 </a>
