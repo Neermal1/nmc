@@ -43,7 +43,7 @@ export default function FirstNav() {
               News
             </Link>
             <Link
-              href="/notice"
+              href="/notices"
               className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold"
             >
               Notice
