@@ -122,6 +122,17 @@ const DepartmentDetail = ({ departmentInfo }: any) => {
                           {data?.designation}
                         </div>
                       )}
+
+                      {data?.degree !== null && (
+                        <div
+                          className="text-[16px] font-semibold"
+                          style={{
+                            color: "var(--accent-color)",
+                          }}
+                        >
+                          {data?.degree}
+                        </div>
+                      )}
                     </div>
                   </Link>
                 );

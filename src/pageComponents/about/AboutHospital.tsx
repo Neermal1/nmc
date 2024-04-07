@@ -16,7 +16,7 @@ export default function AboutHospital() {
         <div>
           <h1 className="text-lg md:text-2xl font-bold">Introduction</h1>
           <p
-            className="text-justify"
+            className="text-justify "
             dangerouslySetInnerHTML={{ __html: fetchedData?.introduction }}
           />
         </div>
