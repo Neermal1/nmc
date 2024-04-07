@@ -118,6 +118,7 @@
 ol,
 ul {
   list-style: revert;
+  list-style-type: inherit;
   padding: 24px;
 }
 
@@ -125,6 +126,6 @@ ul {
   z-index: auto !important;
 }
 
-li {
-  list-style-type: none;
+.pagination li {
+  list-style-type: none !important;
 }

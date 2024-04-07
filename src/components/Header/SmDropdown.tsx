@@ -1,4 +1,4 @@
-import { DropdownCategory, SubCategory } from "@/interface/Dropdown";
+import { SubCategory } from "@/interface/Dropdown";
 
 import { Dropdown, Menu } from "antd";
 import Link from "next/link";
@@ -36,7 +36,11 @@ const SmDropdown = ({ dropdownName, menuItems, slugroot }: any) => {
                   {menuItem?.items?.map((subItem: SubCategory) => (
                     <Menu.Item key={subItem?.id}>
                       <Link
-                        href={`/${slugroot}/${menuItem?.slug}/${subItem?.slug}`}
+                        href={
+                          slugroot === "service"
+                            ? `/${slugroot}/${subItem?.slug}`
+                            : `/${slugroot}/${menuItem?.slug}/${subItem?.slug}`
+                        }
                       >
                         {subItem?.name}
                       </Link>

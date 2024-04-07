@@ -79,7 +79,7 @@ export default function NoticeList() {
       </div>
       <div className="m-8">
         <ReactPaginate
-          className="flex gap-2 items-center justify-end mt-12"
+          className="pagination flex gap-2 items-center justify-end mt-12"
           breakLabel="..."
           nextLabel="Next 🠖"
           onPageChange={handlePageChange}
