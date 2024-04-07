@@ -124,13 +124,17 @@ const OurAcademics = () => {
                       JOURNALS
                     </span>
                   </div>
-                  <div>
+                  <a
+                    href="https://jnmcth.nmcth.edu/"
+                    className="flex"
+                    target="_blank"
+                  >
                     <Button
                       data={{
                         name: "DOWNLOADS",
                       }}
                     />
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>

@@ -123,7 +123,7 @@ const DoctorDetail = ({ doctorInfo }: any) => {
           <div className="lg:text-[35px] text-[25px] font-semibold">
             More Details
           </div>
-          <div className="lg:flex grid grid-cols-2 lg:items-center gap-4 lg:flex-row flex-col">
+          <div className="lg:flex grid md:grid-cols-2 grid-cols-1 lg:items-center gap-4 lg:flex-row flex-col">
             {doctorInfo?.degree !== null && (
               <DoctorMoreDetailCard title="Degree">
                 <div>{doctorInfo?.degree}</div>
