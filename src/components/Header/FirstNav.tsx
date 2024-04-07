@@ -1,74 +1,99 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaFacebook, FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaTwitter, FaCircleInfo } from "react-icons/fa6";
 import Link from "next/link";
 import useFetchData from "@/hooks/useFetchData";
 
 export default function FirstNav() {
   const { fetchedData } = useFetchData("company-profile");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
-    <div className="w-full h-full py-2 lg:py-3 bg-primary hidden lg:block">
+    <div className="w-full h-full py-2 lg:py-3 bg-primary z-50">
       <div className="px-8 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between bg-primary text-white">
-        <div>
+        <div className="hidden lg:block">
           <div className="flex">
-            <div className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold">
-              <a target="_blank" href={fetchedData?.facebook}>
-                <FaFacebook />
-              </a>
-            </div>
-            <div className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold">
-              <a target="_blank" href={fetchedData?.instagram}>
-                <AiFillInstagram />
-              </a>
-            </div>
-            <div className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold">
-              <a target="_blank" href={fetchedData?.twitter}>
-                <FaXTwitter />
-              </a>
-            </div>
-            <div className="px-2 lg:px-3 text-sm md:text-base font-semibold">
-              <a target="_blank" href={fetchedData?.youtube}>
-                <FaYoutube />
-              </a>
-            </div>
+            <SocialMedia link={fetchedData?.facebook} Icon={FaFacebook} />
+            <SocialMedia link={fetchedData?.instagram} Icon={AiFillInstagram} />
+            <SocialMedia link={fetchedData?.twitter} Icon={FaTwitter} />
+            <SocialMedia link={fetchedData?.youtube} Icon={FaYoutube} noBorder />
           </div>
         </div>
-        <div>
+        <div className="hidden lg:block">
           <div className="flex">
-            <Link
-              href="/news"
-              className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold"
-            >
-              News
-            </Link>
-            <Link
-              href="/notices"
-              className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold"
-            >
-              Notice
-            </Link>
-            <Link
-              href="/gallery"
-              className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold"
-            >
-              Gallery
-            </Link>
-            <Link
-              href="/career"
-              className="px-2 lg:px-3 border-r text-sm md:text-base font-semibold"
-            >
-              Career
-            </Link>
-            <Link
-              href="/contact-us"
-              className="px-2 lg:px-3 text-sm md:text-base font-semibold"
-            >
+            <NavItem href="/news">News</NavItem>
+            <NavItem href="/notices">Notice</NavItem>
+            <NavItem href="/gallery">Gallery</NavItem>
+            <NavItem href="/career">Career</NavItem>
+            <NavItem href="https://jnmcth.nmcth.edu/">Journal</NavItem>
+            <NavItem href="/">Lab Report</NavItem>
+            <NavItem href="/contact-us" noBorder>
               Contact us
-            </Link>
+            </NavItem>
           </div>
         </div>
-      </div>{" "}
+
+        {/* for screen  */}
+        <div className="lg:hidden w-full">
+          <div className="w-full flex items-center justify-between">
+            <div className="flex">
+              <NavItem href="https://jnmcth.nmcth.edu/">Journal</NavItem>
+              <NavItem href="/news" noBorder>
+                News
+              </NavItem>
+            </div>
+            <div>
+              {/* Hamburger Menu Icon from react icon  and on clicking that icon, flex-col the list of Navitem  */}
+              <div
+                className="text-white text-xl cursor-pointer"
+                onClick={toggleMobileMenu}
+              >
+                <FaCircleInfo />
+              </div>
+            </div>
+          </div>
+          {isMobileMenuOpen && (
+            <div className=" text-white mt-4">
+              <div className="grid grid-cols-4 gap-y-2  items-center">
+                <NavItem href="/notices" noBorder >Notice</NavItem>
+                <NavItem href="/gallery" noBorder >Gallery</NavItem>
+                <NavItem href="/career" noBorder >Career</NavItem>
+                <NavItem href="/contact-us" noBorder >Contact us</NavItem>
+                <NavItem href="/" noBorder >Lab Report</NavItem>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
+
+const NavItem = ({ href, children, noBorder }: any) => (
+  <Link href={href}>
+    <div
+      className={`px-2 lg:px-3 ${
+        noBorder ? "" : "border-r"
+      } text-sm font-medium cursor-pointer text-nowrap`}
+    >
+      {children}
+    </div>
+  </Link>
+);
+
+const SocialMedia = ({ link, Icon, noBorder }: any) => (
+  <div
+    className={`${
+      noBorder ? "" : "border-r"
+    } px-2 lg:px-3 text-sm md:text-base font-semibold`}
+  >
+    <a target="_blank" href={link}>
+      <Icon />
+    </a>
+  </div>
+);
