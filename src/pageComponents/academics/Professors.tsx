@@ -4,25 +4,44 @@ import Link from "next/link";
 export default function Professors({ professors }: any) {
   return (
     <section>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {professors?.map((professor: IDoctor) => (
-          <Link href={`/doctor/${professor?.slug}`} key={professor?.id}>
-            <div className="cursor-pointer p-4">
-              <div className="flex items-center justify-center">
-                <img
-                  src={professor?.image_link}
-                  alt={`Image of ${professor?.name}`}
-                  className="w-60 h-60 object-cover object-top mb-4 rounded-xl"
-                />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-center">
-                {professor?.name}
-              </h3>
-              <p className="text-gray-600 text-center">
-                {professor?.designation}
-              </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {professors?.map((professor: any, index: number) => (
+          <Link
+          href={`/doctor/${professor?.slug}`}
+          key={index}
+          className="bg-white drop-shadow-md items-center rounded-[8px] p-6 flex flex-col gap-4"
+        >
+          <div>
+            <img src={professor && professor?.image_link} alt="" />
+          </div>
+          <div className="black-color flex flex-col items-center gap-1">
+            <div className="text-[18px]">{professor?.title}</div>
+            <div className="text-[16px] text-center font-semibold">
+              {professor?.name}
             </div>
-          </Link>
+            {professor?.designation !== null && (
+              <div
+                className="text-[16px] font-semibold"
+                style={{
+                  color: "var(--accent-color)",
+                }}
+              >
+                {professor?.designation}
+              </div>
+            )}
+
+            {professor?.degree !== null && (
+              <div
+                className="text-[16px] font-semibold"
+                style={{
+                  color: "var(--accent-color)",
+                }}
+              >
+                {professor?.degree}
+              </div>
+            )}
+          </div>
+        </Link>
         ))}
       </div>
     </section>
