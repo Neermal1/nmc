@@ -27,7 +27,7 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                 <div className="lg:text-[35px] text-[25px] font-semibold">
                   {doctorInfo?.name}
                 </div>
-                <div className="flex lg:flex-row flex-col gap-4">
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
                   {doctorInfo?.department?.name !== null && (
                     <div className="flex items-center gap-2">
                       <div className="bg-white drop-shadow-md rounded-[8px] flex items-center justify-center">
@@ -60,7 +60,7 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                     </div>
                   )}
 
-                  {doctorInfo?.degree !== null && (
+                  {/* {doctorInfo?.degree !== null && (
                     <div className="flex items-center gap-2">
                       <div className="bg-white drop-shadow-md rounded-[8px] flex items-center justify-center">
                         <Image
@@ -74,7 +74,7 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                         {doctorInfo?.degree}
                       </div>
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
               <div
