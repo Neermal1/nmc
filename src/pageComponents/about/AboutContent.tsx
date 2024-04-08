@@ -4,7 +4,7 @@ import { GoGoal } from "react-icons/go";
 import { IoMdMail } from "react-icons/io";
 import { RiTeamLine } from "react-icons/ri";
 import AboutHospital from "./AboutHospital";
-import MsgFromDirect from "./MsgFromDirect";
+import MsgFromDirect from "../Home/components/MsgFromDirect";
 import MissionVission from "./MissionVission";
 import MgmtTeam from "./MgmtTeam";
 import useFetchData from "@/hooks/useFetchData";

@@ -5,6 +5,7 @@ import { Drawer } from "antd";
 import Link from "next/link";
 import { useState } from "react";
 import SmDropdown from "./SmDropdown";
+import AboutDropdown from "./AboutDropdown";
 
 const SmallScreenNavbar = () => {
   const { fetchedData: departmentData } = useFetchData("departments");
@@ -45,7 +46,7 @@ const SmallScreenNavbar = () => {
       >
         <div className="grid gap-y-4">
           <NavItem name="Home" navigateTo="/" />
-          <NavItem name="About" navigateTo="/about" />
+          <AboutDropdown />
           <SmDropdown
             slugroot="department"
             dropdownName="Departments"

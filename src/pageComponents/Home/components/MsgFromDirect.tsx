@@ -1,7 +1,8 @@
 import Loader from "@/components/Loader/Loader";
 import ComponentHeader from "@/components/componentHeader/ComponentHeader";
 import useFetchData from "@/hooks/useFetchData";
-import { IMessageFromDirector } from "@/interface/interface";
+import { IMessage, IMessageFromDirector } from "@/interface/interface";
+import Link from "next/link";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -48,7 +49,7 @@ export default function MsgFromDirect() {
           arrows={true}
           showDots={false}
         >
-          {messages?.map((person: IMessageFromDirector, index: number) => (
+          {messages?.map((person: IMessage, index: number) => (
             <div key={index} className="lg:px-6">
               <div className="flex items-center justify-center mb-4 lg:mb-8">
                 <div className="text-center">
@@ -61,7 +62,7 @@ export default function MsgFromDirect() {
               </div>
               <div className=" flex flex-col lg:flex-row  space-y-4 lg:space-y-0 lg:space-x-8 ">
                 <div className="lg:w-4/10">
-                  <div className="lg:w-96 lg:h-96">
+                  <div className="lg:w-80 lg:h-80">
                     <img
                       src={person?.image_link}
                       alt=""
@@ -74,12 +75,20 @@ export default function MsgFromDirect() {
                     <h1>Nepal Medical College</h1>
                   </div>
                 </div>
-                <div className="lg:w-6/10 flex items-center">
+                <div className="lg:w-6/10">
                   <div>
                     <p
-                      className="text-sm md:text-base text-justify"
+                      className="text-sm md:text-base text-justify line-clamp-6 lg:line-clamp-[15]"
                       dangerouslySetInnerHTML={{ __html: person?.message }}
                     />
+                    <div className="mt-4">
+                      <Link
+                        href={`/about/messages/${person?.slug}`}
+                        className="px-4 py-2 bg-primary text-white rounded-lg"
+                      >
+                        Read more
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

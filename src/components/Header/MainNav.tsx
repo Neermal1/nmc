@@ -1,6 +1,7 @@
 import Link from "next/link";
 import DropdownItems from "./Dropdown";
 import useFetchData from "@/hooks/useFetchData";
+import AboutDropdown from "./AboutDropdown";
 
 export default function MainNav() {
   const { fetchedData: departmentData } = useFetchData("departments");
@@ -12,7 +13,7 @@ export default function MainNav() {
       <div className="flex items-center justify-center">
         <ul className="flex space-x-4 lg:space-x-8">
           <NavItem name="Home" navigateTo="/" />
-          <NavItem name="About us" navigateTo="/about" />
+          <AboutDropdown />
           <DropdownItems
             dropdownName="Departments"
             slugroot="department"
