@@ -6,11 +6,13 @@ export const getNews = async (page: number) => {
 
     const posts = response.data;
 
-    // const totalPosts = posts.slice(page === 1 ? 0 : (page - 1) * 2, page * 2);
-    const totalPosts = posts.slice(page === 1 ? 0 : (page - 1) * 2, page * 2);
+    const postsPerPage = 12;
+    const startIndex = (page - 1) * postsPerPage;
+    const endIndex = page * postsPerPage;
 
-    // const totalPages = Math.ceil(posts.length / 2);
-    const totalPages = Math.ceil(posts.length / 2);
+    const totalPosts = posts.slice(startIndex, endIndex);
+
+    const totalPages = Math.ceil(posts.length / postsPerPage);
 
     return {
       totalPosts,
@@ -24,3 +26,5 @@ export const getNews = async (page: number) => {
     };
   }
 };
+
+
