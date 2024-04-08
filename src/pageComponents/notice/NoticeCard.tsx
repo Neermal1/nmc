@@ -1,14 +1,23 @@
 import { INotice } from "@/interface/interface";
 import { formatDate } from "@/utils/FormatDate";
 import { Modal } from "antd";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiFillEye } from "react-icons/ai";
 
 export default function NoticeCard({ notice }: { notice: INotice }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const router = useRouter();
 
   const handleViewImage = () => {
-    setModalVisible(true);
+    const isPDF = notice?.image_link?.endsWith(".pdf");
+
+    if (isPDF) {
+      window.open(`${notice?.image_link}`, "_blank");
+    } else {
+      // If the notice is an image, display it in the modal
+      setModalVisible(true);
+    }
   };
 
   const handleCloseModal = () => {

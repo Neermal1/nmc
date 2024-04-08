@@ -16,7 +16,7 @@ import Metatag from "@/utils/Metatag";
 
 //data fetcher
 import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
-import MsgFromDirect from "@/pageComponents/about/MsgFromDirect";
+import MsgFromDirect from "@/pageComponents/Home/components/MsgFromDirect";
 import ComponentHeader from "@/components/componentHeader/ComponentHeader";
 
 const index = ({ data }: any) => {

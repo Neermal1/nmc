@@ -12,7 +12,7 @@ export default function NoticeList() {
   const { fetchedData: categories } = useFetchData("notices/categories");
   const [selectedCategory, setSelectedCategory] = useState<any>("All");
   const [activePage, setActivePage] = useState<number>(1);
-  const noticesPerPage = 5;
+  const noticesPerPage = 10;
   const [filteredNotices, setFilteredNotices] = useState<INotice[]>([]);
 
   useEffect(() => {

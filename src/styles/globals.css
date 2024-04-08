@@ -129,3 +129,18 @@ ul {
 .pagination li {
   list-style-type: none !important;
 }
+
+
+.ant-dropdown-menu-submenu{
+  list-style: none;
+  list-style-type: none;
+}
+
+.ant-modal-content {
+  padding: 0 !important;
+}
+
+.ant-modal-close-x {
+  background-color: white;
+  padding: 8px;
+}
