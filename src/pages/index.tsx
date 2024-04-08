@@ -5,7 +5,6 @@ import ClinicalService from "@/pageComponents/Home/components/ClinicalService";
 import Facility from "@/pageComponents/Home/components/Facility";
 import HealthCarePackages from "@/pageComponents/Home/components/HealthCarePackages";
 import HeroSection from "@/pageComponents/Home/components/HeroSection";
-import MessageFromDirector from "@/pageComponents/Home/components/MessageFromDirector";
 import News from "@/pageComponents/Home/components/News";
 import OurAcademics from "@/pageComponents/Home/components/OurAcademics";
 import WhyChooseUs from "@/pageComponents/Home/components/WhyChooseUs";
@@ -17,7 +16,6 @@ import Metatag from "@/utils/Metatag";
 //data fetcher
 import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
 import MsgFromDirect from "@/pageComponents/Home/components/MsgFromDirect";
-import ComponentHeader from "@/components/componentHeader/ComponentHeader";
 
 const index = ({ data }: any) => {
   return (
