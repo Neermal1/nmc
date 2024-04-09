@@ -61,7 +61,7 @@ const News = () => {
               );
             })}
           </div>
-          <Link href="/all-news" className="flex items-center justify-center">
+          <Link href="/news" className="flex items-center justify-center">
             <Button
               data={{
                 name: "View More",

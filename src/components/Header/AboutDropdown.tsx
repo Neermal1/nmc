@@ -1,9 +1,8 @@
-import { Dropdown, Menu, Popover } from "antd";
-import { FaChevronRight } from "react-icons/fa";
 import { CaretDownOutlined } from "@ant-design/icons";
+import { Dropdown, Menu, Popover } from "antd";
 
-import Link from "next/link";
 import useFetchData from "@/hooks/useFetchData";
+import Link from "next/link";
 
 const AboutDropdown = () => {
   const { fetchedData } = useFetchData("messages");
@@ -56,23 +55,38 @@ const AboutDropdown = () => {
         </Link>
       </div>
 
+      <div className="hidden lg:block">
       <Popover
-        placement="right"
-        title=""
-        content={messagesmenu}
-        trigger={["hover"]}
-      >
-        <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base lg:text-lg hover:bg-gray-100 hover:text-primary cursor-pointer">
-          Messages from Team
-        </div>
-      </Popover>
+          placement="right"
+          title=""
+          content={messagesmenu}
+          trigger={["hover"]}
+        >
+          <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base lg:text-lg hover:bg-gray-100 hover:text-primary cursor-pointer">
+            Messages from Team
+          </div>
+        </Popover>
+      </div>
+
+      <div className="lg:hidden">
+        <Popover
+          placement="bottom"
+          title=""
+          content={messagesmenu}
+          trigger={["click"]}
+        >
+          <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base lg:text-lg hover:bg-gray-100 hover:text-primary cursor-pointer">
+            Messages from Team
+          </div>
+        </Popover>
+      </div>
     </Menu>
   );
 
   return (
     <Dropdown placement="bottom" overlay={menu}>
       <div
-        className="ant-dropdown-link text-primary text-sm md:text-base lg:text-lg font-medium hover:text-primaryYellow cursor-pointer"
+        className="ant-dropdown-link text-primary text-base md:text-lg font-medium hover:text-primaryYellow cursor-pointer"
         onClick={(e) => e.preventDefault()}
       >
         About us <CaretDownOutlined />

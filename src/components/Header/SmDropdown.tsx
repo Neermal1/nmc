@@ -1,9 +1,10 @@
 import { SubCategory } from "@/interface/Dropdown";
+import { CaretDownOutlined } from "@ant-design/icons";
+import { PiCaretDown } from "react-icons/pi";
 
 import { Dropdown, Menu } from "antd";
 import Link from "next/link";
 import { useState } from "react";
-import { PiCaretDownBold } from "react-icons/pi";
 
 const SmDropdown = ({ dropdownName, menuItems, slugroot }: any) => {
   const [visibleMenu, setVisibleMenu] = useState<string | null>(null);
@@ -28,7 +29,7 @@ const SmDropdown = ({ dropdownName, menuItems, slugroot }: any) => {
               >
                 {menuItem?.name}{" "}
                 {menuItem?.items && menuItem?.items?.length > 0 && (
-                  <PiCaretDownBold />
+                  <PiCaretDown />
                 )}
               </div>
               {visibleMenu === menuItem?.name && (
@@ -57,12 +58,12 @@ const SmDropdown = ({ dropdownName, menuItems, slugroot }: any) => {
       onOpenChange={(flag) => setVisibleMenu(flag ? "visible" : null)}
     >
       <div
-        className="ant-dropdown-link text-base md:text-lg font-medium text-primary
+        className="ant-dropdown-link text-base md:text-lg text-primary
       hover:text-primaryYellow flex space-x-2 items-center cursor-pointer"
       >
-        <span>{dropdownName}</span>{" "}
+        <span className="font-medium">{dropdownName}</span>{" "}
         <span>
-          <PiCaretDownBold />
+          <CaretDownOutlined />
         </span>
       </div>
     </Dropdown>
