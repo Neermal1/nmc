@@ -39,7 +39,9 @@ export default function NoticeList() {
   const endIdx = Math.min(startIdx + noticesPerPage, totalNotices);
   const noticesToShow = filteredNotices?.slice(startIdx, endIdx);
 
-  if (loading) {return <Loader />}
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <section className="w-full h-full px-8 md:px-16 lg:px-24 xl:px-32 py-8">
