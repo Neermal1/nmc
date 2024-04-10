@@ -135,7 +135,7 @@ const DoctorDetail = ({ doctorInfo }: any) => {
               </DoctorMoreDetailCard>
             )}
             {/* <div className="lg:flex lg:flex-row gap-4 grid grid-cols-1"> */}
-            {doctorInfo?.phone !== null && (
+            {doctorInfo?.phone !== null && doctorInfo?.phone_status === 1 && (
               <DoctorMoreDetailCard title="Phone Number">
                 <a href={`tel:${doctorInfo?.phone}`}>{doctorInfo?.phone}</a>
               </DoctorMoreDetailCard>

@@ -8,6 +8,7 @@ const Metatag = ({
   description,
   og_image,
   type,
+  keywords,
 }: IMetatags) => {
   return (
     <Head>
@@ -16,6 +17,7 @@ const Metatag = ({
       <meta property="og:image" content={og_image} />
 
       <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#1e1e1e"></meta>
       <link rel="icon" href="/favicon.ico" />

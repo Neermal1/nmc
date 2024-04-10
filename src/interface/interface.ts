@@ -9,6 +9,7 @@ export interface IMetatags {
   og_image?: any;
   description?: string;
   type?: string;
+  keywords?: string;
 }
 
 export interface Slider {
@@ -340,4 +341,21 @@ export interface INotice {
   status: string;
   image_link: string;
   created_at: string;
+}
+
+export interface IMessage {
+  id: number;
+  name: string;
+  image: string;
+  position: string;
+  slug: string;
+  message: string;
+  order: number;
+  meta_title?: string | null;
+  meta_keywords?: string | null;
+  meta_description?: string | null;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  image_link: string;
 }
