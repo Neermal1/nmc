@@ -31,7 +31,7 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                 <div key={menuItem?.id}>
                   <div
                     onMouseEnter={() => handleMenuItemHover(menuItem)}
-                    className={`flex items-center justify-between w-full px-4 py-2 text-nowrap text-sm md:text-base lg:text-lg hover:bg-gray-100 hover:text-primary rounded-lg ${
+                    className={`flex items-center justify-between w-full px-4 py-2 text-nowrap text-sm md:text-base hover:bg-gray-100 hover:text-primary rounded-lg ${
                       menuItem?.name === activeMenuItem
                         ? "bg-gray-100 text-primary"
                         : ""
@@ -45,7 +45,9 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                         <span>{menuItem?.name}</span>
                       </Link>
                     ) : (
-                      <span>{menuItem?.name}</span>
+                      <>
+                        <span>{menuItem?.name}</span>
+                      </>
                     )}
 
                     {menuItem?.items && menuItem?.items?.length > 0 && (
@@ -56,6 +58,20 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                   </div>
                 </div>
               ))}
+              {slugroot === "academics" && (
+                <Link href="/faculties">
+                  <div
+                    onMouseEnter={() => handleMenuItemHover("Faculties")}
+                    className={`flex items-center justify-between w-full px-4 py-2 text-nowrap text-sm md:text-base hover:bg-gray-100 hover:text-primary rounded-lg ${
+                      "Faculties" === activeMenuItem
+                        ? "bg-gray-100 text-primary"
+                        : ""
+                    }`}
+                  >
+                    <span>Faculties</span>
+                  </div>
+                </Link>
+              )}
             </div>
             <div className="w-full p-2">
               {menuItems.map((menuItem: any) => (

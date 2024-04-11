@@ -51,6 +51,16 @@ const SmDropdown = ({ dropdownName, menuItems, slugroot }: any) => {
               )}
             </div>
           ))}
+          {slugroot === "academics" && (
+            <Link href="/faculties">
+              <div
+                onMouseEnter={() => handleMenuClick("Faculties")}
+                className={`flex items-center justify-between w-full px-2 py-2 text-nowrap text-sm md:text-base hover:bg-gray-100 hover:text-primary rounded-lg`}
+              >
+                <span>Faculties</span>
+              </div>
+            </Link>
+          )}
         </Menu>
       }
       placement="bottomCenter"
