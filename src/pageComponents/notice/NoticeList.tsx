@@ -5,26 +5,31 @@ import useFetchData from "@/hooks/useFetchData";
 import { INotice, INoticeCategory } from "@/interface/interface";
 import NoticeCard from "./NoticeCard";
 import Loader from "@/components/Loader/Loader";
+import axiosInstance from "@/axiosInstance/axiosInstance";
 
 export default function NoticeList() {
   const router = useRouter();
-  const { fetchedData: notices, loading } = useFetchData("notices");
-  const { fetchedData: categories } = useFetchData("notices/categories");
-  const [selectedCategory, setSelectedCategory] = useState<any>("All");
+  const { fetchedData: categories, loading } =
+    useFetchData("notices/categories");
+  const [selectedCategory, setSelectedCategory] = useState<any>("all");
   const [activePage, setActivePage] = useState<number>(1);
   const noticesPerPage = 10;
   const [filteredNotices, setFilteredNotices] = useState<INotice[]>([]);
 
   useEffect(() => {
-    if (selectedCategory === "All") {
-      setFilteredNotices(notices);
-    } else {
-      const filtered = notices?.filter(
-        (notice: INotice) => notice?.notice_category_id === selectedCategory
-      );
-      setFilteredNotices(filtered);
-    }
-  }, [notices, selectedCategory]);
+    const fetchNotices = async () => {
+      try {
+        const response = await axiosInstance.get(
+          `notice/category/${selectedCategory}`
+        );
+        setFilteredNotices(response.data);
+      } catch (error) {
+        console.error("Error fetching faculties:", error);
+      }
+    };
+
+    fetchNotices();
+  }, [selectedCategory]);
 
   const totalNotices = filteredNotices?.length;
   const totalPages = Math.ceil(totalNotices / noticesPerPage);
@@ -50,11 +55,11 @@ export default function NoticeList() {
           <div className="flex space-x-4 lg:flex-col lg:space-x-0 border p-4 rounded-xl sticky top-32">
             <button
               className={`mb-4 px-4 py-2 rounded-md focus:outline-none focus:border-none text-sm md:text-base lg:text-lg font-medium ${
-                selectedCategory === "All"
+                selectedCategory === "all"
                   ? "bg-primary text-white"
                   : "bg-blue-50 text-black"
               }`}
-              onClick={() => setSelectedCategory("All")}
+              onClick={() => setSelectedCategory("all")}
             >
               All
             </button>
@@ -62,11 +67,11 @@ export default function NoticeList() {
               <button
                 key={index}
                 className={`mb-4 px-4 py-2 rounded-md focus:outline-none focus:border-none text-sm md:text-base lg:text-lg font-medium ${
-                  selectedCategory === category?.id
+                  selectedCategory === category?.slug
                     ? "bg-primary text-white"
                     : "bg-blue-50 text-black"
                 }`}
-                onClick={() => setSelectedCategory(category?.id)}
+                onClick={() => setSelectedCategory(category?.slug)}
               >
                 {category?.name}
               </button>
