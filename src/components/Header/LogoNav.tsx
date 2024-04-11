@@ -27,10 +27,10 @@ export default function LogoNav() {
             Lab Report
           </button> */}
           <Link
-            href="/book-an-appointment"
-            className="px-4 py-2 text-sm lg:text-base bg-secondary rounded-full text-primary font-medium hover:bg-primary hover:text-primaryYellow transition duration-300"
+            href="/"
+            className="px-8 py-2 text-sm lg:text-base bg-secondary rounded-full text-primary font-medium hover:bg-primary hover:text-primaryYellow transition duration-300"
           >
-            Book an Appointment
+            Lab Report
           </Link>
         </div>
       </div>

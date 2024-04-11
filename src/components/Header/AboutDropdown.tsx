@@ -27,7 +27,7 @@ const AboutDropdown = () => {
 
   const menu = (
     <Menu>
-      <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base lg:text-lg hover:bg-gray-100 hover:text-primary">
+      <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base hover:bg-gray-100 hover:text-primary">
         <Link
           className=""
           style={{ textDecoration: "none", color: "inherit" }}
@@ -36,7 +36,7 @@ const AboutDropdown = () => {
           <div>About Hospital</div>
         </Link>
       </div>
-      <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base lg:text-lg hover:bg-gray-100 hover:text-primary">
+      <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base hover:bg-gray-100 hover:text-primary">
         <Link
           className=""
           style={{ textDecoration: "none", color: "inherit" }}
@@ -45,7 +45,7 @@ const AboutDropdown = () => {
           <div>Mission and Vision</div>
         </Link>
       </div>
-      <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base lg:text-lg hover:bg-gray-100 hover:text-primary">
+      <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base hover:bg-gray-100 hover:text-primary">
         <Link
           className=""
           style={{ textDecoration: "none", color: "inherit" }}
@@ -62,7 +62,7 @@ const AboutDropdown = () => {
           content={messagesmenu}
           trigger={["hover"]}
         >
-          <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base lg:text-lg hover:bg-gray-100 hover:text-primary cursor-pointer">
+          <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base hover:bg-gray-100 hover:text-primary cursor-pointer">
             Messages from Team
           </div>
         </Popover>
@@ -75,7 +75,7 @@ const AboutDropdown = () => {
           content={messagesmenu}
           trigger={["click"]}
         >
-          <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base lg:text-lg hover:bg-gray-100 hover:text-primary cursor-pointer">
+          <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base hover:bg-gray-100 hover:text-primary cursor-pointer">
             Messages from Team
           </div>
         </Popover>
