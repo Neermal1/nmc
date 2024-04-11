@@ -16,8 +16,9 @@ import Metatag from "@/utils/Metatag";
 //data fetcher
 import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
 import MsgFromDirect from "@/pageComponents/Home/components/MsgFromDirect";
+import Advertisement from "@/components/Advertisement/Advertisement";
 
-const index = ({ data }: any) => {
+const index = ({ data }: any, { notice }: any) => {
   return (
     <Layout>
       <Metatag
@@ -26,6 +27,8 @@ const index = ({ data }: any) => {
         og_image={`${data?.logo_link}`}
         description={`${data?.meta_description}`}
       />
+      <Advertisement />
+
       <HeroSection />
       <Facility />
       <ClinicalService />
@@ -48,6 +51,7 @@ export default index;
 export async function getServerSideProps() {
   try {
     const { data } = await SSR_fetchData("company-profile");
+
     return {
       props: {
         data,

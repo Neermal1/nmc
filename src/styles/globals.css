@@ -130,8 +130,7 @@ ul {
   list-style-type: none !important;
 }
 
-
-.ant-dropdown-menu-submenu{
+.ant-dropdown-menu-submenu {
   list-style: none;
   list-style-type: none;
 }
@@ -143,4 +142,8 @@ ul {
 .ant-modal-close-x {
   background-color: white;
   padding: 8px;
+}
+
+.react-multi-carousel-item {
+  list-style-type: none;
 }
