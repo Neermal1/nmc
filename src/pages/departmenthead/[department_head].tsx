@@ -1,8 +1,10 @@
 //components
 import Layout from "@/components/Layout/Layout";
-import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
 import DepartmentHeadDetail from "@/pageComponents/DepartmentHead/components/DepartmentHeadDetail";
 import Metatag from "@/utils/Metatag";
+
+//api data
+import { SSR_fetchData } from "@/helperFunctions/fetchData.helper";
 
 const DepartmentHead = ({ data }: any) => {
   return (
