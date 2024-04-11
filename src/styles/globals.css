@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 * {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -37,8 +37,6 @@
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-/* HTML: <div class="loader"></div> */
-/* HTML: <div class="loader"></div> */
 .loader {
   width: 40px;
   aspect-ratio: 1;
@@ -131,19 +129,27 @@ ul {
 }
 
 .ant-dropdown-menu-submenu {
-  list-style: none;
-  list-style-type: none;
-}
+  .ant-dropdown-menu-submenu {
+    list-style: none;
+    list-style-type: none;
+  }
 
-.ant-modal-content {
-  padding: 0 !important;
-}
+  .ant-modal-content {
+    padding: 0 !important;
+  }
+  .ant-modal .ant-modal-content {
+    padding: 1px !important;
+  }
 
-.ant-modal-close-x {
-  background-color: white;
-  padding: 8px;
-}
+  .ant-modal-close-x {
+    background-color: white;
+  }
 
-.react-multi-carousel-item {
-  list-style-type: none;
+  .react-multi-carousel-item {
+    list-style-type: none;
+  }
+
+  .ant-modal-close {
+    top: -40px !important;
+  }
 }

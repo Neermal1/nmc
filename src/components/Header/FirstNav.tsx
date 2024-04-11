@@ -21,7 +21,11 @@ export default function FirstNav() {
             <SocialMedia link={fetchedData?.facebook} Icon={FaFacebook} />
             <SocialMedia link={fetchedData?.instagram} Icon={AiFillInstagram} />
             <SocialMedia link={fetchedData?.twitter} Icon={FaTwitter} />
-            <SocialMedia link={fetchedData?.youtube} Icon={FaYoutube} noBorder />
+            <SocialMedia
+              link={fetchedData?.youtube}
+              Icon={FaYoutube}
+              noBorder
+            />
           </div>
         </div>
         <div className="hidden lg:block">
@@ -31,7 +35,6 @@ export default function FirstNav() {
             <NavItem href="/gallery">Gallery</NavItem>
             <NavItem href="/career">Career</NavItem>
             <NavItem href="https://jnmcth.nmcth.edu/">Journal</NavItem>
-            <NavItem href="/">Lab Report</NavItem>
             <NavItem href="/contact-us" noBorder>
               Contact us
             </NavItem>
@@ -42,9 +45,9 @@ export default function FirstNav() {
         <div className="lg:hidden w-full">
           <div className="w-full flex items-center justify-between">
             <div className="flex">
-              <NavItem href="https://jnmcth.nmcth.edu/">Journal</NavItem>
+              <NavItem href="https://jnmcth.nmcth.edu/">Lab Report</NavItem>
               <NavItem href="/news" noBorder>
-                News
+                Notices
               </NavItem>
             </div>
             <div>
@@ -60,11 +63,21 @@ export default function FirstNav() {
           {isMobileMenuOpen && (
             <div className=" text-white mt-4">
               <div className="grid grid-cols-4 gap-y-2  items-center">
-                <NavItem href="/notices" noBorder >Notice</NavItem>
-                <NavItem href="/gallery" noBorder >Gallery</NavItem>
-                <NavItem href="/career" noBorder >Career</NavItem>
-                <NavItem href="/contact-us" noBorder >Contact us</NavItem>
-                <NavItem href="/" noBorder >Lab Report</NavItem>
+                <NavItem href="/https://jnmcth.nmcth.edu/" noBorder>
+                  Journal
+                </NavItem>
+                <NavItem href="/news" noBorder>
+                  News
+                </NavItem>
+                <NavItem href="/gallery" noBorder>
+                  Gallery
+                </NavItem>
+                <NavItem href="/career" noBorder>
+                  Career
+                </NavItem>
+                <NavItem href="/contact-us" noBorder>
+                  Contact us
+                </NavItem>
               </div>
             </div>
           )}
