@@ -54,7 +54,7 @@ export default function NoticeList() {
         <div className="relative lg:w-1/4">
           <div className="flex space-x-4 lg:flex-col lg:space-x-0 border p-4 rounded-xl sticky top-32">
             <button
-              className={`mb-4 px-4 py-2 rounded-md focus:outline-none focus:border-none text-sm md:text-base lg:text-lg font-medium ${
+              className={`mb-4 px-4 py-2 rounded-md focus:outline-none focus:border-none text-sm md:text-base font-medium ${
                 selectedCategory === "all"
                   ? "bg-primary text-white"
                   : "bg-blue-50 text-black"
@@ -66,7 +66,7 @@ export default function NoticeList() {
             {categories?.map((category: INoticeCategory, index: number) => (
               <button
                 key={index}
-                className={`mb-4 px-4 py-2 rounded-md focus:outline-none focus:border-none text-sm md:text-base lg:text-lg font-medium ${
+                className={`mb-4 px-4 py-2 rounded-md focus:outline-none focus:border-none text-sm md:text-base font-medium ${
                   selectedCategory === category?.slug
                     ? "bg-primary text-white"
                     : "bg-blue-50 text-black"
