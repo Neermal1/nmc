@@ -129,27 +129,27 @@ ul {
 }
 
 .ant-dropdown-menu-submenu {
-  .ant-dropdown-menu-submenu {
-    list-style: none;
-    list-style-type: none;
-  }
+  list-style: none;
+  list-style-type: none;
+}
 
-  .ant-modal-content {
-    padding: 0 !important;
-  }
-  .ant-modal .ant-modal-content {
-    padding: 1px !important;
-  }
+.ant-modal-content {
+  padding: 0 !important;
+}
+.ant-modal .ant-modal-content {
+  padding: 1px !important;
+  background-color: transparent;
+}
 
-  .ant-modal-close-x {
-    background-color: white;
-  }
+.ant-modal-close-x {
+  background-color: white;
+  padding: 8px;
+}
 
-  .react-multi-carousel-item {
-    list-style-type: none;
-  }
+.react-multi-carousel-item {
+  list-style-type: none;
+}
 
-  .ant-modal-close {
-    top: -40px !important;
-  }
+.ant-modal-close {
+  top: -40px !important;
 }
