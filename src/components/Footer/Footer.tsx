@@ -40,7 +40,7 @@ const Footer = () => {
         },
         {
           name: "Notice",
-          slug: "notice",
+          slug: "notices",
           linktype: null,
           link: false,
         },

@@ -132,12 +132,16 @@ ul {
   list-style: none;
   list-style-type: none;
 }
+  list-style: none;
+  list-style-type: none;
+}
 
 .ant-modal-content {
   padding: 0 !important;
 }
 .ant-modal .ant-modal-content {
   padding: 1px !important;
+  background-color: transparent;
 }
 
 .ant-modal-close-x {
@@ -150,4 +154,17 @@ ul {
 
 .ant-modal-close {
   top: -40px !important;
+}
+
+/* table */
+table {
+  border: 1px solid #000;
+}
+
+table tr {
+  border: 1px solid #000;
+}
+
+table tr td {
+  border: 1px solid #000;
 }

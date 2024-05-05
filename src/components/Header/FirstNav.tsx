@@ -46,7 +46,7 @@ export default function FirstNav() {
           <div className="w-full flex items-center justify-between">
             <div className="flex">
               <NavItem href="https://jnmcth.nmcth.edu/">Lab Report</NavItem>
-              <NavItem href="/news" noBorder>
+              <NavItem href="/notices" noBorder>
                 Notices
               </NavItem>
             </div>

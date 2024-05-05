@@ -31,7 +31,7 @@ export default function FacultiesContent({ academics }: any) {
         <div className="relative lg:w-1/4">
           <div className="flex space-x-4 lg:flex-col lg:space-x-0 lg:border p-4 rounded-xl sticky top-32 overflow-x-scroll no-scrollbar">
             <button
-              className={`mb-4 px-4 py-2 rounded-md focus:outline-none text-sm md:text-base lg:text-lg font-medium ${
+              className={`mb-4 px-4 py-2 rounded-md focus:outline-none text-sm md:text-base font-medium ${
                 selectedCategory === "all"
                   ? "bg-primary text-white"
                   : "bg-blue-50 text-black"
@@ -43,7 +43,7 @@ export default function FacultiesContent({ academics }: any) {
             {academics?.map((academy: any) => (
               <button
                 key={academy?.slug}
-                className={`mb-4 px-4 py-2 rounded-md focus:outline-none text-sm md:text-base lg:text-lg font-medium ${
+                className={`mb-4 px-4 py-2 rounded-md focus:outline-none text-sm md:text-base font-medium ${
                   selectedCategory === academy?.slug
                     ? "bg-primary text-white"
                     : "bg-blue-50 text-black"
