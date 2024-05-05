@@ -34,7 +34,11 @@ export default function FirstNav() {
             <NavItem href="/notices">Notice</NavItem>
             <NavItem href="/gallery">Gallery</NavItem>
             <NavItem href="/career">Career</NavItem>
-            <Link href="https://jnmcth.nmcth.edu/" target="__blank">
+            <Link
+              href="https://jnmcth.nmcth.edu/"
+              target="__blank"
+              className="border-r-[1px] border-white px-2 text-sm"
+            >
               Journal
             </Link>
             <NavItem href="/contact-us" noBorder>
@@ -47,7 +51,11 @@ export default function FirstNav() {
         <div className="lg:hidden w-full">
           <div className="w-full flex items-center justify-between">
             <div className="flex">
-              <Link href="https://reports.nmcth.edu.np/" target="__blank">
+              <Link
+                href="https://reports.nmcth.edu.np/"
+                target="__blank"
+                className="text-sm font-medium cursor-pointer text-nowrap"
+              >
                 Lab Report
               </Link>
               <NavItem href="/notices" noBorder>
@@ -67,7 +75,11 @@ export default function FirstNav() {
           {isMobileMenuOpen && (
             <div className=" text-white mt-4">
               <div className="grid grid-cols-4 gap-y-2  items-center">
-                <Link href="https://jnmcth.nmcth.edu/" target="__blank">
+                <Link
+                  href="https://jnmcth.nmcth.edu/"
+                  target="__blank"
+                  className={`  pl-2 text-sm font-medium cursor-pointer text-nowrap`}
+                >
                   Journal
                 </Link>
                 <NavItem href="/news" noBorder>
