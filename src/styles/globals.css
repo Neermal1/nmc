@@ -132,6 +132,9 @@ ul {
   list-style: none;
   list-style-type: none;
 }
+  list-style: none;
+  list-style-type: none;
+}
 
 .ant-modal-content {
   padding: 0 !important;
@@ -143,7 +146,6 @@ ul {
 
 .ant-modal-close-x {
   background-color: white;
-  padding: 8px;
 }
 
 .react-multi-carousel-item {
