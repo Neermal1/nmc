@@ -27,7 +27,7 @@ export default function LogoNav() {
             Lab Report
           </button> */}
           <Link
-            href="https://reports.nmcth.edu.np/"
+            href="https://reports.nmcth.edu/"
             className="px-8 py-2 text-sm lg:text-base bg-secondary rounded-full text-primary font-medium hover:bg-primary hover:text-primaryYellow transition duration-300"
             target="__blank"
           >
