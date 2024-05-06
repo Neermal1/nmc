@@ -52,7 +52,7 @@ export default function FirstNav() {
           <div className="w-full flex items-center justify-between">
             <div className="flex">
               <Link
-                href="https://reports.nmcth.edu.np/"
+                href="https://reports.nmcth.edu/"
                 target="__blank"
                 className="text-sm font-medium cursor-pointer text-nowrap border-r pr-2"
               >
