@@ -47,14 +47,14 @@ export default function FirstNav() {
           </div>
         </div>
 
-        {/* for screen  */}
+        {/* for small screen  */}
         <div className="lg:hidden w-full">
           <div className="w-full flex items-center justify-between">
             <div className="flex">
               <Link
                 href="https://reports.nmcth.edu.np/"
                 target="__blank"
-                className="text-sm font-medium cursor-pointer text-nowrap"
+                className="text-sm font-medium cursor-pointer text-nowrap border-r pr-2"
               >
                 Lab Report
               </Link>
