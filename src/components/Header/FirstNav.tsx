@@ -18,14 +18,26 @@ export default function FirstNav() {
       <div className="px-8 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between bg-primary text-white">
         <div className="hidden lg:block">
           <div className="flex">
-            <SocialMedia link={fetchedData?.facebook} Icon={FaFacebook} />
-            <SocialMedia link={fetchedData?.instagram} Icon={AiFillInstagram} />
-            <SocialMedia link={fetchedData?.twitter} Icon={FaTwitter} />
-            <SocialMedia
-              link={fetchedData?.youtube}
-              Icon={FaYoutube}
-              noBorder
-            />
+            {fetchedData?.facebook && (
+              <SocialMedia link={fetchedData?.facebook} Icon={FaFacebook} />
+            )}
+            {fetchedData?.instagram && (
+              <SocialMedia
+                link={fetchedData?.instagram}
+                Icon={AiFillInstagram}
+              />
+            )}
+
+            {fetchedData?.twitter && (
+              <SocialMedia link={fetchedData?.twitter} Icon={FaTwitter} />
+            )}
+            {fetchedData?.youtube && (
+              <SocialMedia
+                link={fetchedData?.youtube}
+                Icon={FaYoutube}
+                noBorder
+              />
+            )}
           </div>
         </div>
         <div className="hidden lg:block">

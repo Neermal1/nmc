@@ -31,7 +31,7 @@ const DepartmentDetail = ({ departmentInfo }: any) => {
   return (
     <div>
       <CommonBanner
-        headerName="Department Branch"
+        headerName={departmentInfo?.department?.name}
         imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
       />
       <div className="layout component-padding black-color flex flex-col gap-20">

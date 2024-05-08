@@ -51,7 +51,7 @@ const ClinicalService = () => {
                 {fetchedData?.map((data: IClinicalServiceProps, index: any) => {
                   return (
                     <Link
-                      href={`/departmenthead/${data?.slug}`}
+                      href={`/departments/${data?.slug}`}
                       key={index}
                       className="group"
                     >

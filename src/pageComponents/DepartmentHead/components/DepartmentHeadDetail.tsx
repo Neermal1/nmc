@@ -9,7 +9,7 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
   return (
     <div className="">
       <CommonBanner
-        headerName="Department Head"
+        headerName={departmentHeadInfo?.details?.name}
         imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
       />
       <div className="layout component-padding ">
@@ -18,7 +18,7 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
             <div className="lg:col-span-5">
               <div>
                 <div className="flex flex-col gap-10">
-                  <div className="lg:text-[35px] text-[25px] font-semibold">
+                  <div className="lg:text-[35px] text-[25px] font-semibold ">
                     {departmentHeadInfo?.details?.name}
                   </div>
                   <div className=" rounded-[8px] overflow-hidden">
@@ -51,7 +51,7 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
                         return (
                           <div key={index}>
                             <Link
-                              href={`/departmenthead/${data?.slug}`}
+                              href={`/departments/${data?.slug}`}
                               className="flex items-center"
                             >
                               <div

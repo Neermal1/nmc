@@ -39,7 +39,7 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                   >
                     {slugroot === "department" ? (
                       <Link
-                        href={`/departmenthead/${menuItem?.slug}`}
+                        href={`/departments/${menuItem?.slug}`}
                         rel="noopener noreferrer"
                       >
                         <span>{menuItem?.name}</span>
