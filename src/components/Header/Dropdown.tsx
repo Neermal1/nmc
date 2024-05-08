@@ -46,7 +46,7 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                       </Link>
                     ) : (
                       <>
-                        <span>{menuItem?.name}</span>
+                        <span className="">{menuItem?.name}</span>
                       </>
                     )}
 
@@ -85,6 +85,7 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                     menuItem?.items?.length > 0 &&
                     menuItem?.items?.map((subItem: SubCategory) => (
                       <Link
+                        className=""
                         key={subItem?.id}
                         href={
                           slugroot === "service"

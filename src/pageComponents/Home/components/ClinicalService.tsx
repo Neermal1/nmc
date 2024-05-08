@@ -37,7 +37,7 @@ const ClinicalService = () => {
                     Learn about the world class health care we provide
                   </div>
                 </div>
-                <Link href="/all-department">
+                <Link href="/departments">
                   <Button
                     data={{
                       name: "Explore More",

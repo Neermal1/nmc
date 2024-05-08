@@ -1,13 +1,13 @@
 import useFetchData from "@/hooks/useFetchData";
-import { Button, Divider, Form, Input, notification } from "antd";
+import { Button, Form, Input, notification } from "antd";
 import { useState } from "react";
 import { BsInstagram, BsYoutube } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { FiPhone, FiMail, FiMapPin } from "react-icons/fi"; // Import icons
+import { FiMail, FiMapPin, FiPhone } from "react-icons/fi"; // Import icons
 
-import Link from "next/link";
 import axiosInstance from "@/axiosInstance/axiosInstance";
+import Link from "next/link";
 
 const Footer = () => {
   const { fetchedData, loading } = useFetchData("company-profile");
@@ -28,7 +28,7 @@ const Footer = () => {
 
         {
           name: "Department",
-          slug: "all-department",
+          slug: "departments",
           linktype: null,
           link: false,
         },
