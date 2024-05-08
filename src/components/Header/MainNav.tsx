@@ -16,7 +16,7 @@ export default function MainNav() {
           <AboutDropdown />
           <DropdownItems
             dropdownName="Departments"
-            slugroot="department"
+            slugroot="departments"
             fetchedData={departmentData}
           />
           <DropdownItems

@@ -33,7 +33,7 @@ export default DepartmentHead;
 export async function getServerSideProps({ params }: any) {
   try {
     const { data } = await SSR_fetchData(
-      `departments/${params?.department_head}/details`
+      `departments/${params?.department_name}/details`
     );
     return {
       props: {
