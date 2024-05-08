@@ -19,7 +19,7 @@ const Facility = () => {
     {
       icons: <MdHealthAndSafety size={45} />,
       name: "Our Department",
-      slug: "all-department",
+      slug: "departments",
     },
     {
       icons: <FaUniversity size={45} />,

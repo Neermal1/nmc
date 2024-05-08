@@ -67,7 +67,7 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
                         );
                       })}
                   </div>
-                  <Link href="/all-department">
+                  <Link href="/departments">
                     <SecondaryButton
                       data={{
                         name: "View More",
@@ -77,6 +77,13 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="flex flex-col gap-10">
+            <div className="text-[35px] font-semibold">
+              Explore our Department Branch
+            </div>
+            <DepartmentBranch branchData={departmentHeadInfo?.departments} />
           </div>
 
           <div className="flex flex-col gap-10">
@@ -127,13 +134,6 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
                   );
                 })}
             </div>
-          </div>
-
-          <div className="flex flex-col gap-10">
-            <div className="text-[35px] font-semibold">
-              Explore our Department Branch
-            </div>
-            <DepartmentBranch branchData={departmentHeadInfo?.departments} />
           </div>
         </div>
       </div>
