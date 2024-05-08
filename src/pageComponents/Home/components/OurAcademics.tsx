@@ -27,7 +27,7 @@ const OurAcademics = () => {
     {
       title: "Department",
       icon: <FaHospitalAlt size={70} />,
-      slug: "/all-department",
+      slug: "/departments",
     },
     {
       title: "Research",

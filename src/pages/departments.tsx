@@ -8,7 +8,7 @@ export default function Department() {
     <Layout>
       <Metatag
         heading="Nepal Medical College"
-        subheading="Departments"
+        subheading="Department"
         og_image="/images/ogImage/homePage.png"
         description=""
       />

@@ -39,14 +39,14 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                   >
                     {slugroot === "department" ? (
                       <Link
-                        href={`/departmenthead/${menuItem?.slug}`}
+                        href={`/departments/${menuItem?.slug}`}
                         rel="noopener noreferrer"
                       >
                         <span>{menuItem?.name}</span>
                       </Link>
                     ) : (
                       <>
-                        <span>{menuItem?.name}</span>
+                        <span className="">{menuItem?.name}</span>
                       </>
                     )}
 
@@ -85,6 +85,7 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
                     menuItem?.items?.length > 0 &&
                     menuItem?.items?.map((subItem: SubCategory) => (
                       <Link
+                        className=""
                         key={subItem?.id}
                         href={
                           slugroot === "service"

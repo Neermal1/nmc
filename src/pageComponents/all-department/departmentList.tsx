@@ -1,6 +1,7 @@
 import Loader from "@/components/Loader/Loader";
 import useFetchData from "@/hooks/useFetchData";
 import { IDepartment } from "@/interface/interface";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 const DepartmentCard = ({ icon, name, slug }: any) => {
@@ -14,12 +15,12 @@ const DepartmentCard = ({ icon, name, slug }: any) => {
         <h3 className="text-xl font-semibold mb-2 text-primary text-center">
           {name}
         </h3>
-        <button
-          onClick={() => router.push(`/departmenthead/${slug}`)}
+        <Link
+          href={`/departments/${slug}`}
           className="text-primary px-4 py-2 border border-primary rounded-full hover:bg-primary hover:text-primaryYellow transition duration-300"
         >
           Learn more
-        </button>
+        </Link>
       </div>
     </div>
   );

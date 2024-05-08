@@ -34,7 +34,6 @@ const index = ({ data }: any, { notice }: any) => {
       <ClinicalService />
       <HealthCarePackages />
       <WhyChooseUs />
-      {/* <MessageFromDirector /> */}
       <div className="px-8 md:px-16 lg:px-24 xl:px-32 py-8 md:py-16 bg-[#EAF1FF]">
         <MsgFromDirect />
       </div>

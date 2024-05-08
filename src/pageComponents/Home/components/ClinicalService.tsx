@@ -37,7 +37,7 @@ const ClinicalService = () => {
                     Learn about the world class health care we provide
                   </div>
                 </div>
-                <Link href="/all-department">
+                <Link href="/departments">
                   <Button
                     data={{
                       name: "Explore More",
@@ -51,7 +51,7 @@ const ClinicalService = () => {
                 {fetchedData?.map((data: IClinicalServiceProps, index: any) => {
                   return (
                     <Link
-                      href={`/departmenthead/${data?.slug}`}
+                      href={`/departments/${data?.slug}`}
                       key={index}
                       className="group"
                     >
