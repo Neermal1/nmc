@@ -81,6 +81,56 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
 
           <div className="flex flex-col gap-10">
             <div className="text-[35px] font-semibold">
+              Meet Our Popular Doctors
+            </div>
+
+            <div className="grid lg:grid-cols-4 gap-10 ">
+              {departmentHeadInfo?.doctors.length > 0 &&
+                departmentHeadInfo?.doctors?.map((data: any, index: number) => {
+                  return (
+                    <Link
+                      href={`/doctor/${data?.slug}`}
+                      key={index}
+                      className="bg-white drop-shadow-md items-center rounded-[8px] p-6 flex flex-col gap-4"
+                    >
+                      <div>
+                        <img src={data && data?.image_link} alt="" />
+                      </div>
+                      <div className="black-color flex flex-col items-center gap-1">
+                        <div className="text-[18px]">{data?.title}</div>
+                        <div className="text-[16px] text-center font-semibold">
+                          {data?.name}
+                        </div>
+                        {data?.designation !== null && (
+                          <div
+                            className="text-[16px] font-semibold"
+                            style={{
+                              color: "var(--accent-color)",
+                            }}
+                          >
+                            {data?.designation}
+                          </div>
+                        )}
+
+                        {data?.degree !== null && (
+                          <div
+                            className="text-[16px] font-semibold"
+                            style={{
+                              color: "var(--accent-color)",
+                            }}
+                          >
+                            {data?.degree}
+                          </div>
+                        )}
+                      </div>
+                    </Link>
+                  );
+                })}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-10">
+            <div className="text-[35px] font-semibold">
               Explore our Department Branch
             </div>
             <DepartmentBranch branchData={departmentHeadInfo?.departments} />
