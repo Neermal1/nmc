@@ -108,7 +108,7 @@ const Footer = () => {
           color: "white",
         }}
       >
-        <div className="layout component-padding flex flex-col gap-6">
+        <div className="layout component-padding flex flex-col gap-7">
           <div className="grid lg:grid-cols-8 grid-cols-1 gap-20">
             <div className="flex flex-col gap-6 lg:col-span-3    ">
               <div className="flex items-center gap-4  h-[60px]">
