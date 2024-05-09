@@ -7,8 +7,8 @@ const ServiceInfo = ({ serviceInfo }: any) => {
   return (
     <div>
       <CommonBanner
-        headerName="Service"
-        imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
+        headerName={serviceInfo?.detail?.service_category?.name}
+        imageLink={serviceInfo?.detail?.image_link}
       />
       <div className="layout component-padding black-color flex flex-col gap-20">
         <div className="grid lg:grid-cols-8 lg:gap-20 gap-10">

@@ -10,7 +10,7 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
     <div className="">
       <CommonBanner
         headerName={departmentHeadInfo?.details?.name}
-        imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
+        imageLink={departmentHeadInfo?.details?.image_link}
       />
       <div className="layout component-padding ">
         <div className="flex flex-col gap-20">
@@ -29,9 +29,12 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
                     />
                   </div>
                   <div className="flex flex-col gap-6">
-                    <div className="leading-[30px]">
-                      {departmentHeadInfo?.details?.description}
-                    </div>
+                    <div
+                      className="leading-[30px]"
+                      dangerouslySetInnerHTML={{
+                        __html: departmentHeadInfo?.details?.description,
+                      }}
+                    ></div>
                   </div>
                 </div>
               </div>
