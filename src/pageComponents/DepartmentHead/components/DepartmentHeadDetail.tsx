@@ -80,16 +80,15 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
           </div>
 
           <div className="flex flex-col gap-10">
-            <div className="text-[35px] font-semibold">
-              Explore our Department Branch
-            </div>
             <DepartmentBranch branchData={departmentHeadInfo?.departments} />
           </div>
 
           <div className="flex flex-col gap-10">
-            <div className="text-[35px] font-semibold">
-              Meet Our Popular Doctors
-            </div>
+            {departmentHeadInfo?.doctors.length > 0 && (
+              <div className="text-[35px] font-semibold">
+                Meet Our Popular Doctors
+              </div>
+            )}
 
             <div className="grid lg:grid-cols-4 gap-10 ">
               {departmentHeadInfo?.doctors.length > 0 &&

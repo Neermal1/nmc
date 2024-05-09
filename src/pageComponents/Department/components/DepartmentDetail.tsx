@@ -70,8 +70,8 @@ const DepartmentDetail = ({ departmentInfo }: any) => {
                     return (
                       <div key={index}>
                         <Link
-                          href={`/department/${department_name}/${data?.slug}`}
-                          className="flex items-center"
+                          href={`/departments/${department_name}/${data?.slug}`}
+                          className="flex items-center "
                         >
                           <div
                             style={{
@@ -91,9 +91,11 @@ const DepartmentDetail = ({ departmentInfo }: any) => {
           </div>
         </div>
         <div className="flex flex-col gap-10">
-          <div className="text-[35px] font-semibold">
-            Meet Our Popular Doctors
-          </div>
+          {departmentInfo?.doctors?.length > 0 && (
+            <div className="text-[35px] font-semibold">
+              Meet Our Popular Doctors
+            </div>
+          )}
 
           <div className="grid lg:grid-cols-4 gap-10 ">
             {departmentInfo?.doctors.length > 0 &&
