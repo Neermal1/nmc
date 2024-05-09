@@ -7,12 +7,17 @@ import { LuImageOff } from "react-icons/lu";
 
 const DepartmentBranch = ({ branchData }: IDepartmentBranchProps) => {
   return (
-    <div className="">
+    <div className="flex flex-col gap-10">
+      {branchData?.length > 0 && (
+        <div className="text-[35px] font-semibold">
+          Explore our Department Branch
+        </div>
+      )}
       <div className="grid lg:grid-cols-4 gap-8">
         {branchData?.map((data: IDepartmentBranch, index: any) => {
           return (
             <Link
-              href={`/department/${data?.department_category?.slug}/${data?.slug}`}
+              href={`/departments/${data?.department_category?.slug}/${data?.slug}`}
               key={index}
               className="bg-white border-[1px] group  hover:drop-shadow-lg border-gray-300 px-6 py-3 rounded-[4px]"
             >

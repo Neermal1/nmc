@@ -10,7 +10,7 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
     <div className="">
       <CommonBanner
         headerName={departmentHeadInfo?.details?.name}
-        imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
+        imageLink={departmentHeadInfo?.details?.image_link}
       />
       <div className="layout component-padding ">
         <div className="flex flex-col gap-20">
@@ -29,9 +29,12 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
                     />
                   </div>
                   <div className="flex flex-col gap-6">
-                    <div className="leading-[30px]">
-                      {departmentHeadInfo?.details?.description}
-                    </div>
+                    <div
+                      className="leading-[30px]"
+                      dangerouslySetInnerHTML={{
+                        __html: departmentHeadInfo?.details?.description,
+                      }}
+                    ></div>
                   </div>
                 </div>
               </div>
@@ -80,16 +83,15 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
           </div>
 
           <div className="flex flex-col gap-10">
-            <div className="text-[35px] font-semibold">
-              Explore our Department Branch
-            </div>
             <DepartmentBranch branchData={departmentHeadInfo?.departments} />
           </div>
 
           <div className="flex flex-col gap-10">
-            <div className="text-[35px] font-semibold">
-              Meet Our Popular Doctors
-            </div>
+            {departmentHeadInfo?.doctors.length > 0 && (
+              <div className="text-[35px] font-semibold">
+                Meet Our Popular Doctors
+              </div>
+            )}
 
             <div className="grid lg:grid-cols-4 gap-10 ">
               {departmentHeadInfo?.doctors.length > 0 &&
