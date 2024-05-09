@@ -15,6 +15,8 @@ const CallToAction = () => {
       <div
         style={{
           backgroundImage: `url("./images/callToAction/callBanner.png")`,
+          backgroundSize: 'cover', // or 'contain' depending on your preference
+          backgroundPosition: 'center center',
         }}
         className="relative w-full overflow-y-hidden lg:bg-no-repeat  bg-cover"
       >
