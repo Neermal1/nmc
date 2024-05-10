@@ -81,7 +81,7 @@ const OurAcademics = () => {
                 );
               })}
             </div>
-            <div className="flex items-center justify-around text-white bg-[#1F2B6C] py-4 rounded-[8px]">
+            <div className="flex flex-col md:flex-row items-center justify-around gap-2 text-white bg-[#1F2B6C] py-4 rounded-[8px]">
               <div>For International Students :</div>
               <div>
                 <a href="tel:01-4911008" className="flex items-center gap-2">
