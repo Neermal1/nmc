@@ -1,14 +1,12 @@
-import FirstNav from "./FirstNav";
-import LogoNav from "./LogoNav";
-import MainNav from "./MainNav";
+import Navbar from "./Navbar";
+import Ribbon from "./Ribbon";
 import SmallScreenNavbar from "./SmallScreenHeader";
 
 const Header = () => {
   return (
     <>
-      <FirstNav />
-      <LogoNav />
-      <MainNav />
+      <Ribbon />
+      <Navbar />
       <SmallScreenNavbar />
     </>
   );

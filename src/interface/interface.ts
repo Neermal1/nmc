@@ -359,3 +359,9 @@ export interface IMessage {
   updated_at: string;
   image_link: string;
 }
+
+export interface IService {
+  id: number;
+  name: string;
+  slug: string;
+}

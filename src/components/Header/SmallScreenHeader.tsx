@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import SmDropdown from "./SmDropdown";
 import AboutDropdown from "./AboutDropdown";
+import MediaDropdown from "./MediaDropdown";
 
 const SmallScreenNavbar = () => {
   const { fetchedData: departmentData } = useFetchData("departments");
@@ -62,8 +63,7 @@ const SmallScreenNavbar = () => {
             dropdownName="Academics"
             menuItems={academicsData}
           />
-          <NavItem name="Activities" navigateTo="/activities" />
-          <NavItem name="Research" navigateTo="/research" />
+          <MediaDropdown />
         </div>
       </Drawer>
     </div>

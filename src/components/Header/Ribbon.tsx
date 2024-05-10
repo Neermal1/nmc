@@ -5,7 +5,7 @@ import { FaTwitter, FaCircleInfo } from "react-icons/fa6";
 import Link from "next/link";
 import useFetchData from "@/hooks/useFetchData";
 
-export default function FirstNav() {
+export default function Ribbon() {
   const { fetchedData } = useFetchData("company-profile");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -15,9 +15,9 @@ export default function FirstNav() {
 
   return (
     <div className="w-full h-full py-2 lg:py-3 bg-primary z-50">
-      <div className="px-8 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between bg-primary text-white">
+      <div className="px-8 md:px-16 lg:px-24 flex items-center justify-between bg-primary text-white">
         <div className="hidden lg:block">
-          <div className="flex">
+          <div className="flex items-center space-x-3">
             {fetchedData?.facebook && (
               <SocialMedia link={fetchedData?.facebook} Icon={FaFacebook} />
             )}
@@ -32,11 +32,7 @@ export default function FirstNav() {
               <SocialMedia link={fetchedData?.twitter} Icon={FaTwitter} />
             )}
             {fetchedData?.youtube && (
-              <SocialMedia
-                link={fetchedData?.youtube}
-                Icon={FaYoutube}
-                noBorder
-              />
+              <SocialMedia link={fetchedData?.youtube} Icon={FaYoutube} />
             )}
           </div>
         </div>
@@ -44,7 +40,6 @@ export default function FirstNav() {
           <div className="flex">
             <NavItem href="/news">News</NavItem>
             <NavItem href="/notices">Notice</NavItem>
-            <NavItem href="/gallery">Gallery</NavItem>
             <NavItem href="/career">Career</NavItem>
             <Link
               href="https://jnmcth.nmcth.edu/"
@@ -97,9 +92,6 @@ export default function FirstNav() {
                 <NavItem href="/news" noBorder>
                   News
                 </NavItem>
-                <NavItem href="/gallery" noBorder>
-                  Gallery
-                </NavItem>
                 <NavItem href="/career" noBorder>
                   Career
                 </NavItem>
@@ -128,11 +120,7 @@ const NavItem = ({ href, children, noBorder }: any) => (
 );
 
 const SocialMedia = ({ link, Icon, noBorder }: any) => (
-  <div
-    className={`${
-      noBorder ? "" : "border-r"
-    } px-2 lg:px-3 text-sm md:text-base font-semibold`}
-  >
+  <div className={`text-sm md:text-base font-semibold`}>
     <a target="_blank" href={link}>
       <Icon />
     </a>
