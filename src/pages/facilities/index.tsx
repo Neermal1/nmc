@@ -13,7 +13,7 @@ export default function Facilities() {
       />
       <CommonBanner
         headerName="Facilities"
-        imageLink="/images/Banners/Banner2.png"
+        imageLink="/images/Banners/facilities.jpg"
       />
       <FacilitiesList />
     </Layout>

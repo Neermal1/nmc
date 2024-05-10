@@ -34,7 +34,7 @@ export default function ProgramDetails({ data }: any) {
     <>
       <CommonBanner
         headerName="Academics"
-        imageLink="/images/Banners/Banner1.png"
+        imageLink="/images/Banners/academics-banner.jpg"
       />
       <section className="px-8 md:px-16 lg:px-24 xl:px-32 py-8 lg:py-24">
         <div>

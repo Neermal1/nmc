@@ -16,7 +16,7 @@ export default function MissionVision() {
       <Layout>
         <CommonBanner
           headerName="Our Mission & Vision"
-          imageLink="/images/Banners/Banner2.png"
+          imageLink="/images/Banners/mission.jpg"
         />
         <MissionVisionContent />
       </Layout>

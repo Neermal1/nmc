@@ -18,7 +18,7 @@ export default function MessageDetail({ message }: { message: IMessage }) {
       <Layout>
         <CommonBanner
           headerName="Messages from Team"
-          imageLink="/images/Banners/Banner2.png"
+          imageLink="/images/Banners/messages.webp"
         />
         <MessageContent data={message} />
       </Layout>

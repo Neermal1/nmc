@@ -25,7 +25,7 @@ export default function FacilityDetail({ data }: any) {
       />
       <CommonBanner
         headerName="Facilities"
-        imageLink="/images/Banners/Banner2.png"
+        imageLink="/images/Banners/facilities.jpg"
       />
       <DetailsComponent
         title={data?.detail?.title}
