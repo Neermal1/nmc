@@ -10,7 +10,7 @@ export default function Navbar() {
   const { fetchedData: departmentData } = useFetchData("departments");
   const { fetchedData: academicsData } = useFetchData("academics-program");
   return (
-    <div className="w-full h-full px-8 md:px-16 lg:px-24 py-2 hidden xl:block sticky top-0 bg-white shadow-lg z-50">
+    <div className="w-full h-full px-8 md:px-16 lg:x-24 xl:px-32 py-2 hidden lg:block sticky top-0 bg-white shadow-lg z-50">
       <div className="flex justify-between items-center">
         {/* Logo  */}
         <Link href="/" className="flex items-center space-x-2 lg:space-x-4">
@@ -45,13 +45,13 @@ export default function Navbar() {
               <MediaDropdown />
             </ul>
           </div>
-          <Link
+          {/* <Link
             href="http://reports.nmcth.edu/"
             className="px-6 py-2 text-base bg-secondary rounded-full text-primary font-medium hover:bg-primary hover:text-primaryYellow transition duration-300"
             target="__blank"
           >
             Lab Report
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
