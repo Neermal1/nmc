@@ -106,7 +106,7 @@ const DropdownItems = ({ dropdownName, fetchedData, slugroot }: any) => {
         </Menu>
       }
     >
-      <a className="text-primary text-sm md:text-base lg:text-lg font-medium hover:text-primaryYellow cursor-pointer inline-flex items-center">
+      <a className="text-primary text-sm md:text-base font-medium hover:text-primaryYellow cursor-pointer inline-flex items-center">
         {dropdownName} <CaretDownOutlined />
       </a>
     </Dropdown>
