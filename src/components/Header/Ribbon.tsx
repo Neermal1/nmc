@@ -16,7 +16,7 @@ export default function Ribbon() {
   return (
     <div className="w-full h-full py-2 lg:py-3 bg-primary z-50">
       <div className="px-8 md:px-16 lg:px-24 flex items-center justify-between bg-primary text-white">
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <div className="flex items-center divide-x">
             {fetchedData?.facebook && (
               <SocialMedia link={fetchedData?.facebook} Icon={FaFacebook} />
@@ -36,7 +36,7 @@ export default function Ribbon() {
             )}
           </div>
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <div className="flex">
             <NavItem href="/news">News</NavItem>
             <NavItem href="/notices">Notice</NavItem>
@@ -55,7 +55,7 @@ export default function Ribbon() {
         </div>
 
         {/* for small screen  */}
-        <div className="lg:hidden w-full">
+        <div className="xl:hidden w-full">
           <div className="w-full flex items-center justify-between">
             <div className="flex">
               <Link

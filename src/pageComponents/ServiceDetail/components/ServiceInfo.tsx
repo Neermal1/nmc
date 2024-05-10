@@ -11,7 +11,7 @@ const ServiceInfo = ({ serviceInfo }: any) => {
         imageLink={serviceInfo?.detail?.image_link}
       />
       <div className="layout component-padding black-color flex flex-col gap-20">
-        <div className="grid lg:grid-cols-8 lg:gap-20 gap-10">
+        <div className="grid lg:grid-cols-8 lg:gap-20 gap-10">  
           <div className="lg:col-span-5">
             <div>
               <div className="flex flex-col gap-10">
