@@ -14,7 +14,7 @@ export default function Notices() {
       />
       <CommonBanner
         headerName="Notice"
-        imageLink="/images/Banners/Banner2.png"
+        imageLink="/images/Banners/notice.jpg"
       />
       <NoticeList />
     </Layout>

@@ -15,10 +15,7 @@ const AllNews = ({ activePage = 1, totalPages, totalPosts }: any) => {
 
   return (
     <div className="">
-      <CommonBanner
-        headerName="News"
-        imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
-      />
+      <CommonBanner headerName="News" imageLink="/images/Banners/news.jpg" />
 
       <div className="">
         <div className="layout component-padding">

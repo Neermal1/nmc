@@ -6,10 +6,14 @@ import Metatag from "@/utils/Metatag";
 export default function Activities() {
   return (
     <Layout>
-      <Metatag heading="Nepal Medical College" subheading="Activities" og_image="/images/ogImage/homePage.png"/>
+      <Metatag
+        heading="Nepal Medical College"
+        subheading="Activities"
+        og_image="/images/ogImage/homePage.png"
+      />
       <CommonBanner
         headerName="Activities"
-        imageLink="/images/Banners/Banner1.png"
+        imageLink="/images/Banners/activities.webp"
       />
       <ActivitiesList />
     </Layout>

@@ -16,7 +16,7 @@ export default function ManagementTeam() {
       <Layout>
         <CommonBanner
           headerName="Management Team"
-          imageLink="/images/Banners/Banner1.png"
+          imageLink="/images/Banners/management.webp"
         />
         <MgmtTeam />
       </Layout>

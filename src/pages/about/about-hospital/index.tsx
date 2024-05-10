@@ -16,7 +16,7 @@ export default function AboutHospital() {
       <Layout>
         <CommonBanner
           headerName="About Hospital"
-          imageLink="/images/Banners/Banner1.png"
+          imageLink="/images/Banners/abouthospital.jpg"
         />
         <AboutHospitalContent />
       </Layout>
