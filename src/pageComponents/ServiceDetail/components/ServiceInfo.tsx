@@ -7,7 +7,7 @@ const ServiceInfo = ({ serviceInfo }: any) => {
   return (
     <div>
       <CommonBanner
-        headerName={serviceInfo?.detail?.service_category?.name}
+        headerName={serviceInfo?.detail?.name}
         imageLink={serviceInfo?.detail?.image_link}
       />
       <div className="layout component-padding black-color flex flex-col gap-20">
@@ -17,11 +17,9 @@ const ServiceInfo = ({ serviceInfo }: any) => {
               <div className="flex flex-col gap-10">
                 <div className="flex flex-col gap-4">
                   <div className="lg:text-[35px] text-[25px] font-semibold">
-                    {serviceInfo?.detail?.service_category?.name}
-                  </div>
-                  <div className="text-[20px] font-medium">
                     {serviceInfo?.detail?.name}
                   </div>
+                 
                 </div>
                 <div className=" rounded-[8px] overflow-hidden">
                   <img
