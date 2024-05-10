@@ -17,7 +17,7 @@ export default function Ribbon() {
     <div className="w-full h-full py-2 lg:py-3 bg-primary z-50">
       <div className="px-8 md:px-16 lg:px-24 flex items-center justify-between bg-primary text-white">
         <div className="hidden lg:block">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center divide-x">
             {fetchedData?.facebook && (
               <SocialMedia link={fetchedData?.facebook} Icon={FaFacebook} />
             )}
@@ -120,7 +120,7 @@ const NavItem = ({ href, children, noBorder }: any) => (
 );
 
 const SocialMedia = ({ link, Icon, noBorder }: any) => (
-  <div className={`text-sm md:text-base font-semibold`}>
+  <div className={`text-sm md:text-base font-semibold px-2`}>
     <a target="_blank" href={link}>
       <Icon />
     </a>
