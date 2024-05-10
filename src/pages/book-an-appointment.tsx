@@ -13,7 +13,7 @@ const BookAnAppointment = () => {
       />
       <CommonBanner
         headerName="Book An Appointment"
-        imageLink="https://img.freepik.com/premium-photo/medicine-healthcare-concept-team-group-doctors-nurses-showing-thumbs-up_380164-90454.jpg?w=1380"
+        imageLink="/images/Banners/book-appointment.webp"
       />
       <BookAppointementDetail />
     </Layout>
