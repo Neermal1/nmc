@@ -21,7 +21,7 @@ const SmallScreenNavbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center lg:hidden px-8 md:px-16 lg:px-24 xl:px-24 py-2 sticky top-0 z-40 bg-white">
+    <div className="flex justify-between items-center xl:hidden px-8 md:px-16 lg:px-24 xl:px-24 py-2 sticky top-0 z-40 bg-white">
       {/* Logo */}
       <div className="flex items-center">
         <Link href="/" className="flex items-center space-x-2">
