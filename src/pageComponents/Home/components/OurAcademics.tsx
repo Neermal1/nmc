@@ -37,7 +37,7 @@ const OurAcademics = () => {
     {
       title: "Notice",
       icon: <FaNewspaper size={70} />,
-      slug: "/notice",
+      slug: "/notices",
     },
     {
       title: "Facilities ",
