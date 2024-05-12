@@ -39,7 +39,7 @@ export default function DetailsComponent({
               {relatedFacilities?.map((facility: IFacility) => (
                 <Link
                   key={facility?.id}
-                  href={`/facility/${facility?.slug}`}
+                  href={`/facilities/${facility?.slug}`}
                   className="w-full p-2 rounded-lg shadow-lg"
                 >
                   <div className="flex items-center space-x-4">
