@@ -39,7 +39,9 @@ const DoctorDetail = ({ doctorInfo }: any) => {
                         ></Image>
                       </div>
                       <div className="lg:text-[20px] text-[16px] text-[#1f2b6c] font-semibold">
-                        {doctorInfo?.department?.name}
+                          {doctorInfo?.department ? 
+                          doctorInfo?.department?.name : 
+                          doctorInfo?.department_category?.name}
                       </div>
                     </div>
                   )}
