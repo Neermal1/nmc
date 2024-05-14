@@ -93,7 +93,7 @@ const DepartmentHeadDetail = ({ departmentHeadInfo }: any) => {
               </div>
             )}
 
-            <div className="grid lg:grid-cols-4 gap-10 ">
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-10 ">
               {departmentHeadInfo?.doctors.length > 0 &&
                 departmentHeadInfo?.doctors?.map((data: any, index: number) => {
                   return (
