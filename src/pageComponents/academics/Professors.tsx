@@ -21,7 +21,7 @@ export default function Professors({ professors }: any) {
             </div>
             {professor?.designation !== null && (
               <div
-                className="text-[16px] font-semibold"
+                className="text-[16px] text-center font-semibold"
                 style={{
                   color: "var(--accent-color)",
                 }}
@@ -32,7 +32,7 @@ export default function Professors({ professors }: any) {
 
             {professor?.degree !== null && (
               <div
-                className="text-[16px] font-semibold"
+                className="text-[16px] text-center font-semibold"
                 style={{
                   color: "var(--accent-color)",
                 }}

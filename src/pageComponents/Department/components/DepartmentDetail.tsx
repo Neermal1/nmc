@@ -119,7 +119,7 @@ const DepartmentDetail = ({ departmentInfo }: any) => {
                       </div>
                       {data?.designation !== null && (
                         <div
-                          className="text-[16px] font-semibold"
+                          className="text-[16px] text-center font-semibold"
                           style={{
                             color: "var(--accent-color)",
                           }}
@@ -130,7 +130,7 @@ const DepartmentDetail = ({ departmentInfo }: any) => {
 
                       {data?.degree !== null && (
                         <div
-                          className="text-[16px] font-semibold"
+                          className="text-[16px] text-center font-semibold"
                           style={{
                             color: "var(--accent-color)",
                           }}
