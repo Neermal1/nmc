@@ -45,6 +45,8 @@ const AboutDropdown = () => {
           <span>Messages from Team</span>
         </Popover>
       </div>
+      <MenuItem href="/about/nmc-promoters">NMC Promoters</MenuItem>
+      <MenuItem href="/about/nmc-song">NMC Song</MenuItem>
     </Menu>
   );
 
