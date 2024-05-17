@@ -5,7 +5,7 @@ export interface ILayoutProps {
 
 export interface IMetatags {
   heading: string;
-  subheading: string;
+  subheading?: string;
   og_image?: any;
   description?: string;
   type?: string;
