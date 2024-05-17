@@ -1,56 +1,54 @@
-import useFetchData from "@/hooks/useFetchData";
-import { ITeamCategory } from "@/interface/interface";
 import { FiMail, FiPhone } from "react-icons/fi";
 
-export default function MgmtTeam() {
-  const { fetchedData } = useFetchData("team-member/list");
-
+export default function MgmtTeam({ fetchedData }: any) {
   return (
-    <section className="py-4 text-center">
-      <h2 className="mb-4 lg:mb-8 text-3xl font-bold">Meet the team</h2>
+    <section className="py-4 text-center flex flex-col gap-10">
+      <h2 className="mb-4 lg:mb-8 text-3xl font-bold">Meet the teams</h2>
+      <div className="grid lg:grid-cols-3">
+        {fetchedData?.teams?.map((teamCategory: any, index: number) => (
+          <div key={index} className="mb-8">
+            <h3 className="text-xl font-bold mb-4 lg:mb-8">
+              {teamCategory.name}
+            </h3>
 
-      {fetchedData?.map((teamCategory: ITeamCategory, index: number) => (
-        <div key={index} className="mb-8">
-          <h3 className="text-xl font-bold mb-4 lg:mb-8">
-            {teamCategory.name}
-          </h3>
-          <div className="grid gap-4 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {teamCategory.teams.map((member) => (
-              <div key={member.id} className="mb-6">
+            <div className="">
+              <div>
                 <img
-                  src={member.image_link}
-                  alt={`Image of ${member.name}`}
+                  src={teamCategory.image_link}
+                  alt={`Image of ${teamCategory.name}`}
                   className="mx-auto mb-4 rounded-lg shadow-lg dark:shadow-black/20 w-[150px]"
                 />
-                <h5 className="mb-1 text-lg font-bold">{member.name}</h5>
+                <h5 className="mb-1 text-lg font-bold">{teamCategory.name}</h5>
                 <p className="mb-1 text-primary text-sm md:text-base font-medium">
-                  {member.designation}
+                  {teamCategory.designation}
                 </p>
                 <div className="flex flex-col items-center space-y-2">
-                  {member.email && (
+                  {teamCategory.email && (
                     <div className="flex items-center space-x-2">
                       <FiMail />
                       <a
-                        href={`mailto:${member.email}`}
+                        href={`mailto:${teamCategory.email}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {member?.email}
+                        {teamCategory?.email}
                       </a>
                     </div>
                   )}
-                  {member.phone && (
+                  {teamCategory.phone && (
                     <div className="flex items-center space-x-2">
                       <FiPhone />
-                      <a href={`tel:${member.phone}`}>{member?.phone}</a>
+                      <a href={`tel:${teamCategory.phone}`}>
+                        {teamCategory?.phone}
+                      </a>
                     </div>
                   )}
                 </div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   );
 }

@@ -21,6 +21,8 @@ const MessageItem = ({ msg }: any) => (
 
 const AboutDropdown = () => {
   const { fetchedData } = useFetchData("messages");
+  const { fetchedData: extraOption } = useFetchData("nav/team-category");
+
   const messagesmenu = (
     <div className="!bg-white">
       {fetchedData?.map((msg: any, index: number) => (
@@ -33,7 +35,14 @@ const AboutDropdown = () => {
     <Menu>
       <MenuItem href="/about/about-hospital">About Hospital</MenuItem>
       <MenuItem href="/about/mission-and-vision">Mission and Vision</MenuItem>
-      <MenuItem href="/about/management-team">Management Team</MenuItem>
+
+      {extraOption?.map((data: any, index: number) => {
+        return (
+          <div key={index}>
+            <MenuItem href={`/about/${data?.slug}`}>{data?.name}</MenuItem>
+          </div>
+        );
+      })}
 
       <div className="px-4 py-2 my-2 mx-2 rounded-lg text-base hover:bg-gray-100 hover:text-primary">
         <Popover
