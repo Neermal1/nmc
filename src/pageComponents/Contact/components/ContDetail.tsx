@@ -69,7 +69,10 @@ export default function ContDetail() {
               </div>
             </div>
             {/* for map  */}
-            <div className="mt-4 lg:mt-8 overflow-hidden">
+            <div
+              className="mt-4 lg:mt-8 overflow-hidden"
+            
+            >
               <div
                 className="w-80 h-80 md::w-full"
                 dangerouslySetInnerHTML={{ __html: fetchedData?.map }}
