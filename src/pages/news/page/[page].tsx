@@ -5,45 +5,47 @@ export async function getStaticPaths() {
   try {
     const { totalPages } = await getNews(1);
 
-    const paths = Array.from({ length: totalPages }).map((_, i) => {
-      return {
-        params: {
-          page: (i + 1).toString(),
-        },
-      };
-    });
+    const paths = Array.from({ length: totalPages }, (_, i) => ({
+      params: { page: (i + 1).toString() },
+    }));
 
     return {
       paths,
-      fallback: false,
+      fallback: "blocking", // Allows new pages to be generated on demand
     };
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.error("Error fetching news pages:", error);
     return {
-      props: {
-        data: null,
-      },
+      paths: [],
+      fallback: "blocking", // Handles unexpected failures gracefully
     };
   }
 }
 
-export async function getStaticProps({ params: { page } }: { params: any }) {
-  const props = await getNews(parseInt(page));
+export async function getStaticProps({ params }: { params: { page: string } }) {
+  try {
+    const pageNumber = parseInt(params.page, 10);
+    if (isNaN(pageNumber) || pageNumber < 1) throw new Error("Invalid page number");
 
-  return {
-    props: {
-      ...props,
-      activePage: parseInt(page),
-    },
-  };
+    const props = await getNews(pageNumber);
+
+    return {
+      props: {
+        ...props,
+        activePage: pageNumber,
+      },
+      revalidate: 60, // Ensures periodic updates every 60 seconds
+    };
+  } catch (error) {
+    console.error("Error fetching news for page:", params.page, error);
+    return {
+      notFound: true, // Returns 404 if there's an issue
+    };
+  }
 }
 
 const NewsByPage = (props: any) => {
-  return (
-    <>
-      <NewsMainPage {...props} />;
-    </>
-  );
+  return <NewsMainPage {...props} />;
 };
 
 export default NewsByPage;
